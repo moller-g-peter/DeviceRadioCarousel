@@ -1,7 +1,15 @@
 
 // adds swipe function together with "carousel-swipe.js"
-$("#myCarousel").carousel(function(){});
+// $("#myCarousel").carousel(function(){});
   
+
+$("#myCarousel").swiperight(function() {
+  $("#myCarousel").carousel('prev');
+});
+$("#myCarousel").swipeleft(function() {
+  $("#myCarousel").carousel('next');
+});
+
 
 
 
