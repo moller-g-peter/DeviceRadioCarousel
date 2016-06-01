@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Peter test</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS (minified) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Bootstrap JS (minified) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="carousel-swipe.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+<!-- SECTION FOR DESKTOP DIVS -->
+    <div id="desktopWrapper">
+      <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="leftWrapper">
+            <div tabindex="1" class="col-sm-12 col-md-12 col-lg-12 yellow" id="yellow">
+              <!-- <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe> -->
+            </div>
+            <div tabindex="2" class="col-sm-12 col-md-12 col-lg-12 red" id="red"></div>
+          </div> <!-- leftWrapper -->
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="rightWrapper">
+            <div tabindex="3" class="col-sm-12 col-md-12 col-lg-12 blue" id="blue"></div>
+          </div> <!-- rightWrapper -->
+
+        </div> <!-- /row -->
+      </div> <!-- /container -->
+    </div>
+<!-- !SECTION FOR DESKTOP DIVS -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION FOR MOBILE DIVS -->
+<div id="mobileWrapper">
+  <div class="container">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
+          <!-- Wrapper for slides -->
+          <ul class="nav nav-pills">
+              <li data-target="#myCarousel" data-slide-to="0" class="col-xs-4 active"><a href="#">About</a></li>
+              <li data-target="#myCarousel" data-slide-to="1" class="col-xs-4"><a href="#">Projects</a></li>
+              <li data-target="#myCarousel" data-slide-to="2" class="col-xs-4"><a href="#">Portfolio</a></li>
+          </ul>
+          <div class="carousel-inner">
+
+              <div class="item yellow active">
+                <iframe src="http://www.w3schools.com">
+                  <p>Your browser does not support iframes.</p>
+                </iframe>
+              </div>
+
+
+              <div class="item red">
+              </div>
+
+
+              <div class="item blue">
+              </div>
+
+
+          </div>
+      </div>
+  </div>
+</div>
+<!-- !SECTION FOR MOBILE DIVS -->
+
+
+  <script src="carousel.js"></script>
+</body>
+</html>
