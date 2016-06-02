@@ -37,16 +37,26 @@ $('#myCarousel').on('click', '.nav a', function() {
     var current = $('.nav li.active');
 
     // remove 'active' from current and add it to the next
-    current.removeClass('active').next().addClass('active');
+   current.removeClass('active').next().addClass('active');
+
+    var direction=$('.item').html();
+    console.log('dir',direction);
 
     // parseInt makes string "data-slide-to=0" to int 0
     var id = parseInt(current.data('slide-to'));
 
+   // console.log('id:', id);
+    //console.log('current: ', current);
+
     // if slide amount is the same as "data-slide-to= num":
     if(count == id) {
 
+console.log('i am if');
       // add 'active' to the first li element in the list
-      $('.nav li').first().addClass('active');
+     // $('.nav li').first().addClass('active');
+    }else{
+
+      console.log('else');
     }
   }
 
