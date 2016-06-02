@@ -1,6 +1,13 @@
 html,
 body,
-div,
+#desktopWrapper,
+.row,
+.bring,
+.yellow,
+.red,
+#chatlioWidgetPlaceholder,
+#rightWrapper,
+.blue,
 .container{
   margin: 0 !important;
   padding: 0 !important;
@@ -31,7 +38,14 @@ div,
   background-color: blue;
   height: 100%;
 }
-
+#chatlioWidgetPlaceholder{
+  /*position: absolute;*/
+  height: 100%;
+  width: 100%;
+}
+#chatlio-widget .chatlio-new-message-container{
+  /*bottom: 10px !important;*/
+}
 
 /* ----- Media queries ----- */
 @media only screen
@@ -56,6 +70,7 @@ and (max-device-width : 640px){
     background-color: green;
     height: 100%;
   }
+
 
 
 /* ----- MENU TABS ----- */

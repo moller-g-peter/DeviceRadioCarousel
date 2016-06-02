@@ -34,11 +34,13 @@
       <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="leftWrapper">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 bring" id="leftWrapper">
             <div tabindex="1" class="col-sm-12 col-md-12 col-lg-12 yellow" id="yellow">
-              <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
+             <!--  <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe> -->
             </div>
-            <div tabindex="2" class="col-sm-12 col-md-12 col-lg-12 red" id="red"></div>
+            <div tabindex="2" class="col-sm-12 col-md-12 col-lg-12 red" id="red">
+              <div id="chatlioWidgetPlaceholder" style="margin: auto; height:400px; width:400px;"></div>
+            </div>
           </div> <!-- leftWrapper -->
 
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="rightWrapper">
@@ -68,14 +70,18 @@
 
           <!-- Wrapper for slides -->
           <ul class="nav nav-pills">
+
               <li data-target="#myCarousel" data-slide-to="0" class="col-xs-4 active"><a href="#">About</a></li>
+
               <li data-target="#myCarousel" data-slide-to="1" class="col-xs-4"><a href="#">Projects</a></li>
+
               <li data-target="#myCarousel" data-slide-to="2" class="col-xs-4"><a href="#">Portfolio</a></li>
+
           </ul>
           <div class="carousel-inner">
 
               <div class="item yellow active">
-                <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
+                <!-- <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe> -->
               </div>
 
 
@@ -95,5 +101,6 @@
 
 
   <script src="carousel.js"></script>
+  <script src="chatlio.js"></script>
 </body>
 </html>
