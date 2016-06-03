@@ -25,24 +25,33 @@ body,
 #mobileWrapper{
   display: none;
 }
-.desktopStream iframe {
+.desktopStream iframe,
+.mobileStream iframe {
   position: absolute;
   top:0;
   left: 0;
   width: 100%;
   z-index: 1000;
 }
+.desktopStream iframe{
+  height: 100%;
+  width: 100%;
+}
+#chatlioWidgetPlaceholder{
+  height: 100%;
+  width: 100%;
+}
 .desktopStream{
   background-color: yellow;
   height: 50%;
 }
 .desktopIDE{
-  background-color: red;
-  height: 50%;
-}
-.desktopChat{
   background-color: blue;
   height: 100%;
+}
+.desktopChat{
+  background-color: red;
+  height: 50%;
 }
 #chatlioWidgetPlaceholder{
   position: absolute;
