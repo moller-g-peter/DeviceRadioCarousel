@@ -1,0 +1,13 @@
+
+
+
+conf io as button
+  pin = 0
+
+conf io as led
+  pin = 1
+task read_button on button 
+
+
+
+     

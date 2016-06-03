@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title></title>
+	<link rel="stylesheet" href="fonts/stylesheet.css">
+        
+      
+	<style>
+            body, html {
+                background-color: #002b36;
+                color: #93a1a1;
+                font-size: 15px;
+            }
+            .key {
+                color: #657b83;
+            }
+            .number {
+                color: #dc322f;
+            }
+            .string {
+                color: #2aa198;
+            }
+            .null {
+                color: #b58900;
+            }
+            .boolean {
+                color: #cb4b16;
+            }
+            pre {
+                padding: 1em 0;
+                word-wrap: break-word;
+            }
+            .wrap {
+                border-style: solid none none none;
+                border-width: 15px;
+                border-color: #073642;
+                margin: 15px 0;
+                padding: 0;
+                width: 100%;
+            }
+            .right {
+                width: auto;
+                margin-top: 0;
+                margin-left: 80px;
+                margin-right: 0;
+            }
+            .left {			
+                width: 60px;
+                margin-top: 0;
+                margin-left: 0;
+                margin-right: -60px;
+                float: left;
+                text-align: right;
+                padding-right: 10px;
+
+                background-color: #073642;
+            }
+            code {
+                font-family: Input, "Lucida Console", Monaco, monospace;
+                font-size: 1em;
+
+                -moz-tab-size: 4;
+                -o-tab-size:   4;
+                tab-size:      4;
+            }
+            .comment.docstring {
+                color: #586e75;
+                font-style: italic;
+            }
+            .keyword {
+                color: #b58900;
+            }
+            .constant.numeric {
+                color: #dc322f;
+            }
+            .constant.string {
+                color: #859900;
+            }
+            .trigger {
+                color: #268bd2;
+            }
+            .variable {
+                color: #2aa198;
+            }
+            .symbol {
+                color: #93a1a1;
+                font-weight: bold;
+            }
+            .syntax {
+                color: #93a1a1;
+            }
+            .not {
+                color: #6c71c4;
+            }
+
+
+
+
+
+            #editor { 
+                margin: 0;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                min-width:500px;
+                min-height:200px;
+            }
+
+            .myMarker {
+                position:absolute;
+                background:rgba(255, 0, 0, 1);
+                z-index:20
+            }
+                
+	</style>
+</head>
+<body>
+
+    
+    <textarea id="code" style="display:none">
+conf io as button
+  pin = 0
+
+conf io as led
+  pin = 1;
+
+task read_button on butto
+
+
+
+    </textarea>
+    <p></p>
+
+    <div id="editor">
+    </div>    
+
+    
+    <button type="button" onclick="excButton()"><img src="images/execute.png" height="25"/></button>
+    <div id="errorReport">
+    </div>
+    
+    <div class="container">
+    </div> 
+
+  
+
+
+
+<script src="../ace_grammer/test/demo.js" type="text/javascript"></script>
+   <script src="../ace_grammer/test/ace/ace.js" type="text/javascript"></script>
+   <script src="../ace_grammer/build/ace_grammar.js" type="text/javascript"></script>
+   <script src="../ace_grammer/test/grammars/drlang.js" type="text/javascript"></script>
+<!-- script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script type="text/javascript" src="rainbow/rainbow.js"></script>
+<script type="text/javascript" src="rainbow/language/drdl.js"></script>
+
+<script type="text/javascript" src="deviceradio-core.js"></script>
+<script type="text/javascript" src="deviceradio-lexer.js"></script>
+<script type="text/javascript" src="deviceradio-compiler.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-debug.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-reset.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-io.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-radio.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-copy.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-bool.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-trigger.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-edge.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-logic.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-timer.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-counter.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-uart.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-lut.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-i2c.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-optimizer.js"></script>
+<script type="text/javascript" src="deviceradio-compiler-generator.js"></script>
+
+<script type="text/javascript" src="lexer/lexer.js"></script>
+
+<script type="text/javascript">
+    
+    
+   var editor=   ace_grammar_demo("editor", document.getElementById("code").value, [
+            /\?json\b/.test(document.location.href) ? {language : "json", grammar : json_grammar} : {language : "drlang", grammar : js_grammar}
+        ]);
+    
+
+
+ 
+
+
+
+
+</script>
+</body>
+</html>

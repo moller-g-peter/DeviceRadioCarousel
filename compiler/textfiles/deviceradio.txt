@@ -1,0 +1,4 @@
+task foo on 1s
+	var $bar
+	
+	$bar = !$bar
