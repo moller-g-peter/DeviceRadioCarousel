@@ -2,6 +2,9 @@
 // adds swipe function together with "carousel-swipe.js"
 // $("#myCarousel").carousel(function(){});
   
+  
+
+  
 
 $("#myCarousel").swiperight(function() {
   $("#myCarousel").carousel('prev');
@@ -10,6 +13,9 @@ $("#myCarousel").swipeleft(function() {
   $("#myCarousel").carousel('next');
 });
 
+//$('#myCarousel').carousel({
+//    interval: 2000
+//});
 
 
 
@@ -30,33 +36,50 @@ $('#myCarousel').on('click', '.nav a', function() {
   // right now clickEvent is false
   if(!clickEvent) {
 
+
     // this counts how may slides ('item' divs) we have (0,1,2)
     var count = $('.nav').children().length -1;
+    var direction=$('.item').html();
+    if($(".carousel-inner > .item").hasClass("active")){
+        
+     //   alert($(".carousel-inner > .item").attr('id'));
+    }
+
 
     
     var current = $('.nav li.active');
+    var carosalClass=$('.col-xs-4');
 
     // remove 'active' from current and add it to the next
-   current.removeClass('active').next().addClass('active');
+   carosalClass.removeClass('active');
+   
 
-    var direction=$('.item').html();
-    console.log('dir',direction);
+
 
     // parseInt makes string "data-slide-to=0" to int 0
     var id = parseInt(current.data('slide-to'));
+    
+    
+var totalItems = $('.item').length;
+var currentIndex = $('div.active').index();
 
-   // console.log('id:', id);
+
+$('.col-xs-4[data-slide-to="'+currentIndex+'"]').addClass('active');
+
+//  }
+
+  console.log('current index', ''+currentIndex);
     //console.log('current: ', current);
 
     // if slide amount is the same as "data-slide-to= num":
     if(count == id) {
 
-console.log('i am if');
+//console.log('i am if');
       // add 'active' to the first li element in the list
      // $('.nav li').first().addClass('active');
     }else{
 
-      console.log('else');
+    //  console.log('else');
     }
   }
 
