@@ -5,3 +5,26 @@
       n.setAttribute('data-widget-id','e7107c6c-1bf3-4c0d-5eb6-f151b4e491c8');
       c.parentNode.insertBefore(n,c);
    }();
+
+
+
+
+   document.addEventListener('chatlio.ready', function (e) {
+
+    if ($(window).height() <= 640) {
+      $('#chatlioWidgetPlaceholder').appendTo('#yellow');
+    }
+    else {
+      console.log('nope');
+    }
+
+    
+    // console.log("[chatlio.ready] e: %o", e);
+    // var chatlioNode = e.target;
+    // console.log("[chatlio.ready] widget DOM node: %s (children: %d)", chatlioNode, chatlioNode.childNodes.length);
+    // Remove chatlio and stick it somewhere else:
+  //   document.getElementById("place1")
+  //     .appendChild(chatlioNode.parentNode.removeChild(chatlioNode));
+  //   // It's safe to use the API of course
+  //   _chatlio.show();
+  }, false);

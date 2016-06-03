@@ -3,11 +3,14 @@ body,
 #desktopWrapper,
 .row,
 .bring,
-.yellow,
-.red,
+.desktopStream,
+.desktopIDE,
+.desktopChat,
+.mobileStream,
+.mobileIDE,
+.mobileChat,
 #chatlioWidgetPlaceholder,
 #rightWrapper,
-.blue,
 .container,
 #mobileWrapper,
 .carousel.slide,
@@ -22,22 +25,22 @@ body,
 #mobileWrapper{
   display: none;
 }
-.yellow iframe {
+.desktopStream iframe {
   position: absolute;
   top:0;
   left: 0;
   width: 100%;
   z-index: 1000;
 }
-.yellow{
+.desktopStream{
   background-color: yellow;
   height: 50%;
 }
-.red{
+.desktopIDE{
   background-color: red;
   height: 50%;
 }
-.blue{
+.desktopChat{
   background-color: blue;
   height: 100%;
 }
@@ -48,9 +51,11 @@ body,
   left: 0;
   background: pink;
 }
-/*#chatlio-widget .chatlio-new-message-container{
-  bottom: 10px !important;
-}*/
+.desktopStream:focus,
+.desktopIDE:focus,
+.desktopChat:focus{
+  background-color:green;
+}
 
 /* ----- Media queries ----- */
 @media only screen
@@ -63,15 +68,15 @@ and (max-device-width : 640px){
   #mobileWrapper{
     display: block;
   }
-  .yellow{
+  .mobileStream{
     background-color: orange;
     height: 100%;
   }
-  .red{
+  .mobileIDE{
     background-color: purple;
     height: 100%;
   }
-  .blue{
+  .mobileChat{
     background-color: green;
     height: 100%;
   }
