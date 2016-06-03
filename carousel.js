@@ -46,7 +46,7 @@ $('#myCarousel').on('click', '.nav a', function() {
     }
 
 
-    
+    ///fake change
     var current = $('.nav li.active');
     var carosalClass=$('.col-xs-4');
 
