@@ -11,39 +11,25 @@
 
 
 
-document.addEventListener('chatlio.ready', function (e) {
-    // console.log("[chatlio.ready] e: %o", e);
-    var chatlioNode = e.target;
-    // console.log("[chatlio.ready] widget DOM node: %s (children: %d)", chatlioNode, chatlioNode.childNodes.length);
-    // Remove chatlio and stick it somewhere else:
-    document.getElementById("place1")
-      .appendChild(chatlioNode.parentNode.removeChild(chatlioNode));
-    // It's safe to use the API of course
-    _chatlio.show();
+
+
+   document.addEventListener('chatlio.ready', function (e) {
+
+    $(window).resize(function(){
+      if ($(window).width() < 1040) {
+        $('#chatlioDiv').detach().appendTo('#mobileChat', function(){
+          $('#desktopWrapper').hide(function(){
+            console.log('screw you!');
+          });
+        });
+        // $('#chatlioDiv').detach().appendTo('#mobileChat');
+        console.log("hello");
+      }
+      else {
+        console.log('nope');
+      }
+    }).resize();
   }, false);
-
-
-
-
-
-
-  //  document.addEventListener('chatlio.ready', function (e) {
-
-  //   $(window).resize(function(){
-  //     if ($(window).width() < 1040) {
-  //       $('#chatlioDiv').detach().appendTo('#mobileChat', function(){
-  //         $('#desktopWrapper').hide(function(){
-  //           console.log('screw you!');
-  //         });
-  //       });
-  //       // $('#chatlioDiv').detach().appendTo('#mobileChat');
-  //       console.log("hello");
-  //     }
-  //     else {
-  //       console.log('nope');
-  //     }
-  //   }).resize();
-  // }, false);
 
 
 
