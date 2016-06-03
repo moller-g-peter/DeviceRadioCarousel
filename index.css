@@ -1,6 +1,12 @@
+
+
+/* ---------- GENERAL SECTION ---------- */
 html,
 body,
 #desktopWrapper,
+#mobileWrapper,
+#rightWrapper,
+#leftWrapper,
 .row,
 .bring,
 .desktopStream,
@@ -10,9 +16,7 @@ body,
 .mobileIDE,
 .mobileChat,
 #chatlioWidgetPlaceholder,
-#rightWrapper,
 .container,
-#mobileWrapper,
 .carousel.slide,
 .carousel-inner{
   margin: 0 !important;
@@ -35,30 +39,14 @@ body,
 }
 .desktopStream iframe{
   height: 100%;
-  width: 100%;
-}
-#chatlioWidgetPlaceholder{
-  height: 100%;
-  width: 100%;
 }
 .desktopStream{
   background-color: yellow;
   height: 50%;
 }
-.desktopIDE{
-  background-color: blue;
-  height: 100%;
-}
 .desktopChat{
   background-color: red;
   height: 50%;
-}
-#chatlioWidgetPlaceholder{
-  position: absolute;
-  z-index: 10000;
-  top: 0;
-  left: 0;
-  background: pink;
 }
 .desktopStream:focus,
 .desktopIDE:focus,
@@ -66,7 +54,133 @@ body,
   background-color:green;
 }
 
-/* ----- Media queries ----- */
+
+
+
+
+/* ---------- CHAT SECTION ---------- */
+
+#chatlioWidgetPlaceholder{
+  position: absolute;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  background: pink;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+
+
+/* ---------- IDE SECTION ---------- */
+
+.desktopIDE{
+  background-color: blue;
+  height: 100%;
+}
+#editor { 
+  margin: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width:500px;
+  min-height:200px;
+}
+.myMarker {
+  position:absolute;
+  background:rgba(255, 0, 0, 1);
+  z-index:20
+}
+.key {
+  color: #657b83;
+}
+.number {
+  color: #dc322f;
+}
+.string {
+  color: #2aa198;
+}
+.null {
+  color: #b58900;
+}
+.boolean {
+  color: #cb4b16;
+}
+pre {
+  padding: 1em 0;
+  word-wrap: break-word;
+}
+
+/* this wrapper is causing white space when swiping on mobile phone */
+.wrap {
+  border-style: solid none none none;
+  border-width: 15px;
+  border-color: #073642;
+  margin: 15px 0;
+  padding: 0;
+  width: 100%;
+}
+
+.right {
+  width: auto;
+  margin-top: 0;
+  margin-left: 80px;
+  margin-right: 0;
+}
+.left {     
+  width: 60px;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: -60px;
+  float: left;
+  text-align: right;
+  padding-right: 10px;
+  background-color: #073642;
+}
+code {
+  font-family: Input, "Lucida Console", Monaco, monospace;
+  font-size: 1em;
+  -moz-tab-size: 4;
+  -o-tab-size:   4;
+  tab-size:      4;
+}
+.comment.docstring {
+  color: #586e75;
+  font-style: italic;
+}
+.keyword {
+  color: #b58900;
+}
+.constant.numeric {
+  color: #dc322f;
+}
+.constant.string {
+  color: #859900;
+}
+.trigger {
+  color: #268bd2;
+}
+.variable {
+  color: #2aa198;
+}
+.symbol {
+  color: #93a1a1;
+  font-weight: bold;
+}
+.syntax {
+  color: #93a1a1;
+}
+.not {
+  color: #6c71c4;
+}
+
+
+
+
+
+/* ---------- MOBILE SECTION ---------- */
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 640px){
@@ -98,7 +212,11 @@ and (max-device-width : 640px){
   }
 
 
-/* ----- MENU TABS ----- */
+
+
+
+
+/* ---------- MOBILE MENU TABS ---------- */
 
   ul > li{
     text-align: center;
@@ -128,9 +246,7 @@ and (max-device-width : 640px){
 
 
 
-/*div:focus {
-  background-color:green;
-}*/
+
 /*#myCarousel .nav a small{
     display: block;
 }*/
