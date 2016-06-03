@@ -11,14 +11,17 @@
 
    document.addEventListener('chatlio.ready', function (e) {
 
-    if ($(window).height() <= 640) {
-      $('#chatlioWidgetPlaceholder').appendTo('#yellow');
-    }
-    else {
-      console.log('nope');
-    }
+    $(window).resize(function(){
+      if ($(window).width() < 640) {
+        // $('#chatlioDiv').detach().appendTo('#mobileChat');
+        console.log("hello");
+      }
+      else {
+        console.log('nope');
+      }
+    }).resize();
 
-    
+
     // console.log("[chatlio.ready] e: %o", e);
     // var chatlioNode = e.target;
     // console.log("[chatlio.ready] widget DOM node: %s (children: %d)", chatlioNode, chatlioNode.childNodes.length);
