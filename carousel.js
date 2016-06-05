@@ -100,14 +100,6 @@ $(function() {
       $('.desktopIDE').css('background-color', '#f95c3d');
       // alert("Outside chatlioWidgetPlaceholder");
     }
-
-    // if (e.target.id == "textAreaDiv" || $(e.target).parents("#textAreaDiv").size()) {
-    //   $('.desktopChat').css('background-color', '#f95c3d');
-    //   // alert("Inside textAreaDiv");
-    // } else {
-    //   $('.desktopChat').css('background-color', '#1C313E');
-    //   // alert("Outside textAreaDiv");
-    // }
   });
 });
 
