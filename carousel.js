@@ -102,34 +102,48 @@ $(function() {
     } else {
       $('.desktopChat').css('background-color', '#10232e');
       $('.desktopIDE').css('background-color', '#f95c3d');
+      // $buttonBoolean = false;
       // alert("Outside chatlioWidgetPlaceholder");
     }
   });
 });
 
 
+var buttonBoolean = true;
 
 function excButton(){
-  // function cogAnimation1(){
-    $('.exe_button_default').hide();
-    $('.exe_button_1').fadeIn(800, function(){
-      $('.exe_button_1').fadeOut(800);
-      cogAnimation2();
-    });
-  // }
-  function cogAnimation2(){
-    $('.exe_button_2').fadeIn(800, function(){
-      $('.exe_button_2').fadeOut(800);
-      cogAnimation3();
-    });
-  }
-  function cogAnimation3(){
-    $('.exe_button_3').fadeIn(800, function(){
-      $('.exe_button_3').fadeOut(800);
-      excButton();
-    });
+
+  if (buttonBoolean === true){
+      $('.exe_button_default').hide();
+      $('.exe_button_1').fadeIn(700, function(){
+        $('.exe_button_1').fadeOut(700);
+        cogAnimation2();
+      });
+    function cogAnimation2(){
+      $('.exe_button_2').fadeIn(700, function(){
+        $('.exe_button_2').fadeOut(700);
+        cogAnimation3();
+      });
+    }
+    function cogAnimation3(){
+      $('.exe_button_3').fadeIn(700, function(){
+        $('.exe_button_3').fadeOut(700);
+        excButton();
+      });
+    }
+  } else {
+    buttonBoolean = true;
   }
 }
+
+$('.desktopIDE').click(function(){
+  buttonBoolean = false;
+  $('.exe_button_default').show();
+
+});
+
+
+
 // function cogAnimation4(){
 //   $('.exe_button_3').fadeOut(100, function(){
 //     $('.exe_button_1').fadeIn(1000);
