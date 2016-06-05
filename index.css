@@ -70,9 +70,48 @@ body,
   height: 100%;
   width: 100%;
 }
-
-
-
+.chatlio-title-bar{
+  background-color: #77848c !important;
+}
+.chatlio-online-dot{
+  color: #94E864 !important;
+  /*border: 1px solid black !important;*/
+  /*border-radius: 100px;*/
+}
+.chatlio-message-container{
+  background-color: #1c313e !important;
+}
+.chatlio-message-from-me > .chatlio-message-content{
+  background-color: #10232e !important;
+  /*border: 1px solid orange !important;*/
+  border: none !important;
+}
+.chatlio-message-from-me > .chatlio-message-content span{
+  color: #E9E9E9 !important;
+}
+.chatlio-message-from-them > .chatlio-message-content{
+  background-color: #10232e !important;
+  /*border: 1px solid yellow !important;*/
+  border: none !important;
+}
+.chatlio-message-from-them > .chatlio-message-content span{
+  color: #f95c3d !important;
+}
+.chatlio-new-message-container{
+  border-top: 1px solid #000 !important;
+  background-color: #10232e !important;
+}
+.chatlio-powered-by{
+  display: none !important;
+}
+#chatlio-widget textarea{
+  border: 1px solid #77848c !important;
+  background-color: #E9E9E9 !important;
+}
+.chatlio-widget.embed-inline{
+  border: none !important;
+}
+/* #1C313E,#77848c,#f95c3d,#FFFFFF,#f95c3d,#FFFFFF,#94E864,#f95c3d  */
 
 
 /* ---------- IDE SECTION ---------- */
