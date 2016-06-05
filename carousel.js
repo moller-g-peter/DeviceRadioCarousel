@@ -89,7 +89,27 @@ $('.col-xs-4[data-slide-to="'+currentIndex+'"]').addClass('active');
 
 
 
+$(function() {
+  $("body").click(function(e) {
+    if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
+      $('.desktopChat').css('background-color', '#f95c3d');
+      $('.desktopIDE').css('background-color', '#1C313E');
+      // alert("Inside chatlioWidgetPlaceholder");
+    } else {
+      $('.desktopChat').css('background-color', '#1C313E');
+      $('.desktopIDE').css('background-color', '#f95c3d');
+      // alert("Outside chatlioWidgetPlaceholder");
+    }
 
+    // if (e.target.id == "textAreaDiv" || $(e.target).parents("#textAreaDiv").size()) {
+    //   $('.desktopChat').css('background-color', '#f95c3d');
+    //   // alert("Inside textAreaDiv");
+    // } else {
+    //   $('.desktopChat').css('background-color', '#1C313E');
+    //   // alert("Outside textAreaDiv");
+    // }
+  });
+});
 
 
 
