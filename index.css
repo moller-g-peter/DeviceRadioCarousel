@@ -276,10 +276,28 @@ code {
 
 
 
+/* ---------- LOG SECTION ---------- */
 
+.exec_button{
+  position: relative;
+  background-color: #1C313E;
+  border: none;
+  color: white;
+  padding: 25px 25px;
+  /*text-align: center;*/
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid #35434F;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+}
 
-
-
+.exec_button > img{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
 
 
