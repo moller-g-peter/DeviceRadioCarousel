@@ -16,7 +16,8 @@ body,
 .desktopLog,
 .mobileIDE,
 .mobileChat,
-#chatlioWidgetPlaceholder,
+/*#chatlioWidgetPlaceholder,*/
+/*.textAreaDiv,*/
 .container,
 .carousel.slide,
 .carousel-inner{
@@ -24,6 +25,16 @@ body,
   padding: 0 !important;
   height: 100%;
 }
+.textAreaDiv{
+  /*padding: 5px;*/
+  height: 100%;
+}
+.desktopIDE{
+  padding: 5px !important;
+}
+/*.desktopChat{
+  padding: 5px !important;
+}*/
 #desktopWrapper{
   display: block;
 }
@@ -46,14 +57,14 @@ body,
   height: 50%;
 }
 .desktopChat{
-  background-color: red;
+  background-color: #1C313E;
   height: 50%;
 }
-.desktopStream:focus,
+/*.desktopStream:focus,
 .desktopIDE:focus,
 .desktopChat:focus{
-  background-color:green;
-}
+  background-color: #f95c3d;
+}*/
 
 
 
@@ -66,9 +77,10 @@ body,
   z-index: 10000;
   top: 0;
   left: 0;
-  background: pink;
+  /*background: pink;*/
   height: 100%;
   width: 100%;
+  padding: 5px;
 }
 .chatlio-title-bar{
   background-color: #77848c !important;
@@ -112,8 +124,12 @@ body,
   border: none !important;
   border-top: 1px solid white !important;
 }
-
-
+/*.ace_scrollbar.ace_scrollbar-v{
+  background: white;
+}
+.ace_scrollbar.ace_scrollbar-v{
+  background: transparent;
+}*/
 
 
 
@@ -125,16 +141,16 @@ body,
 /* ---------- IDE SECTION ---------- */
 
 .desktopIDE{
-  background-color: blue;
+  background-color: #1C313E;
   height: 65%;
-  border-left: 1px solid #fff;
-  padding: 1px;
+  border-left: 1px solid #000;
+  /*padding: 1px;*/
 }
 .desktopLog{
-  background-color: yellow;
+  background-color: #10232e;
   height: 35%;
-  border-left: 1px solid #fff;
-  border-top: 1px solid #fff;
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
 }
 #editor { 
   margin: 0;
@@ -242,7 +258,7 @@ code {
   background-color: #77848c !important;
 }
 .ace_gutter-active-line{
-  background-color: white;
+  background-color: #1C313E;
 }
 .ace_active-line{
   background: rgba(0, 0, 0, 0.2) !important;
