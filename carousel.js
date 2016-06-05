@@ -93,10 +93,10 @@ $(function() {
   $("body").click(function(e) {
     if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
       $('.desktopChat').css('background-color', '#f95c3d');
-      $('.desktopIDE').css('background-color', '#1C313E');
+      $('.desktopIDE').css('background-color', '#10232e');
       // alert("Inside chatlioWidgetPlaceholder");
     } else {
-      $('.desktopChat').css('background-color', '#1C313E');
+      $('.desktopChat').css('background-color', '#10232e');
       $('.desktopIDE').css('background-color', '#f95c3d');
       // alert("Outside chatlioWidgetPlaceholder");
     }

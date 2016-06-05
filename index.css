@@ -65,7 +65,9 @@ body,
 .desktopChat:focus{
   background-color: #f95c3d;
 }*/
-
+*:focus {
+  outline: none;
+}
 
 
 
@@ -81,6 +83,7 @@ body,
   height: 100%;
   width: 100%;
   padding: 5px;
+  font-family: input;
 }
 .chatlio-title-bar{
   background-color: #77848c !important;
@@ -112,6 +115,7 @@ body,
 .chatlio-new-message-container{
   border-top: 1px solid #35434F !important;
   background-color: #10232e !important;
+  bottom: 0 !important;
 }
 .chatlio-powered-by{
   display: none !important;
@@ -122,7 +126,7 @@ body,
 }
 .chatlio-widget.embed-inline{
   border: none !important;
-  border-top: 1px solid white !important;
+  /*border-top: 1px solid white !important;*/
 }
 /*.ace_scrollbar.ace_scrollbar-v{
   background: white;
@@ -141,7 +145,7 @@ body,
 /* ---------- IDE SECTION ---------- */
 
 .desktopIDE{
-  background-color: #1C313E;
+  background-color: #10232e;
   height: 65%;
   border-left: 1px solid #000;
   /*padding: 1px;*/
