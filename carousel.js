@@ -3,8 +3,11 @@
 // $("#myCarousel").carousel(function(){});
   
   
+$('.exe_button_1').hide();
+$('.exe_button_2').hide();
+$('.exe_button_3').hide();
 
-  
+
 
 $("#myCarousel").swiperight(function() {
   $("#myCarousel").carousel('prev');
@@ -89,6 +92,7 @@ $('.col-xs-4[data-slide-to="'+currentIndex+'"]').addClass('active');
 
 
 
+// Create the orange background(focused div)
 $(function() {
   $("body").click(function(e) {
     if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
@@ -102,6 +106,79 @@ $(function() {
     }
   });
 });
+
+
+
+function excButton(){
+  // function cogAnimation1(){
+    $('.exe_button_default').hide();
+    $('.exe_button_1').fadeIn(800, function(){
+      $('.exe_button_1').fadeOut(800);
+      cogAnimation2();
+    });
+  // }
+  function cogAnimation2(){
+    $('.exe_button_2').fadeIn(800, function(){
+      $('.exe_button_2').fadeOut(800);
+      cogAnimation3();
+    });
+  }
+  function cogAnimation3(){
+    $('.exe_button_3').fadeIn(800, function(){
+      $('.exe_button_3').fadeOut(800);
+      excButton();
+    });
+  }
+}
+// function cogAnimation4(){
+//   $('.exe_button_3').fadeOut(100, function(){
+//     $('.exe_button_1').fadeIn(1000);
+//   });
+//   cogAnimation2();
+// }
+
+// cogAnimation1();
+
+
+
+
+// function setImageOne() {
+//   $('.Exe_button_1')
+//   .fadeIn(500)
+//   .html('<img src="Exe_button_1.png" />')
+//   .delay(2000)
+//   .fadeOut(500, function (){
+//     setImageTwo();
+//   });
+// }
+// function setImageTwo() {
+//   $('.Exe_button_2')
+//   .fadeIn(500)
+//   .html('<img src="Exe_button_2.png" />')
+//   .delay(2000)
+//   .fadeOut(500, function (){
+//     setImageThree();
+//   });
+// }
+// function setImageThree() {
+//   $('.Exe_button_3')
+//   .fadeIn(500)
+//   .html('<img src="Exe_button_3.png" />')
+//   .delay(2000)
+//   .fadeOut(500, function (){
+//     setImageOne();
+//   });
+// }
+
+
+
+
+
+
+
+
+
+
 
 
 
