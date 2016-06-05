@@ -1,4 +1,4 @@
-
+/* #1C313E,#77848c,#f95c3d,#FFFFFF,#f95c3d,#FFFFFF,#94E864,#f95c3d  */
 
 /* ---------- GENERAL ---------- */
 html,
@@ -112,7 +112,14 @@ body,
   border: none !important;
   border-top: 1px solid white !important;
 }
-/* #1C313E,#77848c,#f95c3d,#FFFFFF,#f95c3d,#FFFFFF,#94E864,#f95c3d  */
+
+
+
+
+
+
+
+
 
 
 /* ---------- IDE SECTION ---------- */
@@ -121,6 +128,7 @@ body,
   background-color: blue;
   height: 65%;
   border-left: 1px solid #fff;
+  padding: 1px;
 }
 .desktopLog{
   background-color: yellow;
@@ -223,6 +231,34 @@ code {
 .not {
   color: #6c71c4;
 }
+.ace-tm{
+  background-color: #1c313e !important;
+  color: white !important;
+}
+.ace_cursor{
+  color: white !important;
+}
+.ace_gutter{
+  background-color: #77848c !important;
+}
+.ace_gutter-active-line{
+  background-color: white;
+}
+.ace_active-line{
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
