@@ -25,22 +25,26 @@ body,
   padding: 0 !important;
   height: 100%;
 }
-.textAreaDiv{
-  /*padding: 5px;*/
-  height: 100%;
-}
-.desktopIDE{
-  padding: 5px !important;
-}
-/*.desktopChat{
-  padding: 5px !important;
-}*/
 #desktopWrapper{
   display: block;
 }
 #mobileWrapper{
   display: none;
 }
+*:focus {
+  outline: none;
+}
+/*.desktopChat{
+  padding: 5px !important;
+}*/
+/*.desktopStream:focus,
+.desktopIDE:focus,
+.desktopChat:focus{
+  background-color: #f95c3d;
+}*/
+
+/* ---------- VIDEO STREAM SECTION ---------- */
+
 .desktopStream iframe,
 .mobileStream iframe {
   position: absolute;
@@ -56,24 +60,14 @@ body,
   background-color: yellow;
   height: 50%;
 }
-.desktopChat{
-  background-color: #1C313E;
-  height: 50%;
-}
-/*.desktopStream:focus,
-.desktopIDE:focus,
-.desktopChat:focus{
-  background-color: #f95c3d;
-}*/
-*:focus {
-  outline: none;
-}
-
-
 
 
 /* ---------- CHAT SECTION ---------- */
 
+.desktopChat{
+  background-color: #1C313E;
+  height: 50%;
+}
 #chatlioWidgetPlaceholder{
   position: absolute;
   z-index: 10000;
@@ -144,6 +138,13 @@ body,
 
 /* ---------- IDE SECTION ---------- */
 
+.textAreaDiv{
+  /*padding: 5px;*/
+  height: 100%;
+}
+.desktopIDE{
+  padding: 5px !important;
+}
 .desktopIDE{
   background-color: #10232e;
   height: 65%;
@@ -293,18 +294,15 @@ code {
   /*margin: 4px 2px;*/
   cursor: pointer;
 }
-
 .exec_button > img{
   position: absolute;
   top: 0;
   left: 0;
 }
-
 .reload_button > img{
   position: absolute;
   top: 2px;
   left: 4px;
-
 }
 
 
@@ -394,12 +392,6 @@ and (max-device-width : 640px){
 .nav-pills>li[data-slide-to="1"].active a { background-color: #e67e22; }
 .nav-pills>li[data-slide-to="2"].active a { background-color: #2980b9; }
 .nav-pills>li[data-slide-to="3"].active a { background-color: #8e44ad; }*/
-
-
-
-
-
-
 
 
 
