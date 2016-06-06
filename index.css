@@ -14,7 +14,7 @@ body,
 .desktopChat,
 .mobileStream,
 .desktopLog,
-.mobileIDE,
+/*.mobileIDE,*/
 .mobileChat,
 /*#chatlioWidgetPlaceholder,*/
 /*.textAreaDiv,*/
@@ -278,7 +278,8 @@ code {
 
 /* ---------- LOG SECTION ---------- */
 
-.exec_button{
+.exec_button,
+.reload_button{
   position: relative;
   background-color: #1C313E;
   border: none;
@@ -299,7 +300,12 @@ code {
   left: 0;
 }
 
+.reload_button > img{
+  position: absolute;
+  top: 2px;
+  left: 4px;
 
+}
 
 
 
@@ -320,22 +326,24 @@ and (max-device-width : 640px){
     background-color: orange;
     height: 100%;
   }
-  .mobileIDE{
+/*  .mobileIDE{
     background-color: purple;
     height: 100%;
-  }
+  }*/
   .mobileChat{
     background-color: green;
     height: 100%;
   }
-  #chatlioWidgetPlaceholder{
+/*  #chatlioWidgetPlaceholder{
     position: absolute;
     z-index: 10000;
     top: 0;
     left: 0;
     background: pink;
-  }
-
+  }*/
+/*.textAreaDiv{
+  background: yellow;
+}*/
 
 
 

@@ -6,7 +6,7 @@
 $('.exe_button_1').hide();
 $('.exe_button_2').hide();
 $('.exe_button_3').hide();
-
+$('.reload_exe').hide();
 
 
 $("#myCarousel").swiperight(function() {
@@ -139,57 +139,11 @@ function excButton(){
 $('.desktopIDE').click(function(){
   buttonBoolean = false;
   $('.exe_button_default').show();
-
 });
 
-
-
-// function cogAnimation4(){
-//   $('.exe_button_3').fadeOut(100, function(){
-//     $('.exe_button_1').fadeIn(1000);
-//   });
-//   cogAnimation2();
-// }
-
-// cogAnimation1();
-
-
-
-
-// function setImageOne() {
-//   $('.Exe_button_1')
-//   .fadeIn(500)
-//   .html('<img src="Exe_button_1.png" />')
-//   .delay(2000)
-//   .fadeOut(500, function (){
-//     setImageTwo();
-//   });
-// }
-// function setImageTwo() {
-//   $('.Exe_button_2')
-//   .fadeIn(500)
-//   .html('<img src="Exe_button_2.png" />')
-//   .delay(2000)
-//   .fadeOut(500, function (){
-//     setImageThree();
-//   });
-// }
-// function setImageThree() {
-//   $('.Exe_button_3')
-//   .fadeIn(500)
-//   .html('<img src="Exe_button_3.png" />')
-//   .delay(2000)
-//   .fadeOut(500, function (){
-//     setImageOne();
-//   });
-// }
-
-
-
-
-
-
-
+$('.reload_button').click(function(){
+  $('.reload_exe').show();
+});
 
 
 
