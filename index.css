@@ -18,7 +18,7 @@ body,
 .mobileChat,
 /*#chatlioWidgetPlaceholder,*/
 /*.textAreaDiv,*/
-.container,
+.container-fluid,
 .carousel.slide,
 .carousel-inner{
   margin: 0 !important;
@@ -314,9 +314,9 @@ code {
 and (min-device-width : 320px)
 and (max-device-width : 640px){
 
-  #desktopWrapper{
+ /* #desktopWrapper{
     display: none;
-  }
+  }*/
   #mobileWrapper{
     display: block;
   }
@@ -328,6 +328,7 @@ and (max-device-width : 640px){
     background-color: purple;
     height: 100%;
   }*/
+
   .mobileChat{
     background-color: green;
     height: 100%;

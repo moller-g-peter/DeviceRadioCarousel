@@ -13,23 +13,3 @@
 
 
 
-   document.addEventListener('chatlio.ready', function (e) {
-
-    $(window).resize(function(){
-      if ($(window).width() < 1040) {
-        $('#chatlioDiv').detach().appendTo('#mobileChat', function(){
-          $('#desktopWrapper').hide(function(){
-            console.log('screw you!');
-          });
-        });
-        // $('#chatlioDiv').detach().appendTo('#mobileChat');
-        console.log("hello");
-      }
-      else {
-        console.log('nope');
-      }
-    }).resize();
-  }, false);
-
-
-

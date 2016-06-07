@@ -33,8 +33,8 @@
 
 <!-- SECTION FOR DESKTOP DIVS -->
 <div id="desktopWrapper">
-  <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="container-fluid">
+    <div class="row">
 
 
 
@@ -44,13 +44,17 @@
 
         <!-- LIVE STREAM DIV -->
         <div tabindex="1" class="col-sm-12 desktopStream" id="desktopStream">
+
           <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
+
         </div> <!-- desktopStream -->
 
 
         <!-- CHAT DIV -->
         <div tabindex="2" class="col-sm-12 col-md-12 col-lg-12 desktopChat" id="desktopChat">
+
           <div id="chatlioWidgetPlaceholder" id="chatlioDiv" style="margin: auto;"></div>
+
         </div> <!-- desktopChat -->
       </div> <!-- leftWrapper -->
 
@@ -132,13 +136,14 @@
           <!-- 3 DIV SECTIONS (SWIPE) -->
           <div class="carousel-inner">
             <div class="item mobileStream active" id="mobileStream">
-              <!-- <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe> -->
+              <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
             </div> <!-- mobileStream -->
 
 
 
               <div class="item mobileIDE" id="mobileIDE">
-                <div class="textAreaDiv" id="textAreaDiv">
+                <div class="insertAfterMe"></div>
+<!--                 <div class="textAreaDiv" id="textAreaDiv">
                   <textarea class="col-sm-12 col-md-12 col-lg-12 textArea" id="code" style="display:none">
                     conf io as button
                       pin = 0
@@ -150,7 +155,6 @@
                   </textarea>
                   <div id="editor"></div>
                   <button class="exec_button" type="button" onclick="excButton()">
-                    <!-- <img src="compiler/images/execute.png" height="25"/> -->
                     <img class="exe_button_default" src="compiler/images/Exe_button_default.png" height="50"/>
                     <img class="exe_button_1" src="compiler/images/Exe_button_1.png" height="50"/>
                     <img class="exe_button_2" src="compiler/images/Exe_button_2.png" height="50"/>
@@ -160,14 +164,14 @@
                     <img class="reload_default" src="compiler/images/reload_default.png" height="45"/>
                     <img class="reload_exe" src="compiler/images/reload_exe.png" height="45"/>
                   </button>
-                <!--   <div id="errorReport"></div>
-                  <div class="containerDeviceradio"></div>  -->
-                </div>
+                </div> -->
               </div>
 
 
 
-              <div class="item mobileChat" id="mobileChat"></div>
+              <div class="item mobileChat" id="mobileChat">
+                <div id="chatlioWidgetPlaceholder" id="chatlioDiv" style="margin: auto;"></div>
+              </div>
           </div> <!-- carousel-inner -->
           
           <div class="num"></div>

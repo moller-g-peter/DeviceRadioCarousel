@@ -149,6 +149,26 @@ $('.reload_button').click(function(){
 
 
 
+   // document.addEventListener('chatlio.ready', function (e) {
+
+// $(window).load(function(){
+    $(window).resize(function(){
+      if ($(window).width() < 1040) {
+        $('#desktopWrapper').appendTo('#mobileIDE', function(){
+          console.log('hellowee');
+        });
+        console.log("hello");
+      }
+      else {
+        console.log('nope');
+      }
+    }).resize();
+  // }, false);
+
+
+
+
+// });
 
 
 
