@@ -6,99 +6,60 @@
     <title>Peter test</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="compiler/fonts/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="deviceradio.css">
 
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+   
 
     <!-- Bootstrap CSS (minified) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <!-- Bootstrap JS (minified) -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <!-- // <script src="carousel-swipe.js"></script> -->
-    <script src="jquery.mobile.custom.min.js"></script>
 </head>
 <body>
 
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+    <!-- Indicators -->
+    <!-- <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol> -->
+    <ol class="nav nav-pills">
+        <li data-target="#myCarousel" data-slide-to="0" class="col-xs-4 active"><a href="#">Stream</a></li>
+        <li data-target="#myCarousel" data-slide-to="1" class="col-xs-4"><a href="#">IDE</a></li>
+        <li data-target="#myCarousel" data-slide-to="2" class="col-xs-4"><a href="#">Chat</a></li>
+    </ol>
 
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
+        <!-- <img src="http://www.technocrazed.com/wp-content/uploads/2015/11/HD-Phone-Wallpapers-1080p-12-640x1138.jpg" alt="Chania"> -->
+      </div>
 
-<!-- SHAMRAT ############################################################# -->
+      <div class="item">
+        <div id="chatlioWidgetPlaceholder" class="chatlioDiv" style="margin: auto;"></div>
+        <!-- <img src="http://www.technocrazed.com/wp-content/uploads/2015/11/HD-Phone-Wallpapers-1080p-1-640x1138.jpg" alt="Chania"> -->
+      </div>
 
+      <div class="item">
+        <textarea class="col-sm-12 textArea" id="code" style="display:none"></textarea>
+        <div id="editor"></div>
+        <!-- <img src="http://www.technocrazed.com/wp-content/uploads/2015/11/HD-Phone-Wallpapers-1080p-19-640x1138.jpg" alt="Flower"> -->
+      </div>
+    </div>
 
-
-
-
-<!-- SECTION FOR DESKTOP DIVS -->
-<div id="desktopWrapper">
-  <div class="container-fluid">
-    <div class="row">
-
-
-
-      <!-- LEFT WRAPPER-->
-      <div class="col-xs-12 col-md-6 bring" id="leftWrapper">
-
-
-        <!-- LIVE STREAM DIV -->
-        <div tabindex="1" class="col-sm-12 desktopStream" id="desktopStream">
-
-          <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
-
-        </div> <!-- desktopStream -->
-
-
-        <!-- CHAT DIV -->
-        <div tabindex="2" class="col-sm-12 col-md-12 col-lg-12 desktopChat" id="desktopChat">
-
-          <div id="chatlioWidgetPlaceholder" id="chatlioDiv" style="margin: auto;"></div>
-
-        </div> <!-- desktopChat -->
-      </div> <!-- leftWrapper -->
-
-      
-
-      <!-- RIGHT WRAPPER -->
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="rightWrapper">
-
-
-        <!-- IDE DIV -->
-        <div tabindex="3" class="col-sm-12 col-md-12 col-lg-12 desktopIDE" id="desktopIDE">
-
-
-          <div class="textAreaDiv" id="textAreaDiv">
-
-            <textarea class="col-sm-12 col-md-12 col-lg-12 textArea" id="code" style="display:none"></textarea>
-            <div id="editor"></div>
-          </div>
-        </div> <!-- desktopIDE -->
-
-
-        <!-- LOG DIV -->
-        <div tabindex="4" class="col-sm-12 col-md-12 col-lg-12 desktopLog" id="desktopLog">
-          <button class="exec_button" type="button" onclick="excButton()">
-            <!-- <img src="compiler/images/execute.png" height="25"/> -->
-            <img class="exe_button_default" src="compiler/images/Exe_button_default.png" height="50"/>
-            <img class="exe_button_1" src="compiler/images/Exe_button_1.png" height="50"/>
-            <img class="exe_button_2" src="compiler/images/Exe_button_2.png" height="50"/>
-            <img class="exe_button_3" src="compiler/images/Exe_button_3.png" height="50"/>
-          </button>
-
-          <button class="reload_button" type="button">
-            <img class="reload_default" src="compiler/images/reload_default.png" height="45"/>
-            <img class="reload_exe" src="compiler/images/reload_exe.png" height="45"/>
-          </button>
-          <div id="errorReport"></div>
-          <div class="containerDeviceradio"></div> 
-        </div> <!-- desktopLog -->
-      </div> <!-- rightWrapper -->
-    </div> <!-- row -->
-  </div> <!-- container -->
-</div> <!-- desktopWrapper -->
-
-<!-- SECTION FOR DESKTOP DIVS -->
+    <!-- Left and right controls -->
+  <!--   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a> -->
+  </div>
 
 
 
@@ -113,79 +74,20 @@
 
 
 
-<!-- SECTION FOR MOBILE DIVS -->
-<div id="mobileWrapper">
-  <div class="container">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-          <!-- TAB MENU -->
-          <ul class="nav nav-pills">
-              <li data-target="#myCarousel" data-slide-to="0" class="col-xs-4 active"><a href="#">Stream</a></li>
-              <li data-target="#myCarousel" data-slide-to="1" class="col-xs-4"><a href="#">IDE</a></li>
-              <li data-target="#myCarousel" data-slide-to="2" class="col-xs-4"><a href="#">Chat</a></li>
-          </ul>
-
-          <!-- 3 DIV SECTIONS (SWIPE) -->
-          <div class="carousel-inner">
-            <div class="item mobileStream active" id="mobileStream">
-              <iframe src="https://www.livecoding.tv/deviceradio/embed" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
-            </div> <!-- mobileStream -->
-
-
-
-              <div class="item mobileIDE" id="mobileIDE">
-                <div class="insertAfterMe"></div>
-<!--                 <div class="textAreaDiv" id="textAreaDiv">
-                  <textarea class="col-sm-12 col-md-12 col-lg-12 textArea" id="code" style="display:none">
-                    conf io as button
-                      pin = 0
-
-                    conf io as led
-                      pin = 1;
-
-                    task read_button on button
-                  </textarea>
-                  <div id="editor"></div>
-                  <button class="exec_button" type="button" onclick="excButton()">
-                    <img class="exe_button_default" src="compiler/images/Exe_button_default.png" height="50"/>
-                    <img class="exe_button_1" src="compiler/images/Exe_button_1.png" height="50"/>
-                    <img class="exe_button_2" src="compiler/images/Exe_button_2.png" height="50"/>
-                    <img class="exe_button_3" src="compiler/images/Exe_button_3.png" height="50"/>
-                  </button>
-                  <button class="reload_button" type="button">
-                    <img class="reload_default" src="compiler/images/reload_default.png" height="45"/>
-                    <img class="reload_exe" src="compiler/images/reload_exe.png" height="45"/>
-                  </button>
-                </div> -->
-              </div>
-
-
-
-              <div class="item mobileChat" id="mobileChat">
-                <div id="chatlioWidgetPlaceholder" id="chatlioDiv" style="margin: auto;"></div>
-              </div>
-          </div> <!-- carousel-inner -->
-          
-          <div class="num"></div>
-
-      </div> <!-- carousel -->
-  </div> <!-- container -->
-</div> <!-- mobileWrapper -->
-<!-- !SECTION FOR MOBILE DIVS -->
-
-
-
-
-
+  <!-- Bootstrap JS (minified) -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
   <script src="carousel.js"></script>
   <script src="chatlio.js"></script>
+
   <script src="ace_grammer/test/demo.js" type="text/javascript"></script>
   <script src="ace_grammer/test/ace/ace.js" type="text/javascript"></script>
   <script src="ace_grammer/build/ace_grammar.js" type="text/javascript"></script>
   <script src="ace_grammer/test/grammars/drlang.js" type="text/javascript"></script>
   <!-- script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
 
   <script type="text/javascript" src="compiler/rainbow/rainbow.js"></script>
   <script type="text/javascript" src="compiler/rainbow/language/drdl.js"></script>
@@ -217,5 +119,6 @@
               /\?json\b/.test(document.location.href) ? {language : "json", grammar : json_grammar} : {language : "drlang", grammar : js_grammar}
           ]);
   </script>
+
 </body>
 </html>

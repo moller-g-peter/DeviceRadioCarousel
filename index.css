@@ -34,14 +34,6 @@ body,
 *:focus {
   outline: none;
 }
-/*.desktopChat{
-  padding: 5px !important;
-}*/
-/*.desktopStream:focus,
-.desktopIDE:focus,
-.desktopChat:focus{
-  background-color: #f95c3d;
-}*/
 
 /* ---------- VIDEO STREAM SECTION ---------- */
 
@@ -152,12 +144,13 @@ body,
   /*padding: 1px;*/
 }
 .desktopLog{
-  background-color: #10232e;
+  background-color: #1C313E;
   height: 35%;
   border-left: 1px solid #000;
   border-top: 1px solid #000;
+  overflow: scroll;
 }
-.desktopLog > button{
+.desktopLog > .desktopLog > button{
   margin-left: 6px;
 }
 #editor { 
@@ -191,18 +184,31 @@ body,
 pre {
   padding: 1em 0;
   word-wrap: break-word;
+  /*border: none !important;*/
+  border: 1px solid #35434F !important;
+}
+pre > code{
+  color: #C1C1C1 !important;
+  padding: 1px !important;
 }
 
 /* this wrapper is causing white space when swiping on mobile phone */
 .wrap {
-  border-style: solid none none none;
-  border-width: 15px;
-  border-color: #073642;
+  /*border-style: solid none none none;*/
+  background-color: #1c313e;
+  border: none;
+  border-top: 1px solid #35434F;
+  /*border-width: 1px;*/
+  /*border-color: #073642;*/
+  /*border-color: yellow;*/
   margin: 15px 0;
   padding: 0;
   width: 100%;
 }
-
+.containerDeviceradio:last-child{
+  margin: 0;
+  overflow: hidden;
+}
 .right {
   width: auto;
   margin-top: 0;
@@ -256,20 +262,20 @@ code {
   color: #6c71c4;
 }
 .ace-tm{
-  background-color: #1c313e !important;
-  color: white !important;
+  /*background-color: #1c313e !important;*/
+  /*color: white !important;*/
 }
 .ace_cursor{
-  color: white !important;
+  /*color: white !important;*/
 }
 .ace_gutter{
-  background-color: #77848c !important;
+  /*background-color: #77848c !important;*/
 }
 .ace_gutter-active-line{
-  background-color: #1C313E;
+  /*background-color: #1C313E;*/
 }
 .ace_active-line{
-  background: rgba(0, 0, 0, 0.2) !important;
+  /*background: rgba(0, 0, 0, 0.2) !important;*/
 }
 
 
@@ -279,6 +285,10 @@ code {
 
 /* ---------- LOG SECTION ---------- */
 
+#errorReport{
+  padding: 12px 0 0 12px;
+  color: red !important;
+}
 .exec_button,
 .reload_button{
   position: relative;
@@ -402,3 +412,4 @@ and (max-device-width : 640px){
 
 
 
+}

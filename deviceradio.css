@@ -1,0 +1,111 @@
+/* #1C313E,#77848c,#f95c3d,#FFFFFF,#f95c3d,#FFFFFF,#94E864,#f95c3d  */
+
+/* ---------- GENERAL ---------- */
+html,
+body,
+.streamDiv,
+.chatDiv,
+.ideDiv,
+.row,
+.container-fluid
+{
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100%;
+}
+.removeWhiteSpace{
+  padding: 0 !important;
+}
+.streamDiv{
+  background-color: yellow;
+  height: 50vh;
+}
+.streamDiv iframe{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.chatDiv{
+  background-color: red;
+  height: 50vh;
+}
+.ideDiv{
+  background-color: blue;
+  height: 100vh;
+}
+.chatlioDiv{
+  height: 100%;
+}
+.chatlio-new-message-container{
+  bottom: 0 !important;
+}
+.chatlio-widget.embed-inline{
+  border: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------- MOBILE SECTION ---------- */
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 640px){
+
+  .streamDiv,
+  .chatDiv{
+    height: 100vh;
+  }
+  .streamDiv iframe{
+    height: 50%;
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,12 +9,12 @@ $('.exe_button_3').hide();
 $('.reload_exe').hide();
 
 
-$("#myCarousel").swiperight(function() {
-  $("#myCarousel").carousel('prev');
-});
-$("#myCarousel").swipeleft(function() {
-  $("#myCarousel").carousel('next');
-});
+// $("#myCarousel").swiperight(function() {
+//   $("#myCarousel").carousel('prev');
+// });
+// $("#myCarousel").swipeleft(function() {
+//   $("#myCarousel").carousel('next');
+// });
 
 //$('#myCarousel').carousel({
 //    interval: 2000
@@ -71,7 +71,7 @@ $('.col-xs-4[data-slide-to="'+currentIndex+'"]').addClass('active');
 
 //  }
 
-  console.log('current index', ''+currentIndex);
+  // console.log('current index', ''+currentIndex);
     //console.log('current: ', current);
 
     // if slide amount is the same as "data-slide-to= num":
@@ -93,57 +93,32 @@ $('.col-xs-4[data-slide-to="'+currentIndex+'"]').addClass('active');
 
 
 // Create the orange background(focused div)
-$(function() {
-  $("body").click(function(e) {
-    if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
-      $('.desktopChat').css('background-color', '#f95c3d');
-      $('.desktopIDE').css('background-color', '#10232e');
-      // alert("Inside chatlioWidgetPlaceholder");
-    } else {
-      $('.desktopChat').css('background-color', '#10232e');
-      $('.desktopIDE').css('background-color', '#f95c3d');
-      // $buttonBoolean = false;
-      // alert("Outside chatlioWidgetPlaceholder");
-    }
-  });
-});
+
+  // $("body").click(function(e) {
+  //     // alert("clicked");
+  //   if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
+  //     $('.desktopChat').css('background-color', '#f95c3d');
+  //     $('.desktopIDE').css('background-color', '#10232e');
+  //     // alert("Inside chatlioWidgetPlaceholder");
+  //   } else {
+  //     $('.desktopChat').css('background-color', '#10232e');
+  //     $('.desktopIDE').css('background-color', '#f95c3d');
+  //     // $buttonBoolean = false;
+  //     // alert("Outside chatlioWidgetPlaceholder");
+  //   }
+  // });
 
 
-var buttonBoolean = true;
+// console.log("outside button");
 
-function excButton(){
 
-  if (buttonBoolean === true){
-      $('.exe_button_default').hide();
-      $('.exe_button_1').fadeIn(700, function(){
-        $('.exe_button_1').fadeOut(700);
-        cogAnimation2();
-      });
-    function cogAnimation2(){
-      $('.exe_button_2').fadeIn(700, function(){
-        $('.exe_button_2').fadeOut(700);
-        cogAnimation3();
-      });
-    }
-    function cogAnimation3(){
-      $('.exe_button_3').fadeIn(700, function(){
-        $('.exe_button_3').fadeOut(700);
-        excButton();
-      });
-    }
-  } else {
-    buttonBoolean = true;
-  }
-}
 
-$('.desktopIDE').click(function(){
-  buttonBoolean = false;
-  $('.exe_button_default').show();
-});
 
-$('.reload_button').click(function(){
-  $('.reload_exe').show();
-});
+
+
+
+
+
 
 
 
@@ -152,17 +127,17 @@ $('.reload_button').click(function(){
    // document.addEventListener('chatlio.ready', function (e) {
 
 // $(window).load(function(){
-    $(window).resize(function(){
-      if ($(window).width() < 1040) {
-        $('#desktopWrapper').appendTo('#mobileIDE', function(){
-          console.log('hellowee');
-        });
-        console.log("hello");
-      }
-      else {
-        console.log('nope');
-      }
-    }).resize();
+    // $(window).resize(function(){
+    //   if ($(window).width() < 1040) {
+    //     $('#desktopWrapper').appendTo('#mobileIDE', function(){
+    //       // console.log('hellowee');
+    //     });
+    //     console.log("hello");
+    //   }
+    //   else {
+    //     console.log('nope');
+    //   }
+    // }).resize();
   // }, false);
 
 
