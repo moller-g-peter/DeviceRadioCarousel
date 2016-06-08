@@ -58,7 +58,7 @@ body,
 
 
 
-/* ---------- MOBILE SECTION ---------- */
+/* -------------------- MOBILE SECTION -------------------- */
 
 @media only screen
 and (min-device-width : 320px)
@@ -70,6 +70,7 @@ and (max-device-width : 640px){
   }
   .streamDiv iframe{
     height: 40%;
+    top: 30%;
   }
   .chatlioDiv{
     height: 100%;
