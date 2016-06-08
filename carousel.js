@@ -17,6 +17,13 @@ $(window).resize(function(){
       var cnt = $(".desktopOnly").contents();
       $(".desktopOnly").replaceWith(cnt);
     }
+
+    $('.chatDiv').detach().insertBefore('.beforeDiv');
+
+
+
+
+
   }).resize();
 
 // $('.row').removeClass('.desktopOnly');
