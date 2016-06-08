@@ -66,13 +66,13 @@ and (max-device-width : 640px){
 
   .streamDiv,
   .chatDiv{
-    height: 100vh;
+    height: 93.8vh;
   }
   .streamDiv iframe{
-    height: 56.25%;
+    height: 40%;
   }
   .chatlioDiv{
-    height: 80%;
+    height: 100%;
   }
 
 }
@@ -85,7 +85,24 @@ and (max-device-width : 640px){
 
 
 
+/* ---------- MOBILE MENU TABS ---------- */
 
+  .nav-pills{
+    height: 6.2vh;
+  }
+  ol > li{
+    text-align: center;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .nav-pills > li > a{
+    border-radius: 0 !important;
+    color: #fff !important;
+  }
+  .nav>li>a:link{
+    background-color: #475F6D;
+    /*height: 20%;*/
+  }
 
 
 
