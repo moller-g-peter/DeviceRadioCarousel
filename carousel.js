@@ -8,13 +8,16 @@
   // $('.desktopOnly').removeClass();
 
 
-  // var cnt = $(".row").contents();
-  // $(".row").replaceWith(cnt);
 
   // var cnt = $(".row").contents();
   // $(".row").replaceWith(cnt);
 
-
+$(window).resize(function(){
+    if ($(window).width() < 740) {
+      var cnt = $(".desktopOnly").contents();
+      $(".desktopOnly").replaceWith(cnt);
+    }
+  }).resize();
 
 // $('.row').removeClass('.desktopOnly');
 
