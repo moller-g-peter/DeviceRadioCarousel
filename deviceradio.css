@@ -17,10 +17,12 @@ body,
   padding: 0 !important;
 }
 .streamDiv{
+  position: relative;
   background-color: yellow;
   height: 50vh;
 }
 .streamDiv iframe{
+  position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
@@ -67,9 +69,11 @@ and (max-device-width : 640px){
     height: 100vh;
   }
   .streamDiv iframe{
-    height: 50%;
+    height: 56.25%;
   }
-
+  .chatlioDiv{
+    height: 80%;
+  }
 
 }
 
