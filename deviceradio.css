@@ -13,13 +13,18 @@ body,
   padding: 0 !important;
   height: 100%;
 }
+.nav-pills{
+  display: none;
+}
 .removeWhiteSpace{
   padding: 0 !important;
+  /*width: 50%;*/
 }
 .streamDiv{
   position: relative;
   background-color: yellow;
   height: 50vh;
+  /*width: 50%;*/
 }
 .streamDiv iframe{
   position: absolute;
@@ -31,10 +36,12 @@ body,
 .chatDiv{
   background-color: red;
   height: 50vh;
+  /*width: 50%;*/
 }
 .ideDiv{
   background-color: blue;
   height: 100vh;
+  /*width: 50%;*/
 }
 .chatlioDiv{
   height: 100%;
@@ -61,8 +68,24 @@ body,
 /* -------------------- MOBILE SECTION -------------------- */
 
 @media only screen
-and (min-device-width : 320px)
+and (min-device-width : 120px)
 and (max-device-width : 640px){
+
+/*  .container-fluid,
+  .row,
+  .desktopOnly,
+  .col-sm-6,
+  .col-sm-12{
+    display: none !important;
+  }*/
+/*  .removeWhiteSpace,*/
+
+
+  .streamDiv,
+  .chatDiv,
+  .ideDiv{
+    width: 100%;
+  }
 
   .streamDiv,
   .chatDiv{
@@ -76,18 +99,11 @@ and (max-device-width : 640px){
     height: 100%;
   }
 
-}
+  /* ---------- MOBILE MENU TABS ---------- */
 
-
-
-
-
-
-
-
-
-/* ---------- MOBILE MENU TABS ---------- */
-
+  .nav-pills{
+    display: block;
+  }
   .nav-pills{
     height: 6.2vh;
   }
@@ -104,6 +120,16 @@ and (max-device-width : 640px){
     background-color: #475F6D;
     /*height: 20%;*/
   }
+
+}
+
+
+
+
+
+
+
+
 
 
 

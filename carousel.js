@@ -1,7 +1,25 @@
 
 // adds swipe function together with "carousel-swipe.js"
 // $("#myCarousel").carousel(function(){});
-  
+  // $('.container-fluid').remove();
+  // $('.row').unwrap('.row');
+  // $('div').removeClass('.col-sm-6');
+  // $('div').removeClass('.col-sm-12');
+  // $('.desktopOnly').removeClass();
+
+
+  // var cnt = $(".row").contents();
+  // $(".row").replaceWith(cnt);
+
+  // var cnt = $(".row").contents();
+  // $(".row").replaceWith(cnt);
+
+
+
+// $('.row').removeClass('.desktopOnly');
+
+
+
   
 $('.exe_button_1').hide();
 $('.exe_button_2').hide();
