@@ -13,12 +13,16 @@
   // $(".row").replaceWith(cnt);
 
 $(window).resize(function(){
-    if ($(window).width() < 740) {
+    //console.log($(window).width());
+    if ($(window).width() < 638) {
+      console.log("Marco tha man");
+      
       var cnt = $(".desktopOnly").contents();
       $(".desktopOnly").replaceWith(cnt);
+
+      $('.chatDiv').detach().insertBefore('.beforeDiv');
     }
 
-    $('.chatDiv').detach().insertBefore('.beforeDiv');
 
 
 
