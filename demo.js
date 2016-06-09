@@ -10,11 +10,19 @@ var editorvalue = "";
 var editor=""; 
 function ace_grammar_demo(_editor, code, langs)
 {
-    //  document.getElementById('editor-version').innerHTML = '1.2.0';
-    //   document.getElementById('grammar-version').innerHTML = AceGrammar.VERSION;
-
+    
+    //ace/ext/language_tools
+   
+  //  ace.config.set('basePath', '/ace-builds/src-noconflict');
+  //ace.config.set('basePath', '/ace-builds/src-noconflict');
    var Editor = ace.require("ace/editor").Editor,
-     editor = ace.edit("editor"), session = editor.getSession();
+         
+           
+   editor = ace.edit("editor"), 
+   
+     session = editor.getSession();
+      
+    editor.setTheme("ace/theme/solarized_dark");
 
 
     var main_lang, main_mode;
@@ -135,6 +143,12 @@ function ace_grammar_demo(_editor, code, langs)
         }
     });
 
+
+
+//    ace.config.loadModule("ace/theme/dawn", function () {
+//   alert("loaded");
+//
+//    });
     ace.config.loadModule("ace/ext/language_tools", function () {
 
         editor.getSession().on('change', function (e) {

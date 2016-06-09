@@ -1,4 +1,4 @@
-/* ***** BEGIN LICENSE BLOCK *****
+/* ***** BEGIN LICENSE BLOCK ***** // original ACE
  * Distributed under the BSD license:
  *
  * Copyright (c) 2010, Ajax.org B.V.

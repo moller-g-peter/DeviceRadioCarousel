@@ -13,3 +13,7 @@
 
 
 
+
+
+// var d = $('.chatlio-message-scrollable');
+// d.scrollTop(d.prop("scrollHeight"));

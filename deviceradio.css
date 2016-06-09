@@ -60,6 +60,22 @@ body,
 
 
 
+
+
+/* ---------- STREAM SECTION ---------- */
+
+.info{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
 /* ---------- CHAT SECTION ---------- */
 
 
@@ -127,14 +143,12 @@ body,
 and (min-device-width : 120px)
 and (max-device-width : 640px){
 
-/*  .container-fluid,
-  .row,
-  .desktopOnly,
-  .col-sm-6,
-  .col-sm-12{
-    display: none !important;
-  }*/
-/*  .removeWhiteSpace,*/
+  .info{
+    display: block;
+    text-align: center;
+    padding-top: 20%;
+    color: red;
+  }
   .desktopOnly{
     display: none !important;
   }
