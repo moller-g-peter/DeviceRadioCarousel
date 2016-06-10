@@ -373,10 +373,10 @@ and (max-device-width : 640px){
     border: none !important;
   }
   .ideDiv{
-    height: 85vh;
+    height: 74vh;
   }
   .logDiv{
-    height: 8.8vh;
+    height: 19.8vh;
   }
   .streamDiv,
   .chatDiv,
