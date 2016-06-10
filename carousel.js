@@ -24,8 +24,8 @@ $(window).resize(function(){
     if ($(window).width() < 740) {
       var cnt = $(".desktopOnly").contents();
       $(".desktopOnly").replaceWith(cnt);
-      
       $('.chatDiv').detach().insertBefore('.beforeDiv');
+      $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
     }
   }).resize();
 
