@@ -346,7 +346,7 @@ function syntaxHighlight(json) {
 }
 
 
-
+   var program_b64 = null;
 
 
     var data = text;
@@ -400,12 +400,12 @@ function syntaxHighlight(json) {
 		var stats = com.generate();
 		
 		program_b64 = Base64.encode(stats[1]);
-                  document.getElementById('errorReport').innerHTML = " ";
+                document.getElementById('errorReport').innerHTML = " ";
 	}
 	catch (ex) {
 		compilation_message = ex.message;
 		//$('#btn-push').addClass('error');
-                     document.getElementById('errorReport').innerHTML = compilation_message;
+        document.getElementById('errorReport').innerHTML = compilation_message;
         
         $('.exe_button_3').hide();
         $('.exe_button_default').show(); 
