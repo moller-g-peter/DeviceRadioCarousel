@@ -21,13 +21,13 @@ $('.exe_button_3').hide();
 $('.reload_exe').hide();
 
 $(window).resize(function(){
-    if ($(window).width() < 740) {
-      var cnt = $(".desktopOnly").contents();
-      $(".desktopOnly").replaceWith(cnt);
-      $('.chatDiv').detach().insertBefore('.beforeDiv');
-      $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
-    }
-  }).resize();
+  if ($(window).width() < 740) {
+    var cnt = $(".desktopOnly").contents();
+    $(".desktopOnly").replaceWith(cnt);
+    $('.chatDiv').detach().insertBefore('.beforeDiv');
+    $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
+  }
+}).resize();
 
 
 
@@ -109,14 +109,27 @@ $('.col-xs-4[data-slide-to="'+currentIndex+'"]').addClass('active');
     if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
       $('.chatDiv').css('background-color', '#f95c3d');
       $('.ideDiv').css('background-color', '#10232e');
-      // alert("Inside chatlioWidgetPlaceholder");
+      // alert("Inside chatDiv");
     } else {
       $('.chatDiv').css('background-color', '#10232e');
       $('.ideDiv').css('background-color', '#f95c3d');
       // $buttonBoolean = false;
-      // alert("Outside chatlioWidgetPlaceholder");
+      // alert("Inside ideDiv");
     }
   });
+
+
+// if (e.target.id == "videoFrame" || $(e.target).parents("#videoFrame").size()) {
+//       $('.chatDiv').css('background-color', '#f95c3d');
+//       $('.ideDiv').css('background-color', '#10232e');
+//       alert("Inside videoFrame");
+//     } else {
+//       $('.chatDiv').css('background-color', '#10232e');
+//       $('.ideDiv').css('background-color', '#f95c3d');
+//       // $buttonBoolean = false;
+//       // alert("Outside chatlioWidgetPlaceholder");
+//     }
+
 
 
 
