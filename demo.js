@@ -214,7 +214,7 @@ function excButton() {
      
   
           
-  clearMarkers();
+    clearMarkers();
 
     $('.containerDeviceradio').html('');
 
@@ -229,7 +229,9 @@ function excButton() {
       
       if(editorvalue.length>0){
           
-       deviceradioProcess(editorvalue);   
+       deviceradioProcess(editorvalue);  
+      $('.exe_button_3').hide();
+     $('.exe_button_default').show();
           
       }else{
           
@@ -239,15 +241,15 @@ function excButton() {
       
  
  
-    if ($(".containerDeviceradio").text().length > 0) {
-        
-      $('.exe_button_3').hide();
-      $('.exe_button_default').show();
-    }else{
-           $('.exe_button_3').hide();
-      $('.exe_button_default').show();
-        
-    }
+//    if ($(".containerDeviceradio").text().length > 0) {
+//        
+//      $('.exe_button_3').hide();
+//      $('.exe_button_default').show();
+//    }else{
+//           $('.exe_button_3').hide();
+//      $('.exe_button_default').show();
+//        
+//    }
  
  
  
@@ -303,14 +305,7 @@ function reloadButton() {
     }
 
 
-$('.desktopIDE').click(function(){
-  buttonBoolean = false;
-  $('.exe_button_default').show();
-});
 
-$('.reload_button').click(function(){
-  $('.reload_exe').show();
-});
 
 
 
@@ -515,7 +510,7 @@ msec -= mm * 1000 * 60;
 var ss = Math.floor(msec / 1000);
 msec -= ss * 1000;
         $('#console').append('<p><code>Firmware written successfully, took '+ss+'s</code></p>');
-         $(".progress-bar").hide();
+        
         
 });
 
@@ -532,7 +527,7 @@ msec -= mm * 1000 * 60;
 var ss = Math.floor(msec / 1000);
 msec -= ss * 1000;
       
-        $(".progress-bar").hide();
+       
 	$('#console').append('<p><code>Upload failed (' + reason + ') took '+ss+'s </code></p>');
 });
 
