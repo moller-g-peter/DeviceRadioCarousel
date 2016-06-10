@@ -25,6 +25,7 @@ $(window).resize(function(){
       var cnt = $(".desktopOnly").contents();
       $(".desktopOnly").replaceWith(cnt);
       $('.chatDiv').detach().insertBefore('.beforeDiv');
+      $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
     }
   }).resize();
 
