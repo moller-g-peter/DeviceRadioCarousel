@@ -8,6 +8,10 @@
 
 var editorvalue = "";
 var editor=""; 
+
+
+     var markers_present = [];
+
 function ace_grammar_demo(_editor, code, langs)
 {
     
@@ -199,6 +203,9 @@ var buttonBoolean = true;
 
 
 
+
+
+
 function excButton() {
     
     
@@ -306,6 +313,9 @@ $('.reload_button').click(function(){
 });
 
 
+
+  var program_b64 = null;
+
 function deviceradioProcess(text) {
 
 
@@ -346,7 +356,7 @@ function syntaxHighlight(json) {
 }
 
 
-   var program_b64 = null;
+ 
 
 
     var data = text;
@@ -370,10 +380,6 @@ function syntaxHighlight(json) {
     //  console.log("i am text"+html);
     $('.containerDeviceradio').append(html);
     Rainbow.color();
-
-
-
-
 
 
 
@@ -405,7 +411,41 @@ function syntaxHighlight(json) {
 	catch (ex) {
 		compilation_message = ex.message;
 		//$('#btn-push').addClass('error');
-        document.getElementById('errorReport').innerHTML = compilation_message;
+//                
+//              
+//
+//                var listex=Object.getOwnPropertyNames(ex);
+//                alert(listex);
+//                var lineNumber="";
+//                   if ('lineNumber' in ex) {
+//                       alert("has");
+//                   
+//                }
+//                lineNumber =ex.lineNumber;
+//                   var columnNumber="";
+//                   if ('columnNumber' in ex) {
+//                   columnNumber =ex.columnNumber;
+//                }
+//                
+//            var row = lineNumber;
+//            var column = columnNumber;
+//
+//             
+//            document.getElementById('errorReport').innerHTML = "row"+row+" col "+column;
+//
+//            var Range = ace.require('ace/range').Range;
+//            var marker = editor.session.addMarker(new Range(row, 0, row, 1), "myMarker", "fullLine");  /// first is number of lines to be highlighted,0,number of row, number of column  
+//
+//
+//            markers_present[markers_present.length] = marker;
+//
+//            editor.session.selection.moveCursorToPosition({row: row, column: column});
+//            editor.session.selection.selectLineEnd();
+
+           
+                
+                
+          document.getElementById('errorReport').innerHTML = compilation_message;
         
         $('.exe_button_3').hide();
         $('.exe_button_default').show(); 
@@ -428,7 +468,72 @@ function syntaxHighlight(json) {
 
 
 
+
+
+
+
+
 }
+
+$(function() {
+    
+ var live = new DeviceRadioLive('http://stomp.deviceradio.net:15674/stomp', 'gateway', 'deviceradio', 'dreD8G@fRu');
+
+// event handler for successfull connection
+live.on('connect', function () {
+	$('.btn').removeClass('disabled');
+	// put us in queue
+	live.queue();
+});
+
+// event handler for disconnection
+live.on('disconnect', function () {
+	$('.btn').addClass('disabled');
+});
+
+// event handler for successfull firmware upload
+live.on('upload', function () {
+	$('#console').append('<p><code>Firmware written successfully</code></p>');
+});
+
+// event handler for upload errors
+live.on('uploaderror', function (reason) {
+	$('#console').append('<p><code>Upload failed (' + reason + ')</code></p>');
+});
+
+// event handler for changes in the queue
+live.on('queuechange', function (total, before_you) {
+	$('#console').append('<p><code>In queue: ' + total + ', people before you: ' + before_you + '</code></p>');
+});
+
+// program device-button pushed
+$('#btn-push').on('click', function() {
+	if (live.connected && program_b64 !== null) {
+		$('#console').append('<p><code>Uploading firmware to device</code></p>');
+		// write firmware to device
+		live.upload('38F8-932-5E41A', program_b64);
+	}
+});
+
+// wipe device-button pushed
+$('#btn-wipe').on('click', function() {
+	if (live.connected) {
+		$('#console').append('<p><code>Clearing all code in the device</code></p>');
+		// format the device
+		live.upload('38F8-932-5E41A');
+	}
+});
+
+// connect to server
+live.connect();   
+    
+    
+    
+});
+
+
+
+
 
 
 

@@ -1,7 +1,5 @@
+//
 
-  var Editor = ace.require("ace/editor").Editor,
-    editor = ace.edit("editor"), session = editor.getSession();
-     var markers_present = [];
 
 
 DeviceRadio.Compiler = function (version, hw) {
@@ -276,33 +274,9 @@ DeviceRadio.Compiler.prototype.add = function (tokens, namespace, title) {
     var err = function (msg, token) {
         if (typeof msg !== "string")
             msg = "Unknown error";
-        msg += " in '" + title + "'";
+        msg += " ";
         if (token !== undefined) {
             msg += " on line " + token.row + ", column " + token.col;
-
-
-
-            var row = token.row - 1;
-            var column = token.col;
-
-            // document.getElementById('errorValue').value = token.row;  
-
-
-            var Range = ace.require('ace/range').Range;
-            var marker = editor.session.addMarker(new Range(row, 0, row, 1), "myMarker", "fullLine");  /// first is number of lines to be highlighted,0,number of row, number of column  
-
-
-            markers_present[markers_present.length] = marker;
-
-            editor.session.selection.moveCursorToPosition({row: row, column: column});
-            editor.session.selection.selectLineEnd();
-
-            //  alert(markers_present[0]);
-
-
-
-
-
 
         }
 		msg += ".";
