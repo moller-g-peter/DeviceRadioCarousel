@@ -63,7 +63,7 @@ body,
   border: none !important;
 }
 .chatDiv{
-  background-color: red;
+  background-color: #1C313E;
   height: 50vh;
   /*width: 50%;*/
 }
@@ -120,7 +120,7 @@ body,
 /* ---------- IDE SECTION ---------- */
 
 .ideDiv{
-  background-color: blue;
+  background-color: #1C313E;
   padding: 5px !important;
   height: 65vh;
   border-left: 1px solid #000;
@@ -280,7 +280,7 @@ code {
 
 .logDiv{
   background-color: #1C313E;
-  height: 35%;
+  height: 35vh;
   border-left: 1px solid #000;
   border-top: 1px solid #000;
   /*overflow: scroll;*/
