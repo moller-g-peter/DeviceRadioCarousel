@@ -1,7 +1,7 @@
 /* #1C313E,#77848c,#f95c3d,#FFFFFF,#f95c3d,#FFFFFF,#94E864,#f95c3d  */
 
 /* ---------- GENERAL ---------- */
-html,
+/*html,
 body,
 #desktopWrapper,
 #mobileWrapper,
@@ -13,11 +13,11 @@ body,
 .desktopIDE,
 .desktopChat,
 .mobileStream,
-.desktopLog,
+.desktopLog,*/
 /*.mobileIDE,*/
-.mobileChat,
+/*.mobileChat,*/
 /*#chatlioWidgetPlaceholder,*/
-/*.textAreaDiv,*/
+/*.textAreaDiv,
 .container-fluid,
 .carousel.slide,
 .carousel-inner{
@@ -33,11 +33,11 @@ body,
 }
 *:focus {
   outline: none;
-}
+}*/
 
 /* ---------- VIDEO STREAM SECTION ---------- */
 
-.desktopStream iframe,
+/*.desktopStream iframe,
 .mobileStream iframe {
   position: absolute;
   top:0;
@@ -49,28 +49,28 @@ body,
   height: 100%;
 }
 .desktopStream{
-  /*background-color: yellow;*/
+  background-color: yellow;
   height: 50%;
-}
+}*/
 
 
 /* ---------- CHAT SECTION ---------- */
 
-.desktopChat{
+/*.desktopChat{
   background-color: #1C313E;
   height: 50%;
-}
-#chatlioWidgetPlaceholder{
+}*/
+/*#chatlioWidgetPlaceholder{
   position: absolute;
   z-index: 10000;
   top: 0;
   left: 0;
-  /*background: pink;*/
+  background: pink;
   height: 100%;
   width: 100%;
   padding: 5px;
   font-family: input;
-}
+}*/
 .chatlio-title-bar{
   background-color: #77848c !important;
 }
