@@ -316,8 +316,13 @@ $('.reload_button').click(function(){
 
   var program_b64 = null;
   var compiled=false;
+  var function_starttime=null;
 
 function deviceradioProcess(text) {
+  function_starttime = new Date(); 
+ 
+    
+    
 $('#console').html('');
 
 
@@ -497,12 +502,38 @@ live.on('disconnect', function () {
 
 // event handler for successfull firmware upload
 live.on('upload', function () {
-	$('#console').append('<p><code>Firmware written successfully</code></p>');
+        console.log(" workin in upload");
+	
+        var currentdate = new Date(); 
+        var diff = currentdate - function_starttime;
+        
+        var msec = diff;
+var hh = Math.floor(msec / 1000 / 60 / 60);
+msec -= hh * 1000 * 60 * 60;
+var mm = Math.floor(msec / 1000 / 60);
+msec -= mm * 1000 * 60;
+var ss = Math.floor(msec / 1000);
+msec -= ss * 1000;
+        $('#console').append('<p><code>Firmware written successfully, took '+ss+'s</code></p>');
+         $(".progress-bar").hide();
+        
 });
 
 // event handler for upload errors
 live.on('uploaderror', function (reason) {
-	$('#console').append('<p><code>Upload failed (' + reason + ')</code></p>');
+        var currentdate = new Date(); 
+        var diff = currentdate - function_starttime;
+        
+        var msec = diff;
+var hh = Math.floor(msec / 1000 / 60 / 60);
+msec -= hh * 1000 * 60 * 60;
+var mm = Math.floor(msec / 1000 / 60);
+msec -= mm * 1000 * 60;
+var ss = Math.floor(msec / 1000);
+msec -= ss * 1000;
+      
+        $(".progress-bar").hide();
+	$('#console').append('<p><code>Upload failed (' + reason + ') took '+ss+'s </code></p>');
 });
 
 // event handler for changes in the queue
@@ -514,9 +545,11 @@ live.on('queuechange', function (total, before_you) {
 $('#btn-push').on('click', function() {
 	if (live.connected && program_b64 !== null && compiled=== true) {
                
+                $(".progress-bar").show();
 		$('#console').append('<p><code>Uploading firmware to device</code></p>');
 		// write firmware to device
 		live.upload('38F8-932-5E41A', program_b64);
+          
 	}
 });
 

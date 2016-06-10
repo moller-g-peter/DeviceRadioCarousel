@@ -97,8 +97,13 @@
                     <img class="reload_default" src="compiler/images/reload_default.png" height="45"/>
                     <img class="reload_exe" src="compiler/images/reload_exe.png" height="45"/>
                   </button>
+                    
+
+                    
                      <div id="console" style="margin-top:50px;"></div>
                   <div id="errorReport"></div>
+                  
+           
                   
                   <!-- device radio container where it will display the outputs 
                   <div class="containerDeviceradio"></div> -->
@@ -186,6 +191,9 @@
      var editor=   ace_grammar_demo("editor", document.getElementById("code").value, [
               /\?json\b/.test(document.location.href) ? {language : "json", grammar : json_grammar} : {language : "drlang", grammar : js_grammar}
           ]);
+          
+     
+
   </script>
 
 </body>
