@@ -39,19 +39,11 @@ body,
 }
 .streamDiv{
   position: relative;
-  /*background-color: yellow;*/
-  /*max-height: 50%;*/
-  /*width: 50%;*/
+  background-color: #1C313E;
 }
 .streamDiv iframe{
   position: absolute;
   width: 100%;
-  /*height: 100%;*/
-  /*max-height: 100%;*/
- /* top: 0;
-  left: 0;*/
-  padding: 5px !important;
-  /*background: yellow;*/
 }
 .video-container {
   position: relative;
@@ -59,7 +51,6 @@ body,
   padding-top: 35px;
   height: 0;
   overflow: hidden;
-  /*background-color: yellow;*/
 }
 .video-container iframe {
   position: absolute;
@@ -67,16 +58,7 @@ body,
   left: 0;
   width: 100%;
   height: 100%;
-  /*background-color: yellow;*/
 }
-/*.iframeMole{
-  width: 100px;
-  height: 100px;
-}*/
-/*#videoFrame{
-  position: absolute;
-  z-index: 100000;
-}*/
 
 
 
@@ -88,7 +70,6 @@ body,
   z-index: 10000;
   top: 0;
   left: 0;
-  /*background: pink;*/
   height: 100%;
   width: 100%;
   padding: 5px;
@@ -167,13 +148,6 @@ body,
   border-left: 1px solid #000;
   /*width: 50%;*/
 }
-/*.textArea{
-  padding: 5px;
-  height: 1%;
-}*/
-
-
-
 
 
 
@@ -381,17 +355,14 @@ and (max-device-width : 640px){
   .info{
     display: block;
     text-align: center;
-    padding-top: 20%;
+    padding-top: 50%;
     color: red;
   }
-  .ideDiv{
+  .ideDiv,
+  .streamDiv{
     padding: 0 !important;
     border: none !important;
   }
-/*  .desktopOnly{
-    display: none !important;
-  }*/
-
   .streamDiv,
   .chatDiv,
   .ideDiv{
@@ -401,15 +372,11 @@ and (max-device-width : 640px){
   .chatDiv{
     height: 93.8vh;
   }
-  .streamDiv iframe{
-    height: 40%;
-    top: 30%;
-  }
   .chatlioDiv{
     height: 100%;
   }
   #chatlioWidgetPlaceholder{
-    padding: 5px 0 0 0 !important;
+    padding: 0 !important;
   }
 
   /* ---------- MOBILE MENU TABS ---------- */
@@ -437,27 +404,18 @@ and (max-device-width : 640px){
 }
 
 
-@media only screen
-and (min-device-width : 640px)
-and (max-device-width : 360px){
-  
-  .streamDiv iframe{
-    height: 1% !important;
-    top: 1% !important;
-  }
-}
 
 
-/* Portrait */
-@media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 2) 
-  and (orientation: portrait) {
-    .streamDiv iframe{
-    height: 1% !important;
-    top: 1% !important;
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
