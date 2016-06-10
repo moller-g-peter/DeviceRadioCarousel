@@ -64,12 +64,12 @@
           pin = 0
   conf io as led
        pin = 1
-  task read_button on butt
+  task read_button on button
                         </textarea>
                       <div id="editor"></div>
                     
                     </div> <!-- ideDiv -->
-  <div id="console" style="margin-top:50px;"></div>
+ 
                     <div class="beforeDiv"></div>
 
               </div> <!-- row -->
@@ -93,10 +93,11 @@
                     <img class="exe_button_3" src="compiler/images/Exe_button_3.png" height="50"/>
                   </button>
 
-                  <button class="reload_button" type="button" onclick="reloadButton()">
+                    <button class="reload_button" type="button" onclick="reloadButton()" id="btn-wipe">
                     <img class="reload_default" src="compiler/images/reload_default.png" height="45"/>
                     <img class="reload_exe" src="compiler/images/reload_exe.png" height="45"/>
                   </button>
+                     <div id="console" style="margin-top:50px;"></div>
                   <div id="errorReport"></div>
                   
                   <!-- device radio container where it will display the outputs 

@@ -261,18 +261,18 @@ function reloadButton() {
     
 
    // alert("deleted");
-    
+    var htmlvalue= document.getElementById("code").innerHTML;
   
-     editor.getSession().setValue('');
+     editor.getSession().setValue(htmlvalue);
      
-     $("#code").html('');
+     $("#code").html(htmlvalue);
      $('.reload_default').hide();
      
 
      
       $('.reload_exe').show();
        // alert($("#code").text());
-       if ($("#code").text().length === 0) {
+       
         
       $('.reload_exe').fadeIn(400, function(){
       $('.reload_exe').fadeOut(400);
@@ -283,7 +283,7 @@ function reloadButton() {
       });
      // $('.reload_exe').hide();
      // $('.reload_default').show();
-    }
+   
      
 
 }
@@ -315,9 +315,10 @@ $('.reload_button').click(function(){
 
 
   var program_b64 = null;
+  var compiled=false;
 
 function deviceradioProcess(text) {
-
+$('#console').html('');
 
 
     //console.log(" i am here"+text);
@@ -406,9 +407,12 @@ function syntaxHighlight(json) {
 		var stats = com.generate();
 		
 		program_b64 = Base64.encode(stats[1]);
-                document.getElementById('errorReport').innerHTML = " ";
+                compiled=true;
+            //    document.getElementById('errorReport').innerHTML = " ";
 	}
 	catch (ex) {
+            $('#console').html('');
+                compiled=false;
 		compilation_message = ex.message;
 		//$('#btn-push').addClass('error');
 //                
@@ -431,7 +435,7 @@ function syntaxHighlight(json) {
             var column = columnNumber;
 
              
-            document.getElementById('errorReport').innerHTML = "row"+row+" col "+column;
+           // document.getElementById('errorReport').innerHTML = "row"+row+" col "+column;
 
             var Range = ace.require('ace/range').Range;
             var marker = editor.session.addMarker(new Range(row, 0, row, 1), "myMarker", "fullLine");  /// first is number of lines to be highlighted,0,number of row, number of column  
@@ -445,7 +449,7 @@ function syntaxHighlight(json) {
            
                 
                 
-          document.getElementById('errorReport').innerHTML = compilation_message;
+       //   document.getElementById('errorReport').innerHTML = compilation_message;
         
         $('.exe_button_3').hide();
         $('.exe_button_default').show(); 
@@ -508,7 +512,8 @@ live.on('queuechange', function (total, before_you) {
 
 // program device-button pushed
 $('#btn-push').on('click', function() {
-	if (live.connected && program_b64 !== null) {
+	if (live.connected && program_b64 !== null && compiled=== true) {
+               
 		$('#console').append('<p><code>Uploading firmware to device</code></p>');
 		// write firmware to device
 		live.upload('38F8-932-5E41A', program_b64);
@@ -518,6 +523,7 @@ $('#btn-push').on('click', function() {
 // wipe device-button pushed
 $('#btn-wipe').on('click', function() {
 	if (live.connected) {
+                $('#console').html('');
 		$('#console').append('<p><code>Clearing all code in the device</code></p>');
 		// format the device
 		live.upload('38F8-932-5E41A');
