@@ -1,8 +1,8 @@
+
   var Editor = ace.require("ace/editor").Editor,
     editor = ace.edit("editor"), session = editor.getSession();
-    
      var markers_present = [];
-   
+
 
 DeviceRadio.Compiler = function (version, hw) {
 	// handle version to use
@@ -270,7 +270,10 @@ DeviceRadio.Compiler.prototype.add = function (tokens, namespace, title) {
 	var that = this;
 	
 	// build and throw an error message
-	var err = function(msg, token) {
+
+        
+        
+        	var err = function(msg, token) {
 		if (typeof msg !== "string") msg = "Unknown error";
 		msg += " in '" + title + "'";
 		if (token !== undefined) {
@@ -1381,7 +1384,3 @@ DeviceRadio.Compiler.prototype.assert = function (token, type, options) {
 		throw new DeviceRadio.Compiler.CompilerException("Invalid assertion", token);
 	}
 };
-
-
-
-

@@ -196,6 +196,7 @@ DeviceRadio.Compiler.prototype.objects['radio'] = {
 		
 		// core radio config
 		if (active) {
+					
 			// header
 			config.push(0x0c);
 			config.push(3);
