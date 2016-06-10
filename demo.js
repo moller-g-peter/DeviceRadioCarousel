@@ -414,33 +414,33 @@ function syntaxHighlight(json) {
 //                
 //              
 //
-//                var listex=Object.getOwnPropertyNames(ex);
-//                alert(listex);
-//                var lineNumber="";
-//                   if ('lineNumber' in ex) {
-//                       alert("has");
-//                   
-//                }
-//                lineNumber =ex.lineNumber;
-//                   var columnNumber="";
-//                   if ('columnNumber' in ex) {
-//                   columnNumber =ex.columnNumber;
-//                }
+                var listex=Object.getOwnPropertyNames(ex);
+    //           alert(listex);
+                var lineNumber="";
+                   if ('lineNumber' in ex) {
+                      // alert("has");
+                    lineNumber =ex.lineNumber;
+                }
+               
+                   var columnNumber="";
+                   if ('columnNumber' in ex) {
+                   columnNumber =ex.columnNumber;
+                }
 //                
-//            var row = lineNumber;
-//            var column = columnNumber;
-//
-//             
-//            document.getElementById('errorReport').innerHTML = "row"+row+" col "+column;
-//
-//            var Range = ace.require('ace/range').Range;
-//            var marker = editor.session.addMarker(new Range(row, 0, row, 1), "myMarker", "fullLine");  /// first is number of lines to be highlighted,0,number of row, number of column  
-//
-//
-//            markers_present[markers_present.length] = marker;
-//
-//            editor.session.selection.moveCursorToPosition({row: row, column: column});
-//            editor.session.selection.selectLineEnd();
+            var row = lineNumber-1;
+            var column = columnNumber;
+
+             
+            document.getElementById('errorReport').innerHTML = "row"+row+" col "+column;
+
+            var Range = ace.require('ace/range').Range;
+            var marker = editor.session.addMarker(new Range(row, 0, row, 1), "myMarker", "fullLine");  /// first is number of lines to be highlighted,0,number of row, number of column  
+
+
+            markers_present[markers_present.length] = marker;
+
+            editor.session.selection.moveCursorToPosition({row: row, column: column});
+            editor.session.selection.selectLineEnd();
 
            
                 

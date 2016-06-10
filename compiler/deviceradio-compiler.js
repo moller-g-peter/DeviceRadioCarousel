@@ -280,7 +280,7 @@ DeviceRadio.Compiler.prototype.add = function (tokens, namespace, title) {
 
         }
 		msg += ".";
-		throw new Error(msg);
+		throw new DeviceRadio.Compiler.CompilerException(msg, token);
 	};
 	
 	// helper to scan for unexpected !
