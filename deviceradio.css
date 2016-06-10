@@ -365,6 +365,12 @@ and (max-device-width : 640px){
     padding: 0 !important;
     border: none !important;
   }
+  .ideDiv{
+    height: 85vh;
+  }
+  .logDiv{
+    height: 8.8vh;
+  }
   .streamDiv,
   .chatDiv,
   .ideDiv{
