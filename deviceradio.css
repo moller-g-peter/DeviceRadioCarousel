@@ -28,7 +28,7 @@ body,
 }
 .streamDiv{
   position: relative;
-  background-color: yellow;
+  background-color: #1C313E;
   height: 50vh;
   /*width: 50%;*/
 }
@@ -343,16 +343,19 @@ and (max-device-width : 640px){
     padding-top: 20%;
     color: red;
   }
-  .desktopOnly{
-    display: none !important;
+  .ideDiv{
+    padding: 0 !important;
+    border: none !important;
   }
+/*  .desktopOnly{
+    display: none !important;
+  }*/
 
   .streamDiv,
   .chatDiv,
   .ideDiv{
     width: 100%;
   }
-
   .streamDiv,
   .chatDiv{
     height: 93.8vh;
@@ -363,6 +366,9 @@ and (max-device-width : 640px){
   }
   .chatlioDiv{
     height: 100%;
+  }
+  #chatlioWidgetPlaceholder{
+    padding: 5px 0 0 0 !important;
   }
 
   /* ---------- MOBILE MENU TABS ---------- */
@@ -388,33 +394,6 @@ and (max-device-width : 640px){
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
