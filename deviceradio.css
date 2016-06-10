@@ -16,6 +16,9 @@ body,
   height: 100%;
   /*background: yellow;*/
 }
+/*.carousel-inner{
+  height: 90%;
+}*/
 .container-fluid{
   background: #1C313E;
 }
@@ -354,6 +357,10 @@ code {
 and (min-device-width : 360px)
 and (max-device-width : 640px){
 
+  .carousel.slide,
+  .carousel-inner{
+    height: 96.8%;
+  }
   .info{
     display: block;
     text-align: center;
