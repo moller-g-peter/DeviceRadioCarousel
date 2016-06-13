@@ -342,6 +342,24 @@ code {
 
 
 
+/* ---------- MODAL SECTION ---------- */
+
+.modal-content{
+  background-color: #1C313E !important;
+  border: 5px solid #f95c3d !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+}
+.close{
+  text-shadow: none !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+
+
+
+
 
 
 

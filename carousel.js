@@ -116,22 +116,19 @@ $('.col-xs-4[data-slide-to="'+currentIndex+'"]').addClass('active');
       // $buttonBoolean = false;
       // alert("Inside ideDiv");
     }
+
+
+    if (e.target.id == "exec_button" || $(e.target).parents(".exec_button").size()) {
+      $('.chatDiv').css('background-color', '#10232e');
+      $('.ideDiv').css('background-color', '#10232e');
+      // alert("Inside chatDiv");
+    }
+
+
+    // if($('#myModal').css('display') === 'block'){
+    //   console.log("heelooo");
+    // }
   });
-
-
-// if (e.target.id == "videoFrame" || $(e.target).parents("#videoFrame").size()) {
-//       $('.chatDiv').css('background-color', '#f95c3d');
-//       $('.ideDiv').css('background-color', '#10232e');
-//       alert("Inside videoFrame");
-//     } else {
-//       $('.chatDiv').css('background-color', '#10232e');
-//       $('.ideDiv').css('background-color', '#f95c3d');
-//       // $buttonBoolean = false;
-//       // alert("Outside chatlioWidgetPlaceholder");
-//     }
-
-
-
 
 
 
