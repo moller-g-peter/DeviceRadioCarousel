@@ -1,8 +1,6 @@
-  var Editor = ace.require("ace/editor").Editor,
-    editor = ace.edit("editor"), session = editor.getSession();
-    
-     var markers_present = [];
-   
+//
+
+
 
 DeviceRadio.Compiler = function (version, hw) {
 	// handle version to use
@@ -270,39 +268,19 @@ DeviceRadio.Compiler.prototype.add = function (tokens, namespace, title) {
 	var that = this;
 	
 	// build and throw an error message
-	var err = function(msg, token) {
-		if (typeof msg !== "string") msg = "Unknown error";
-		msg += " in '" + title + "'";
-		if (token !== undefined) {
-			msg += " on line " + token.row + ", column " + token.col;
-                     
-               
-                
-                        var row=token.row-1;
-                        var column=token.col;
-                        
-                  // document.getElementById('errorValue').value = token.row;  
-                   
 
-            var Range = ace.require('ace/range').Range;
-            var marker = editor.session.addMarker(new Range(row, 0, row, 1), "myMarker", "fullLine");  /// first is number of lines to be highlighted,0,number of row, number of column  
+        
+        
+    var err = function (msg, token) {
+        if (typeof msg !== "string")
+            msg = "Unknown error";
+        msg += " ";
+        if (token !== undefined) {
+            msg += " on line " + token.row + ", column " + token.col;
 
-
-            markers_present[markers_present.length] = marker;
-            
-            editor.session.selection.moveCursorToPosition({row: row, column: column});
-            editor.session.selection.selectLineEnd();
-
-            //  alert(markers_present[0]);
-
-
-
-               
-                  
-              
-		}
+        }
 		msg += ".";
-		throw new Error(msg);
+		throw new DeviceRadio.Compiler.CompilerException(msg, token);
 	};
 	
 	// helper to scan for unexpected !
@@ -1381,7 +1359,3 @@ DeviceRadio.Compiler.prototype.assert = function (token, type, options) {
 		throw new DeviceRadio.Compiler.CompilerException("Invalid assertion", token);
 	}
 };
-
-
-
-

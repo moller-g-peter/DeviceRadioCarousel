@@ -1,42 +1,6 @@
 
 // adds swipe function together with "carousel-swipe.js"
 // $("#myCarousel").carousel(function(){});
-  // $('.container-fluid').remove();
-  // $('.row').unwrap('.row');
-  // $('div').removeClass('.col-sm-6');
-  // $('div').removeClass('.col-sm-12');
-  // $('.desktopOnly').removeClass();
-
-
-
-  // var cnt = $(".row").contents();
-  // $(".row").replaceWith(cnt);
-
-$(window).resize(function(){
-    if ($(window).width() < 740) {
-      var cnt = $(".desktopOnly").contents();
-      $(".desktopOnly").replaceWith(cnt);
-      
-      $('.chatDiv').detach().insertBefore('.beforeDiv');
-    }
-
-
-
-
-
-
-  }).resize();
-
-// $('.row').removeClass('.desktopOnly');
-
-
-
-  
-$('.exe_button_1').hide();
-$('.exe_button_2').hide();
-$('.exe_button_3').hide();
-$('.reload_exe').hide();
-
 
 // $("#myCarousel").swiperight(function() {
 //   $("#myCarousel").carousel('prev');
@@ -48,6 +12,23 @@ $('.reload_exe').hide();
 //$('#myCarousel').carousel({
 //    interval: 2000
 //});
+
+
+
+$('.exe_button_1').hide();
+$('.exe_button_2').hide();
+$('.exe_button_3').hide();
+$('.reload_exe').hide();
+
+$(window).resize(function(){
+  if ($(window).width() < 740) {
+    var cnt = $(".desktopOnly").contents();
+    $(".desktopOnly").replaceWith(cnt);
+    $('.chatDiv').detach().insertBefore('.beforeDiv');
+    $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
+  }
+}).resize();
+
 
 
 
@@ -123,56 +104,38 @@ $('.col-xs-4[data-slide-to="'+currentIndex+'"]').addClass('active');
 
 // Create the orange background(focused div)
 
-  // $("body").click(function(e) {
-  //     // alert("clicked");
-  //   if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
-  //     $('.desktopChat').css('background-color', '#f95c3d');
-  //     $('.desktopIDE').css('background-color', '#10232e');
-  //     // alert("Inside chatlioWidgetPlaceholder");
-  //   } else {
-  //     $('.desktopChat').css('background-color', '#10232e');
-  //     $('.desktopIDE').css('background-color', '#f95c3d');
-  //     // $buttonBoolean = false;
-  //     // alert("Outside chatlioWidgetPlaceholder");
-  //   }
-  // });
+  $("body").click(function(e) {
+      // alert("clicked");
+    if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
+      $('.chatDiv').css('background-color', '#f95c3d');
+      $('.ideDiv').css('background-color', '#10232e');
+      // alert("Inside chatDiv");
+    } else {
+      $('.chatDiv').css('background-color', '#10232e');
+      $('.ideDiv').css('background-color', '#f95c3d');
+      // $buttonBoolean = false;
+      // alert("Inside ideDiv");
+    }
+  });
 
 
-// console.log("outside button");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   // document.addEventListener('chatlio.ready', function (e) {
-
-// $(window).load(function(){
-    // $(window).resize(function(){
-    //   if ($(window).width() < 1040) {
-    //     $('#desktopWrapper').appendTo('#mobileIDE', function(){
-    //       // console.log('hellowee');
-    //     });
-    //     console.log("hello");
-    //   }
-    //   else {
-    //     console.log('nope');
-    //   }
-    // }).resize();
-  // }, false);
+// if (e.target.id == "videoFrame" || $(e.target).parents("#videoFrame").size()) {
+//       $('.chatDiv').css('background-color', '#f95c3d');
+//       $('.ideDiv').css('background-color', '#10232e');
+//       alert("Inside videoFrame");
+//     } else {
+//       $('.chatDiv').css('background-color', '#10232e');
+//       $('.ideDiv').css('background-color', '#f95c3d');
+//       // $buttonBoolean = false;
+//       // alert("Outside chatlioWidgetPlaceholder");
+//     }
 
 
 
 
-// });
+
+
+
 
 
 
