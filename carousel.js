@@ -102,34 +102,41 @@ $('.col-xs-4[data-slide-to="'+currentIndex+'"]').addClass('active');
 
 
 
+
+
+
+
+
+$(window).resize(function(){
+  if ($(window).width() > 740) {
+
+    $("body").click(function(e) {
+        // alert("clicked");
+      if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
+        $('.chatDiv').css('background-color', '#f95c3d');
+        $('.ideDiv').css('background-color', '#10232e');
+        // alert("Inside chatDiv");
+      } else {
+        $('.chatDiv').css('background-color', '#10232e');
+        $('.ideDiv').css('background-color', '#f95c3d');
+        // $buttonBoolean = false;
+        // alert("Inside ideDiv");
+      }
+
+
+      if (e.target.id == "exec_button" || $(e.target).parents(".exec_button").size()) {
+        $('.chatDiv').css('background-color', '#10232e');
+        $('.ideDiv').css('background-color', '#10232e');
+        // alert("Inside chatDiv");
+      }
+      // if($('#myModal').css('display') === 'block'){
+      //   console.log("heelooo");
+      // }
+    });
+  }
+}).resize();
+
 // Create the orange background(focused div)
-
-  $("body").click(function(e) {
-      // alert("clicked");
-    if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
-      $('.chatDiv').css('background-color', '#f95c3d');
-      $('.ideDiv').css('background-color', '#10232e');
-      // alert("Inside chatDiv");
-    } else {
-      $('.chatDiv').css('background-color', '#10232e');
-      $('.ideDiv').css('background-color', '#f95c3d');
-      // $buttonBoolean = false;
-      // alert("Inside ideDiv");
-    }
-
-
-    if (e.target.id == "exec_button" || $(e.target).parents(".exec_button").size()) {
-      $('.chatDiv').css('background-color', '#10232e');
-      $('.ideDiv').css('background-color', '#10232e');
-      // alert("Inside chatDiv");
-    }
-
-
-    // if($('#myModal').css('display') === 'block'){
-    //   console.log("heelooo");
-    // }
-  });
-
 
 
 
