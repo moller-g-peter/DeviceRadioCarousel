@@ -64,7 +64,13 @@ body,
   width: 100%;
   height: 100%;
 }
-
+/*
+.streamDiv,
+.ideDiv,
+.chatDiv{
+  background-color: yellow !important;
+}
+*/
 
 
 
@@ -200,18 +206,14 @@ pre > code{
 }
 
 /* this wrapper is causing white space when swiping on mobile phone */
-.wrap {
-  /*border-style: solid none none none;*/
+/*.wrap {
   background-color: #1c313e;
   border: none;
   border-top: 1px solid #35434F;
-  /*border-width: 1px;*/
-  /*border-color: #073642;*/
-  /*border-color: yellow;*/
   margin: 15px 0;
   padding: 0;
   width: 100%;
-}
+}*/
 .containerDeviceradio:last-child{
   margin: 0;
   overflow: hidden;
@@ -414,6 +416,7 @@ and (max-device-width : 640px){
   }
   #chatlioWidgetPlaceholder{
     padding: 0 !important;
+    margin: 0 !important;
   }
   .video-container{
     padding-top: 0 !Important;
@@ -423,6 +426,10 @@ and (max-device-width : 640px){
   .embed-inline-container{
     /*margin-top: 8.2vh !important;*/
     margin-top: 40px !important;
+  }
+  .embed-inline-container{
+    height: 100% !important;
+    min-height: 0 !important;
   }
 
   /* ---------- MOBILE MENU TABS ---------- */
