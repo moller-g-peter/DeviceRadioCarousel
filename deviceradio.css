@@ -381,7 +381,7 @@ and (max-device-width : 640px){
   }
   .carousel.slide,
   .carousel-inner{
-    height: 96.8%;
+    height: 100vh;
   }
   .info{
     display: block;
@@ -415,6 +415,15 @@ and (max-device-width : 640px){
   #chatlioWidgetPlaceholder{
     padding: 0 !important;
   }
+  .video-container{
+    padding-top: 0 !Important;
+  }
+  .video-container,
+  .ace_editor,
+  .embed-inline-container{
+    /*margin-top: 8.2vh !important;*/
+    margin-top: 40px !important;
+  }
 
   /* ---------- MOBILE MENU TABS ---------- */
 
@@ -435,7 +444,6 @@ and (max-device-width : 640px){
   }
   .nav>li>a:link{
     background-color: #475F6D;
-    /*height: 20%;*/
   }
 
 }

@@ -23,7 +23,7 @@
 <body>
 
   <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-    <ol class="nav nav-pills">
+    <ol class="nav nav-pills navbar-fixed-top">
         <li data-target="#myCarousel" data-slide-to="0" class="col-xs-4 active removeWhiteSpace"><a href="#">Stream</a></li>
         <li data-target="#myCarousel" data-slide-to="1" class="col-xs-4 removeWhiteSpace"><a href="#">IDE</a></li>
         <li data-target="#myCarousel" data-slide-to="2" class="col-xs-4 removeWhiteSpace"><a href="#">Chat</a></li>
@@ -91,7 +91,7 @@
               <div class="row desktopOnly">
 
                 <div class="col-sm-12 item logDiv">
-                  <button class="exec_button" type="button" onclick="excButton()" id="btn-push" data-toggle="modal" data-target="#myModal">
+                  <button class="exec_button" type="button" onclick="excButton()" id="btn-push" data-toggle="modal" data-target="#myModalExecute">
                     <!-- <img src="compiler/images/execute.png" height="25"/> -->
                     <img class="exe_button_default" src="compiler/images/Exe_button_default.png" height="50"/>
                     <img class="exe_button_1" src="compiler/images/Exe_button_1.png" height="50"/>
@@ -99,7 +99,7 @@
                     <img class="exe_button_3" src="compiler/images/Exe_button_3.png" height="50"/>
                   </button>
 
-                  <button class="reload_button" type="button" onclick="reloadButton()" id="btn-wipe">
+                  <button class="reload_button" type="button" onclick="reloadButton()" id="btn-wipe" data-toggle="modal" data-target="#myModalReload">
                     <img class="reload_default" src="compiler/images/reload_default.png" height="45"/>
                     <img class="reload_exe" src="compiler/images/reload_exe.png" height="45"/>
                   </button>
@@ -123,8 +123,8 @@
           </div> <!-- removeWhiteSpace -->
 
 
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+          <!-- Modal EXECUTE -->
+          <div class="modal fade" id="myModalExecute" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -135,12 +135,38 @@
                   <p>Lorem Ipsum or something</p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Queue</button>
+                  <button type="button" class="btn btn-success" data-dismiss="modal">Queue</button>
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Wait</button>
                 </div> <!-- modal-footer -->
               </div> <!-- modal-content -->
             </div> <!-- modal-dialog -->
           </div> <!-- myModal -->
+
+
+
+          <!-- Modal RELOAD -->
+          <div class="modal fade" id="myModalReload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Ich bien eine Berliner!!!</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Lorem Ipsum or whatever</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Reload</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                </div> <!-- modal-footer -->
+              </div> <!-- modal-content -->
+            </div> <!-- modal-dialog -->
+          </div> <!-- myModal -->
+
+
+
+
+
 
 
         </div> <!-- row -->
@@ -150,17 +176,6 @@
 
 
 
-
-<!--  -->
-
-
-
-
-<!-- <img src="http://www.technocrazed.com/wp-content/uploads/2015/11/HD-Phone-Wallpapers-1080p-19-640x1138.jpg" alt="Flower"> -->
-
-<!-- <img src="http://www.technocrazed.com/wp-content/uploads/2015/11/HD-Phone-Wallpapers-1080p-1-640x1138.jpg" alt="Chania"> -->
-
-<!-- <img src="http://www.technocrazed.com/wp-content/uploads/2015/11/HD-Phone-Wallpapers-1080p-12-640x1138.jpg" alt="Chania"> -->
 
 
 
