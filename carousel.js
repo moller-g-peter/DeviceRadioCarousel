@@ -10,7 +10,7 @@ $("#myCarousel").swiperight(function() {
   activeMenuItem.removeClass('active');
   var nextMenuItem;
 
-  console.log('if number:', navNumber - 1);
+  // console.log('if number:', navNumber - 1);
 
   if ((navNumber - 1) < 0) {
     nextMenuItem = $('.nav').find('[data-slide-to="2"]');
@@ -29,7 +29,7 @@ $("#myCarousel").swipeleft(function() {
   activeMenuItem.removeClass('active');
   var nextMenuItem;
 
-  console.log('if number:', navNumber + 1);
+  // console.log('if number:', navNumber + 1);
 
   if ((navNumber + 1) > 2) {
     nextMenuItem = $('.nav').find('[data-slide-to="0"]');
@@ -38,6 +38,12 @@ $("#myCarousel").swipeleft(function() {
     nextMenuItem = $('.nav').find('[data-slide-to="' + (navNumber + 1) + '"]');
   }
   nextMenuItem.addClass('active');
+});
+
+
+$('.nav li').click(function(){
+  $(this).toggleClass("active");
+  $(this).siblings().removeClass('active');
 });
 
 
@@ -67,16 +73,46 @@ $('.exe_button_3').hide();
 $('.reload_exe').hide();
 
 $(window).resize(function(){
-  if ($(window).width() < 740) {
+  if ($(window).width() < 1025) {
     var cnt = $(".desktopOnly").contents();
     $(".desktopOnly").replaceWith(cnt);
-    console.log("vad är ditt problem");
+    // console.log("vad är ditt problem");
     $('.chatDiv').detach().insertBefore('.beforeDiv');
     $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
   }
 }).resize();
 
 
+
+
+$(window).resize(function(){
+  if ($(window).width() > 1025) {
+
+    $("body").click(function(e) {
+        // alert("clicked");
+      if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
+        $('.chatDiv').css('background-color', '#f95c3d');
+        $('.ideDiv').css('background-color', '#10232e');
+        // alert("Inside chatDiv");
+      } else {
+        $('.chatDiv').css('background-color', '#10232e');
+        $('.ideDiv').css('background-color', '#f95c3d');
+        // $buttonBoolean = false;
+        // alert("Inside ideDiv");
+      }
+
+
+      if (e.target.id == "exec_button" || $(e.target).parents(".exec_button").size()) {
+        $('.chatDiv').css('background-color', '#10232e');
+        $('.ideDiv').css('background-color', '#10232e');
+        // alert("Inside chatDiv");
+      }
+      // if($('#myModal').css('display') === 'block'){
+      //   console.log("heelooo");
+      // }
+    });
+  }
+}).resize();
 
 
 // var clickEvent = false;
@@ -154,34 +190,7 @@ $(window).resize(function(){
 
 
 
-$(window).resize(function(){
-  if ($(window).width() > 740) {
 
-    $("body").click(function(e) {
-        // alert("clicked");
-      if (e.target.id == "chatlioWidgetPlaceholder" || $(e.target).parents("#chatlioWidgetPlaceholder").size()) {
-        $('.chatDiv').css('background-color', '#f95c3d');
-        $('.ideDiv').css('background-color', '#10232e');
-        // alert("Inside chatDiv");
-      } else {
-        $('.chatDiv').css('background-color', '#10232e');
-        $('.ideDiv').css('background-color', '#f95c3d');
-        // $buttonBoolean = false;
-        // alert("Inside ideDiv");
-      }
-
-
-      if (e.target.id == "exec_button" || $(e.target).parents(".exec_button").size()) {
-        $('.chatDiv').css('background-color', '#10232e');
-        $('.ideDiv').css('background-color', '#10232e');
-        // alert("Inside chatDiv");
-      }
-      // if($('#myModal').css('display') === 'block'){
-      //   console.log("heelooo");
-      // }
-    });
-  }
-}).resize();
 
 // Create the orange background(focused div)
 

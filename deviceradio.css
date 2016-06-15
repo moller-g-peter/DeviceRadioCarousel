@@ -45,6 +45,7 @@ body,
 .streamDiv{
   position: relative;
   background-color: #1C313E;
+  /*background-color: yellow;*/
 }
 .streamDiv iframe{
   position: absolute;
@@ -96,8 +97,10 @@ body,
   border: none !important;
 }
 .chatDiv{
-  background-color: #1C313E;
+  /*background-color: #1C313E;*/
+  /*background-color: red;*/
   height: 43vh;
+  z-index: 1040;
   /*width: 50%;*/
 }
 .chatlio-title-bar{
@@ -154,6 +157,7 @@ body,
 
 .ideDiv{
   background-color: #1C313E;
+  /*background-color: blue;*/
   padding: 5px !important;
   height: 65vh;
   border-left: 1px solid #000;
@@ -206,14 +210,14 @@ pre > code{
 }
 
 /* this wrapper is causing white space when swiping on mobile phone */
-/*.wrap {
+.wrap {
   background-color: #1c313e;
   border: none;
   border-top: 1px solid #35434F;
   margin: 15px 0;
   padding: 0;
   width: 100%;
-}*/
+}
 .containerDeviceradio:last-child{
   margin: 0;
   overflow: hidden;
@@ -302,6 +306,7 @@ code {
 
 .logDiv{
   background-color: #1C313E;
+  /*background-color: green;*/
   height: 35vh;
   border-left: 1px solid #000;
   border-top: 1px solid #000;
@@ -357,7 +362,12 @@ code {
   color: #fff !important;
   opacity: 1 !important;
 }
-
+.modal-footer{
+  border-top: none !important;
+}
+.modal-header{
+  border-bottom: 1px solid #35434F !important;
+}
 
 
 
@@ -374,8 +384,8 @@ code {
 /* -------------------- MOBILE SECTION -------------------- */
 
 @media only screen
-and (min-device-width : 360px)
-and (max-device-width : 640px){
+and (min-device-width : 160px)
+and (max-device-width : 1040px){
 
   .chatDiv,
   .ideDiv{
@@ -389,7 +399,7 @@ and (max-device-width : 640px){
     display: block;
     text-align: center;
     padding-top: 50%;
-    color: red;
+    /*color: red;*/
   }
   .ideDiv,
   .streamDiv{
@@ -423,13 +433,24 @@ and (max-device-width : 640px){
   }
   .video-container,
   .ace_editor,
-  .embed-inline-container{
+  #chatlio-widget{
     /*margin-top: 8.2vh !important;*/
     margin-top: 40px !important;
   }
   .embed-inline-container{
     height: 100% !important;
     min-height: 0 !important;
+  }
+  .streamDiv,
+  .logDiv{
+    height: 100%;
+  }
+  #editor{
+    height: 60%;
+  }
+  #console{
+    float: right;
+    margin-top: 20px !important; 
   }
 
   /* ---------- MOBILE MENU TABS ---------- */
@@ -452,6 +473,9 @@ and (max-device-width : 640px){
   .nav>li>a:link{
     background-color: #475F6D;
   }
+/*  .nav>li>a:hover{
+    background-color: red !important;
+  }*/
 
 }
 
