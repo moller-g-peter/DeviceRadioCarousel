@@ -482,7 +482,10 @@ and (-webkit-device-pixel-ratio:3)
 /*and (min-device-width : 160px)
 and (max-device-width : 1040px)*/
 {
-
+  .chatlio-new-message-container-small{
+    background-color: #10232e !important;
+    border-top: 1px solid #35434F !important;
+  }
 /*  .chatDiv,
   .ideDiv{
     background-color: transparent;
