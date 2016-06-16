@@ -539,6 +539,7 @@ msec -= ss * 1000;
 
 // event handler for changes in the queue
 live.on('queuechange', function (total, before_you) {
+<<<<<<< HEAD
     
         if(before_you==0){
             
@@ -549,6 +550,15 @@ live.on('queuechange', function (total, before_you) {
             isOnQue=true;    
         }
 	$('#console').append('<p><code>In queue: ' + total + ', people before you: ' + before_you + '</code></p>');
+=======
+	$('#console').prepend('<p><code>In queue: ' + total + ', people before you: ' + before_you + '</code></p>');
+    // console.log("before_you: ", before_you);
+    if(before_you === 0){
+        // alert("top!!!");
+        $('p code').eq(0).css({'background': 'green', 'color': 'white'});
+        // $(this).nextAll().remove();
+    }
+>>>>>>> 85db4657d12d78db82bf19aaa875500c125d32bf
 });
 
 // program device-button pushed
@@ -574,7 +584,7 @@ $('#btn-wipe').on('click', function() {
 });
 
 // connect to server
-live.connect();   
+live.connect();
     
     
     
