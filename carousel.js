@@ -79,8 +79,12 @@ $(window).resize(function(){
     // console.log("vad är ditt problem");
     $('.chatDiv').detach().insertBefore('.beforeDiv');
     $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
+    // $( ".logDiv" ).appendTo( '$( ".ideDiv" ');
   }
 }).resize();
+
+
+
 
 
 

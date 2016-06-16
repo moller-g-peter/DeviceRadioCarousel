@@ -108,8 +108,8 @@ body,
 }
 .chatlio-message-container{
   background-color: #1c313e !important;
-  height: calc(100% - 85px) !important;
-  bottom: 49px !important;
+  height: calc(100% - 108px) !important;
+  bottom: 72px !important;
 }
 .chatlio-message-from-me > .chatlio-message-content{
   background-color: #10232e !important;
@@ -128,7 +128,7 @@ body,
 .chatlio-new-message-container{
   border-top: 1px solid #35434F !important;
   background-color: #10232e !important;
-  /*bottom: 0 !important;*/
+  bottom: 0 !important;
 }
 .chatlio-powered-by{
   display: none !important;
@@ -375,6 +375,7 @@ code {
 
 
 
+/*-----------------------------------------------------------------------------*/
 
 
 
@@ -393,95 +394,29 @@ code {
 
 
 
+/*  .chatlio-message-container{
+    background-color: #1c313e !important;
+    height: calc(100% - 85px) !important;
+    bottom: 49px !important;
+  }*/
 
 
 
-
-
-/* -------------------- MOBILE SECTION RATIO 1 -------------------- */
-
+/* -------------------- MOBILE SECTION RATIO 3 -------------------- */
 @media only screen
-and (-webkit-device-pixel-ratio:1){
-
-  .carousel.slide,
-  .carousel-inner{
-    height: 100vh;
-  }
-  .ideDiv,
-  .streamDiv{
-    padding: 0 !important;
-    border: none !important;
-  }
-  .streamDiv,
-  .chatDiv,
-  .ideDiv{
-    width: 100%;
-    height: 100%;
-  }
-  #chatlioWidgetPlaceholder{
-    padding: 0 !important;
-    margin: 0 !important;
-    /*height: 93.8vh;*/
-    height: 95.6vh;
-    width: 100%;
-  }
-  .video-container{
-    padding-top: 0 !Important;
-  }
-  .video-container,
-  .ace_editor,
-  /*#chatlio-widget*/
-  .chatDiv
-  {
-    /*margin-top: 8.2vh !important;*/
-    margin-top: 40px !important;
-  }
-  #editor{
-    height: 60%;
-  }
-
-  /* ---------- MOBILE MENU TABS ---------- */
-
-  .nav-pills{
-    display: block;
-  }
-  .nav-pills{
-    height: 6.2vh;
-  }
-  ol > li{
-    text-align: center;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .nav-pills > li > a{
-    border-radius: 0 !important;
-    color: #fff !important;
-  }
-  .nav>li>a:link{
-    background-color: #475F6D;
-  }
-}
-/* -------------------- MOBILE SECTION RATIO 1 -------------------- */
-
-
-
-
-
-
-/* -------------------- MOBILE SECTION RATIO 2 -------------------- */
-@media only screen
-and (-webkit-device-pixel-ratio:2)
-/*and (min-device-width : 160px)
-and (max-device-width : 1040px)*/
+/*and (-webkit-device-pixel-ratio:3)*/
+and (min-device-width : 160px)
+and (max-device-width : 768px)
 {
   .chatlio-new-message-container-small{
     background-color: #10232e !important;
     border-top: 1px solid #35434F !important;
   }
-/*  .chatDiv,
-  .ideDiv{
-    background-color: transparent;
-  }*/
+  .chatlio-message-container{
+    background-color: blue !important;
+    height: calc(100% - 85px) !important;
+    bottom: 49px !important;
+  }
   .carousel.slide,
   .carousel-inner{
     height: 100vh;
@@ -496,25 +431,15 @@ and (max-device-width : 1040px)*/
     padding: 0 !important;
     border: none !important;
   }
-/*  .ideDiv{
-    height: 74vh;
-  }*/
-/*  .logDiv{
-    height: 19.8vh;
-  }*/
   .streamDiv,
   .chatDiv,
   .ideDiv{
     width: 100%;
     height: 100%;
   }
-/*  .chatlioDiv{
-    height: 100%;
-  }*/
   #chatlioWidgetPlaceholder{
     padding: 0 !important;
     margin: 0 !important;
-    /*height: 93.8vh;*/
     height: 92.6vh;
     width: 100%;
   }
@@ -523,27 +448,15 @@ and (max-device-width : 1040px)*/
   }
   .video-container,
   .ace_editor,
-  /*#chatlio-widget*/
   .chatDiv
   {
-    /*margin-top: 8.2vh !important;*/
     margin-top: 40px !important;
   }
- /* .embed-inline-container{
-    height: 100% !important;
-    min-height: 0 !important;
-  }*/
-/*  .streamDiv,
-  .ideDiv,
-  .logDiv{
-    height: 100%;
-  }*/
   #editor{
     height: 60%;
   }
   #console{
-    /*float: right;*/
-    margin-top: 20px !important; 
+    margin-top: 10px !important; 
   }
 
 
@@ -572,7 +485,11 @@ and (max-device-width : 1040px)*/
   }*/
 
 }
-/* -------------------- MOBILE SECTION RATIO 2 -------------------- */
+
+
+
+
+
 
 
 
@@ -580,19 +497,26 @@ and (max-device-width : 1040px)*/
 
 
 /* -------------------- MOBILE SECTION RATIO 3 -------------------- */
+
+
+
 @media only screen
-and (-webkit-device-pixel-ratio:3)
-/*and (min-device-width : 160px)
-and (max-device-width : 1040px)*/
+/*and (-webkit-device-pixel-ratio:1)*/
+and (min-device-width : 768px)
+and (max-device-width : 1280px)
 {
   .chatlio-new-message-container-small{
     background-color: #10232e !important;
     border-top: 1px solid #35434F !important;
   }
-/*  .chatDiv,
-  .ideDiv{
-    background-color: transparent;
-  }*/
+  .chatlio-message-container{
+    background-color: yellow !important;
+   /* height: calc(100% - 85px) !important;
+    bottom: 49px !important;*/
+  }
+  .chatlio-new-message-container{
+    bottom: -13px !important;
+  }
   .carousel.slide,
   .carousel-inner{
     height: 100vh;
@@ -619,14 +543,11 @@ and (max-device-width : 1040px)*/
     width: 100%;
     height: 100%;
   }
-/*  .chatlioDiv{
-    height: 100%;
-  }*/
   #chatlioWidgetPlaceholder{
     padding: 0 !important;
     margin: 0 !important;
     /*height: 93.8vh;*/
-    height: 92.6vh;
+    height: 94.8vh;
     width: 100%;
   }
   .video-container{
@@ -634,7 +555,6 @@ and (max-device-width : 1040px)*/
   }
   .video-container,
   .ace_editor,
-  /*#chatlio-widget*/
   .chatDiv
   {
     /*margin-top: 8.2vh !important;*/
@@ -684,3 +604,7 @@ and (max-device-width : 1040px)*/
 
 }
 /* -------------------- MOBILE SECTION RATIO 3 -------------------- */
+
+
+
+
