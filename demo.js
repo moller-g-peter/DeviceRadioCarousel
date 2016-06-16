@@ -8,6 +8,7 @@
 
 var editorvalue = "";
 var editor=""; 
+var isOnQue=true;
 
 
      var markers_present = [];
@@ -405,8 +406,13 @@ function syntaxHighlight(json) {
 		com.add(tokens, null, "deviceradio.txt");
 		com.optimize();
 		var stats = com.generate();
+                
+                 
+		if(isOnQue===false){
+                    
+                 program_b64 = Base64.encode(stats[1]);   
+                }
 		
-		program_b64 = Base64.encode(stats[1]);
                 compiled=true;
             //    document.getElementById('errorReport').innerHTML = " ";
 	}
@@ -533,6 +539,15 @@ msec -= ss * 1000;
 
 // event handler for changes in the queue
 live.on('queuechange', function (total, before_you) {
+    
+        if(before_you==0){
+            
+         isOnQue=false;   
+            
+        }else{
+            
+            isOnQue=true;    
+        }
 	$('#console').append('<p><code>In queue: ' + total + ', people before you: ' + before_you + '</code></p>');
 });
 
