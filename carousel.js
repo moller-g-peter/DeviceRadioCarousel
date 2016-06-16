@@ -77,8 +77,20 @@ $(window).resize(function(){
     var cnt = $(".desktopOnly").contents();
     $(".desktopOnly").replaceWith(cnt);
     // console.log("vad är ditt problem");
-    $('.chatDiv').detach().insertBefore('.beforeDiv');
-    $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
+    $('.chatDiv').detach();
+    
+    if($( ".chatDiv" ).length>0 ){
+        
+    //  alert("not removed");  
+        
+    }else{
+        $( ".myDiv" ).insertBefore( $( ".beforeDiv" ) );
+        
+           $(".myDiv").append('<div class="col-sm-12 item chatDiv"><div id="chatlioWidgetPlaceholder" class="chatlioDiv" style="margin: auto;"></div></div>');
+        alert("removed");
+    }
+            //.insertBefore('.beforeDiv');
+   // $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
     // $( ".logDiv" ).appendTo( '$( ".ideDiv" ');
   }
 }).resize();
