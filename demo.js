@@ -533,7 +533,12 @@ msec -= ss * 1000;
 
 // event handler for changes in the queue
 live.on('queuechange', function (total, before_you) {
-	$('#console').append('<p><code>In queue: ' + total + ', people before you: ' + before_you + '</code></p>');
+	$('#console').prepend('<p><code>In queue: ' + total + ', people before you: ' + before_you + '</code></p>');
+    // console.log("before_you: ", before_you);
+    if(before_you === 0){
+        // alert("top!!!");
+        $('p code:first-child').eq(0).css({'background': 'green', 'color': 'white'});
+    }
 });
 
 // program device-button pushed

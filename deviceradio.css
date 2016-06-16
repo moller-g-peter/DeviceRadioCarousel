@@ -413,7 +413,7 @@ and (max-device-width : 768px)
     border-top: 1px solid #35434F !important;
   }
   .chatlio-message-container{
-    background-color: blue !important;
+    /*background-color: blue !important;*/
     height: calc(100% - 85px) !important;
     bottom: 49px !important;
   }
@@ -510,7 +510,7 @@ and (max-device-width : 1280px)
     border-top: 1px solid #35434F !important;
   }
   .chatlio-message-container{
-    background-color: yellow !important;
+    /*background-color: yellow !important;*/
    /* height: calc(100% - 85px) !important;
     bottom: 49px !important;*/
   }
