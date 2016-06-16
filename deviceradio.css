@@ -338,6 +338,10 @@ code {
   top: 2px;
   left: 4px;
 }
+#console{
+  height: 21px;
+  overflow: hidden;
+}
 
 
 

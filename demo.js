@@ -537,7 +537,8 @@ live.on('queuechange', function (total, before_you) {
     // console.log("before_you: ", before_you);
     if(before_you === 0){
         // alert("top!!!");
-        $('p code:first-child').eq(0).css({'background': 'green', 'color': 'white'});
+        $('p code').eq(0).css({'background': 'green', 'color': 'white'});
+        // $(this).nextAll().remove();
     }
 });
 
@@ -564,7 +565,7 @@ $('#btn-wipe').on('click', function() {
 });
 
 // connect to server
-live.connect();   
+live.connect();
     
     
     
