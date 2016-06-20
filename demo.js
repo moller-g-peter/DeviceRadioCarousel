@@ -552,7 +552,10 @@ live.on('queuechange', function (total, before_you) {
 	$('#console').append('<p><code>In queue: ' + total + ', people before you: ' + before_you + '</code></p>');
 
 	$('#console').prepend('<p><code>In queue: ' + total + ', people before you: ' + before_you + '</code></p>');
-         $('p code').eq(0).css({'background': 'green', 'color': 'white'});
+
+        if(before_you === 0){
+         $('p code:first-child').eq(0).css({'background': 'green', 'color': 'white'});
+        }
     // console.log("before_you: ", before_you);
 
 
