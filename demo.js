@@ -280,7 +280,7 @@ function reloadButton() {
       $('.reload_exe').fadeIn(400, function(){
       $('.reload_exe').fadeOut(400);
         //cogAnimation2();
-          $('.reload_default').show(); 
+          $('.reload_default').show();
           
           clearMarkers();
       });

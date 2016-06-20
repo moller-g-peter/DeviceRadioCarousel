@@ -100,7 +100,7 @@
                     <img class="exe_button_3" src="compiler/images/Exe_button_3.png" height="50"/>
                   </button>
 
-                  <button class="reload_button" type="button" onclick="reloadButton()" id="btn-wipe" data-toggle="modal" data-target="#myModalReload">
+                  <button class="reload_button" type="button" id="btn-wipe" data-toggle="modal" data-target="#myModalReload">
                     <img class="reload_default" src="compiler/images/reload_default.png" height="45"/>
                     <img class="reload_exe" src="compiler/images/reload_exe.png" height="45"/>
                   </button>
@@ -156,7 +156,7 @@
                   <p>あなたはリロードしたいですか？</p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Reload</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="reloadButton()">Reload</button>
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                 </div> <!-- modal-footer -->
               </div> <!-- modal-content -->
