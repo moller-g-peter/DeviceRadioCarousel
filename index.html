@@ -24,8 +24,8 @@
   <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
     <ol class="nav nav-pills navbar-fixed-top">
         <li data-target="#myCarousel" data-slide-to="0" class="col-xs-4 active removeWhiteSpace"><a href="#">Stream</a></li>
-        <li data-target="#myCarousel" data-slide-to="1" class="col-xs-4 removeWhiteSpace"><a href="#">IDE</a></li>
-        <li data-target="#myCarousel" data-slide-to="2" class="col-xs-4 removeWhiteSpace"><a href="#">Chat</a></li>
+        <li data-target="#myCarousel" data-slide-to="1" class="col-xs-4 removeWhiteSpace"><a href="#">Chat</a></li>
+        <li data-target="#myCarousel" data-slide-to="2" class="col-xs-4 removeWhiteSpace"><a href="#">IDE</a></li>
     </ol>
 
     <!-- Wrapper for slides -->
@@ -49,7 +49,7 @@
                 </div> <!-- streamDiv -->
 
 
-                <div class="col-sm-12 item chatDiv">
+                <div class="col-sm-12 item chatDiv" id="chatDiv">
                   
                     <div id="chatlioWidgetPlaceholder" class="chatlioDiv" style="margin: auto;"></div>
                  
@@ -65,7 +65,7 @@
             <div class="container-fluid desktopOnly">
               <div class="row desktopOnly">
 
-                    <div class="col-sm-12 item ideDiv">
+                    <div class="col-sm-12 item ideDiv" id="ideDiv">
                       <textarea class="col-sm-12 col-md-12 col-lg-12 textArea" id="code" style="display:none">
   conf io as button
           pin = 0
@@ -77,8 +77,9 @@
                     
                     </div> <!-- ideDiv -->
  
-                    <div class="beforeDiv"></div>
+                    <!-- <div class="myDiv"></div> -->
 
+                    <div class="beforeDiv"></div>
               </div> <!-- row -->
             </div> <!-- container-fluid -->
           </div> <!-- removeWhiteSpace -->
@@ -199,12 +200,12 @@
   <!-- Bootstrap JS (minified) -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-  <script src="chatlio.js"></script>
   <!-- // <script src="jquery_mobile.js"></script> -->
   <script src="jquery.mobile.custom.min.js"></script>
   <!-- // <script src="carousel-swipe.js"></script> -->
 
 
+  <!-- <script src="carousel.js"></script> -->
   <script src="demo.js" type="text/javascript"></script>
   <script src="ace_grammer/test/ace/ace.js" type="text/javascript"></script>
   <script src="ace_grammer/build/ace_grammar.js" type="text/javascript"></script>
@@ -240,8 +241,12 @@
   <script type="text/javascript" src="compiler/js/sockjs-0.3.4.min.js"></script>
   <script type="text/javascript" src="compiler/js/stomp.js"></script>
   <script type="text/javascript" src="compiler/js/deviceradio-live.js"></script>
-  <script src="carousel.js"></script>
   
+  <div id="putMeInside"></div>
+
+
+  <script src="carousel.js"></script>
+  <script src="chatlio.js"></script>
   <script type="text/javascript">
      var editor=   ace_grammar_demo("editor", document.getElementById("code").value, [
               /\?json\b/.test(document.location.href) ? {language : "json", grammar : json_grammar} : {language : "drlang", grammar : js_grammar}

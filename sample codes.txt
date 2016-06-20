@@ -3,3 +3,60 @@
   conf io as led
        pin = 1
   task read_button on button
+
+
+
+
+
+  $(window).resize(function(){
+  if ($(window).width() < 1025) {
+    var cnt = $(".desktopOnly").contents();
+    $(".desktopOnly").replaceWith(cnt);
+    // console.log("vad är ditt problem");
+    $('.chatDiv').detach().insertBefore('.beforeDiv');
+    $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
+    // $( ".logDiv" ).appendTo( '$( ".ideDiv" ');
+  }
+}).resize();
+
+
+
+
+$(window).resize(function(){
+  if ($(window).width() > 1025) {
+    $('#chatDiv').append('<div id="chatlioWidgetPlaceholder" class="chatlioDiv" style="margin: auto;"></div>');
+    $('#putMeInside').append('<script src="chatlio.js"></script>');
+  }
+}).resize();
+
+
+
+
+
+$(window).resize(function(){
+  if ($(window).width() < 1025) {
+    var cnt = $(".desktopOnly").contents();
+    $(".desktopOnly").replaceWith(cnt);
+
+    $('#chatDiv').insertBefore('.beforeDiv');
+    $( ".logDiv" ).appendTo( $( ".ideDiv" ) );
+    // $('#putMeInside').append('<script src="chatlio.js"></script>');
+    $('#chatDiv').append('<div id="chatlioWidgetPlaceholder" class="chatlioDiv" style="margin: auto;"></div>');
+    $('#putMeInside').append('<script src="chatlio.js"></script>');
+
+    // var removeChat = $("#chatlioWidgetPlaceholder").contents();
+    // $("#chatlioWidgetPlaceholder").replaceWith(removeChat);
+
+    // $('#chatlioWidgetPlaceholder').remove();
+    // $('#chatDiv').append('<div id="chatlioWidgetPlaceholder" class="chatlioDiv" style="margin: auto;"></div>');
+    // $('.chatDiv').detach().insertBefore('.beforeDiv');
+
+    // $('.ideDiv').before('.beforeDiv');
+
+    // $('.chatDiv').each(function() {
+    //     $(this).insertAfter($(this).parent().find('.ideDiv'));
+    // });
+    // $( ".logDiv" ).appendTo( '$( ".ideDiv" ');
+  }
+  // chatlioStart();
+}).resize();
