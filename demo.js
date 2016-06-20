@@ -564,7 +564,7 @@ function deviceradioProcess(text) {
 
 }
 
-$(function () {
+function DeviceRadioMQ() {
 
     var live = new DeviceRadioLive('http://stomp.deviceradio.net:15674/stomp', 'gateway', 'deviceradio', 'dreD8G@fRu');
 
@@ -615,12 +615,18 @@ $(function () {
 
         $('#console').append('<p><code>Upload failed (' + reason + ') took ' + ss + 's </code></p>');
     });
+    
+    
+    
+    
 
 // event handler for changes in the queue
-    live.on('queuechange', function (total, before_you) {
+
+ live.on('queuechange', function (total, before_you) {
 
 
         if (before_you == 0) {
+            
 
             isOnQue = false;
 
@@ -640,9 +646,13 @@ $(function () {
 
     });
 
-// program device-button pushed
-    $('#btn-push').on('click', function () {
-        if (live.connected && program_b64 !== null && compiled === true) {
+
+
+
+// connect to server
+    live.connect();
+    
+            if (live.connected && program_b64 !== null && compiled === true) {
 
             $(".progress-bar").show();
             $('#console').append('<p><code>Uploading firmware to device</code></p>');
@@ -650,6 +660,24 @@ $(function () {
             live.upload('38F8-932-5E41A', program_b64);
 
         }
+
+
+
+};
+
+
+// program device-button pushed
+    $('#btn-push').on('click', function () {
+       
+
+
+
+    DeviceRadioMQ();
+
+
+
+
+
     });
 
 // wipe device-button pushed
@@ -661,16 +689,6 @@ $(function () {
             live.upload('38F8-932-5E41A');
         }
     });
-
-// connect to server
-    live.connect();
-
-
-
-});
-
-
-
 
 
 
