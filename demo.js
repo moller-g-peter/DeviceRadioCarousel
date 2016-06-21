@@ -481,111 +481,117 @@ function syntaxHighlight(json) {
 
 }
 
-$(function() {
-    
- var live = new DeviceRadioLive('http://stomp.deviceradio.net:15674/stomp', 'gateway', 'deviceradio', 'dreD8G@fRu');
+$(function () {
+
+    var live = new DeviceRadioLive('http://stomp.deviceradio.net:15674/stomp', 'gateway', 'deviceradio', 'dreD8G@fRu');
 
 // event handler for successfull connection
-live.on('connect', function () {
-	$('.btn').removeClass('disabled');
-});
+    live.on('connect', function () {
+        $('.btn').removeClass('disabled');
+    });
 
 // event handler for disconnection
-live.on('disconnect', function () {
-	$('.btn').addClass('disabled');
-});
+    live.on('disconnect', function () {
+        $('.btn').addClass('disabled');
+    });
 
 // event handler for successfull firmware upload
-live.on('upload', function () {
-	$('#console').append('<p><code>Firmware written successfully</code></p>');
-});
+    live.on('upload', function () {
+        $('#console').append('<p><code>Firmware written successfully</code></p>');
+    });
 
 // event handler for upload errors
-live.on('uploaderror', function (reason) {
-	$('#console').append('<p><code>Upload failed (' + reason + ')</code></p>');
-});
+    live.on('uploaderror', function (reason) {
+        $('#console').append('<p><code>Upload failed (' + reason + ')</code></p>');
+    });
 
 // event handler for changes in the queue
-live.on('queuechange', function (total, before_you, max) {
-	// if you are first or not in queue
-	if (!before_you) {
-		$('#console').append('<p><code>In queue: ' + total + '</code></p>');
-	}
-	else {
-		$('#console').append('<p><code>In queue: ' + total + ', people before you: ' + ((before_you > 0) ? before_you : (max + '+')) + '</code></p>');
-	}
-});
+    live.on('queuechange', function (total, before_you, max) {
+        // if you are first or not in queue
+        if (!before_you) {
+            $('#console').append('<p><code>In queue: ' + total + '</code></p>');
+        } else {
+            $('#console').append('<p><code>In queue: ' + total + ', people before you: ' + ((before_you > 0) ? before_you : (max + '+')) + '</code></p>');
+        }
+    });
 
 // event handler when its your turn
-live.on('yourturn', function (status) {
-	if (status) {
-		$('#console').append('<p><code>It is your turn</code></p>');
-		$('.btn').removeClass('disabled');
-		alert('ur turn hurrah');
-                $('#myModalNotification').modal('show'); 
-                $('#modalMessages').html('It is now your time to have control of the device'); 
-                    setTimeout(function(){
-                   $("#myModalNotification").modal('toggle');
-                  }, 2000);
-	}
-	else {
-		$('#console').append('<p><code>Your turn is up</code></p>');
-                $('#myModalNotification').modal('show');
-                $('#modalMessages').html('Your time is now up'); 
-                    setTimeout(function(){
-                   $("#myModalNotification").modal('toggle');
-                  }, 2000);
-		//alert('Your time is now up');
-	}
-});
-
-// program device-button pushed
-$('#btn-push').on('click', function() {
-	if (!$(this).hasClass('disabled')) {
-            alert(live.queueing);
-		if (!live.queueing) {
-			$('.btn').addClass('disabled');
-			// put us in queue
-			live.queue();
-                        alert(live.queueing);
-			//alert('Your are now in the queue for getting control of the device');
-                        
-                          
-                $('#myModalNotification').modal('show'); 
-                $('#modalMessages').html('Your are now in the queue for getting control of the device'); 
-//                   setTimeout(function(){
+    live.on('yourturn', function (status) {
+        if (status) {
+            $('#console').append('<p><code>It is your turn</code></p>');
+            $('.btn').removeClass('disabled');
+            alert('ur turn hurrah');
+//                $('#myModalNotification').modal('show'); 
+//                $('#modalMessages').html('It is now your time to have control of the device'); 
+//                    setTimeout(function(){
 //                   $("#myModalNotification").modal('toggle');
 //                  }, 2000);
-    
-              
-		}
-		else if (live.connected && program_b64 !== null) {
-			$('#console').append('<p><code>Uploading firmware to device</code></p>');
-			// write firmware to device
-			live.upload('38F8-932-5E41A', program_b64);
-		}
-	}
-});
+        } else {
+            $('#console').append('<p><code>Your turn is up</code></p>');
+//                $('#myModalNotification').modal('show');
+//                $('#modalMessages').html('Your time is now up'); 
+//                    setTimeout(function(){
+//                   $("#myModalNotification").modal('toggle');
+//                  }, 2000);
+            alert('Your time is now up');
+        }
+    });
 
-// wipe device-button pushed
-$('#btn-wipe').on('click', function() {
-	if (!$(this).hasClass('disabled')) {
-		if (!live.queueing) {
-			$('.btn').addClass('disabled');
-			// put us in queue
-			live.queue();
-			alert('Your are now in the queue for getting control of the device');
-		}
-		else if (live.connected) {
-			$('#console').append('<p><code>Clearing all code in the device</code></p>');
-			// format the device
-			live.upload('38F8-932-5E41A');
-		}
-	}
-});
+
 
 // connect to server
 live.connect();
+
+
+
+// program device-button pushed
+    $('#btn-push').on('click', function () {
+        if (!$(this).hasClass('disabled')) {
+            //  alert(live.queueing);
+            if (!live.queueing) {
+                $('.btn').addClass('disabled');
+                // put us in queue
+                live.queue();
+                //   alert(live.queueing);
+                //alert('Your are now in the queue for getting control of the device');
+
+
+                $('#myModalNotification').modal('show');
+                $('#modalMessages').html('Your are now in the queue .');
+                setTimeout(function () {
+                    $("#myModalNotification").modal('toggle');
+                }, 2000);
+                $('.exec_button').prop("disabled", true);
+                $('.exe_button_4').show();
+                
+
+            } else if (live.connected && program_b64 !== null) {
+                $('#console').append('<p><code>Uploading firmware to device</code></p>');
+                // write firmware to device
+                live.upload('38F8-932-5E41A', program_b64);
+            }
+        }
+    });
+
+// wipe device-button pushed
+    $('#btn-wipe').on('click', function () {
+        if (!$(this).hasClass('disabled')) {
+            if (!live.queueing) {
+                $('.btn').addClass('disabled');
+                // put us in queue
+                live.queue();
+                alert('Your are now in the queue for getting control of the device');
+            } else if (live.connected) {
+                $('#console').append('<p><code>Clearing all code in the device</code></p>');
+                // format the device
+                live.upload('38F8-932-5E41A');
+            }
+        }
+    });
+
+
+
+
 });
 
 

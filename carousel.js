@@ -50,6 +50,7 @@ $('.nav li').click(function(){
 $('.exe_button_1').hide();
 $('.exe_button_2').hide();
 $('.exe_button_3').hide();
+$('.exe_button_4').hide();
 $('.reload_exe').hide();
 
 // $(window).resize(function(){
