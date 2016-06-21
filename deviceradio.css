@@ -509,7 +509,7 @@ and (max-device-width : 1024px)
 
 
 
-/* -------------------- MOBILE SECTION RATIO 3 -------------------- */
+/* -------------------- MOBILE SECTION -------------------- */
 
 
 @media only screen
@@ -525,6 +525,10 @@ and (max-device-width : 1024px)
     height: calc(100% - 106px) !important;
   }
 }
+
+
+
+/*-------------------------------------------------------*/
 
 @media only screen
 and (-webkit-device-pixel-ratio:3)
@@ -543,6 +547,10 @@ and (max-device-width : 1024px)
   }
 }
 
+
+
+/*-------------------------------------------------------*/
+
 @media only screen
 and (-webkit-device-pixel-ratio:2)
 and (min-device-width : 160px)
@@ -557,6 +565,9 @@ and (max-device-width : 1024px)
   }
   .chatlio-new-message-container-small{
     bottom: 18px !important;
+  }
+  #editor{
+    height: 70%;
   }
 }
 
