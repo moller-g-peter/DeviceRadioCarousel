@@ -163,7 +163,21 @@
             </div> <!-- modal-dialog -->
           </div> <!-- myModal -->
 
-
+     <!-- Modal alert messages -->
+          <div class="modal fade" id="myModalNotification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h3 class="modal-title" id="myModalLabel">Notifications !!!!</h3>
+                </div>
+                <div class="modal-body">
+                    <p id="modalMessages"></p>
+                </div>
+             <!-- modal-footer -->
+              </div> <!-- modal-content -->
+            </div> <!-- modal-dialog -->
+          </div> <!-- myModal -->
 
 
         </div> <!-- row -->
@@ -216,31 +230,35 @@
   <script type="text/javascript" src="compiler/rainbow/rainbow.js"></script>
   <script type="text/javascript" src="compiler/rainbow/language/drdl.js"></script>
 
-  <script type="text/javascript" src="compiler/deviceradio-core.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-lexer.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-debug.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-reset.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-io.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-radio.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-copy.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-bool.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-trigger.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-edge.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-logic.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-timer.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-counter.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-uart.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-lut.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-i2c.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-optimizer.js"></script>
-  <script type="text/javascript" src="compiler/deviceradio-compiler-generator.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-core.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-lexer.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-debug.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-reset.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-io.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-radio.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-copy.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-bool.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-trigger.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-edge.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-logic.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-timer.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-counter.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-uart.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-lut.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-i2c.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-optimizer.js"></script>
+<script type="text/javascript" src="compiler/deviceradio-compiler-generator.js"></script>
 
-  <script type="text/javascript" src="compiler/lexer/lexer.js"></script>
+<script type="text/javascript" src="compiler/lexer/lexer.js"></script>
 
-  <script type="text/javascript" src="compiler/js/sockjs-0.3.4.min.js"></script>
-  <script type="text/javascript" src="compiler/js/stomp.js"></script>
-  <script type="text/javascript" src="compiler/js/deviceradio-live.js"></script>
+<!-- includes for web socket + stomp -->
+<script type="text/javascript" src="compiler/js/sockjs-0.3.4.min.js"></script>
+<script type="text/javascript" src="compiler/js/stomp.js"></script>
+<script type="text/javascript" src="compiler/js/deviceradio-live.js"></script>
+
+<!-- for Base64 -->
+<script type="text/javascript" src="compiler/js/b64.js"></script>
   
   <div id="putMeInside"></div>
 

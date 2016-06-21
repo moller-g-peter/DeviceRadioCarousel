@@ -1,7 +1,3 @@
-//
-
-
-
 DeviceRadio.Compiler = function (version, hw) {
 	// handle version to use
 	var ver = (version !== undefined) ? parseFloat(version) : 0;
@@ -268,18 +264,14 @@ DeviceRadio.Compiler.prototype.add = function (tokens, namespace, title) {
 	var that = this;
 	
 	// build and throw an error message
-
-        
-        
-    var err = function (msg, token) {
-        if (typeof msg !== "string")
-            msg = "Unknown error";
-        msg += " ";
-        if (token !== undefined) {
-            msg += " on line " + token.row + ", column " + token.col;
-
-        }
+	var err = function(msg, token) {
+		if (typeof msg !== "string") msg = "Unknown error";
+		msg += " in '" + title + "'";
+		if (token !== undefined) {
+			msg += " on line " + token.row + ", column " + token.col;
+		}
 		msg += ".";
+		//throw new Error(msg);
 		throw new DeviceRadio.Compiler.CompilerException(msg, token);
 	};
 	

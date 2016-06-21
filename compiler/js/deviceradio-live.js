@@ -7,7 +7,10 @@ function DeviceRadioLive (host, vhost, username, password) {
 	var that = this;
 
 	this.connected = false; // global state
+	this.queueing = false; // global queueing state
+
 	var is_connected = false; // real state
+	var is_yourturn = false; // true when your turn
 	
 	var retry = 0;
 	
@@ -21,6 +24,7 @@ function DeviceRadioLive (host, vhost, username, password) {
 	var cb_queue_changed = null;
 	var cb_uploaded = null;
 	var cb_uploaderr = null;
+	var cb_yourturn = null;
 	
 	var ws = null;
 	var client = null;
@@ -50,10 +54,20 @@ function DeviceRadioLive (host, vhost, username, password) {
 		else if ('queue_length' in body && 'topUser' in body) {
 			if (queue_pos !== null) {
 				var new_pos = body.topUser.indexOf(public_token);
-				if (queue_pos === 0 && new_pos !== 0) queue_pos = null;
-				else queue_pos = new_pos;
+				if (queue_pos === 0 && new_pos !== 0) {
+					queue_pos = null;
+					that.queueing = false;
+					if (cb_yourturn !== null) cb_yourturn(false);
+				}
+				else {
+					if (new_pos === 0 && queue_pos !== 0 && cb_yourturn !== null) {
+						that.queueing = true;
+						cb_yourturn(true);
+					}
+					queue_pos = new_pos;
+				}
 			}
-			if (cb_queue_changed !== null) cb_queue_changed(body.queue_length, queue_pos);
+			if (cb_queue_changed !== null) cb_queue_changed(body.queue_length, queue_pos, body.topUser.length);
 		}
 	}
 	
@@ -64,7 +78,7 @@ function DeviceRadioLive (host, vhost, username, password) {
 		client['onreceive'] = on_rpc;
 		client.connect(username, password, function () {
 			public_token = getUuid();
-			private_token = '48e435c5-74e4-4e26-8ba4-9115be03d87f';
+			private_token = getUuid();
 			retry = 0;
 			if (!that.connected) {
 				that.connected = true;
@@ -153,6 +167,7 @@ function DeviceRadioLive (host, vhost, username, password) {
 	this.queue = function () {
 		if (this.connected && queue_pos === null) {
 			queue_pos = -1;
+			this.queueing = true;
 
 			// send our tokens
 			client.send('/exchange/liveoffice/live_queue', {
@@ -176,6 +191,9 @@ function DeviceRadioLive (host, vhost, username, password) {
 			break;
 		case 'queuechange':
 			cb_queue_changed = callback;
+			break;
+		case 'yourturn':
+			cb_yourturn = callback;
 			break;
 		case 'upload':
 			cb_uploaded = callback;

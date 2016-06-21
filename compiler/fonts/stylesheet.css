@@ -33,3 +33,29 @@
   font-weight: normal;
   font-style: italic;
 }
+
+.keyword {
+			color: #b58900;
+		}
+		.constant.numeric {
+			color: #dc322f;
+		}
+		.constant.string {
+			color: #859900;
+		}
+		.trigger {
+			color: #268bd2;
+		}
+		.variable {
+			color: #2aa198;
+		}
+		.symbol {
+			color: #93a1a1;
+			font-weight: bold;
+		}
+		.syntax {
+			color: #93a1a1;
+		}
+		.not {
+			color: #6c71c4;
+		}
