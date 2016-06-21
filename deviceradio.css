@@ -566,6 +566,9 @@ and (max-device-width : 1024px)
   .chatlio-new-message-container-small{
     bottom: 18px !important;
   }
+  #editor{
+    height: 70%;
+  }
 }
 
 
