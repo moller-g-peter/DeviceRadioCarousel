@@ -343,12 +343,18 @@ code {
   display: inline-block;
   background-color: #1c313e;
   border-radius: 4px;
-  border: 1px solid grey;
+  border: 1px solid gray;
 }
 .disabledMessage p{
   font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
   color: #f95c3d;
   margin: 0 5px;
+}
+.disabledWrapper{
+  display: block;
+  width: 350px;
+  height: 23px;
+  overflow: hidden;
 }
 .exec_button > img{
   position: absolute;

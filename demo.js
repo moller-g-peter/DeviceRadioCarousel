@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 
+$('.logDiv').append('<div class="disabledWrapper"></div>');
 
 
 var editorvalue = "";
-var editor=""; 
+var editor="";
 var isOnQue=true;
 
 
@@ -23,7 +24,7 @@ function ace_grammar_demo(_editor, code, langs)
    var Editor = ace.require("ace/editor").Editor,
          
            
-   editor = ace.edit("editor"), 
+   editor = ace.edit("editor"),
    
      session = editor.getSession();
       
@@ -573,14 +574,12 @@ live.connect();
         }
     });
 
-$('.exe_button_disabled').on('click', function(){
+    
+$('.exe_button_disabled').click(function(){
     // alert("poing!");
-    $('.logDiv').append('<div class="disabledMessage"><p>Button disabled until it\'s your turn</p></div>');
-    $('.disabledMessage').fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).delay(2000).fadeOut(2000, function(){
-        var disabledMessage = $(".disabledMessage").contents();
-        $(".disabledMessage").replaceWith(disabledMessage);
-        $('.disabledMessage').eq().remove();
-    });
+    $('.disabledWrapper').prepend('<div class="disabledMessage"><p>Button disabled until it\'s your turn</p></div>');
+    // $('.disabledMessage').prepend('<p class="disabledPara">Button disabled until it\'s your turn</p>');
+    $('.disabledMessage').fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).delay(2000).fadeOut(2000);
 });
 
 // wipe device-button pushed
