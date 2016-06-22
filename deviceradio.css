@@ -94,12 +94,12 @@ body,
 .chatlio-widget.embed-inline{
   border: none !important;
 }
-/*.chatDiv{*/
+.chatDiv{
   /*background-color: #1C313E;*/
   /*height: 43vh;*/
-  /*z-index: 1040;*/
+  z-index: 1040;
   /*width: 50%;*/
-/*}*/
+}
 .chatlio-title-bar{
   background-color: #77848c !important;
 }
@@ -157,10 +157,6 @@ body,
   border-left: 1px solid #000;
   /*width: 50%;*/
 }
-
-
-
-
 
 
 /*- following style below is needed for the text editor -*/
@@ -328,6 +324,32 @@ code {
   /*margin: 4px 2px;*/
   cursor: pointer;
 }
+.disabledButtonMessage{
+  position: absolute;
+  background-color: transparent !important;
+  /*color: transparent !important;*/
+  /*color: white;*/
+  /*padding: 25px 25px;*/
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid #35434F;
+  cursor: pointer;
+  z-index: 1040;
+  margin-top: 5px;
+  padding: 0 !important;
+}
+.disabledMessage{
+  display: inline-block;
+  background-color: #1c313e;
+  border-radius: 4px;
+  border: 1px solid grey;
+}
+.disabledMessage p{
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  color: #f95c3d;
+  margin: 0 5px;
+}
 .exec_button > img{
   position: absolute;
   top: 0;
@@ -343,9 +365,8 @@ code {
   display: inline-block;
   height: 21px;
   overflow: hidden;
+  margin-top: 10px;
 }
-
-
 
 
 
