@@ -230,14 +230,14 @@ function excButton() {
       
       if(editorvalue.length>0){
           
-       deviceradioProcess(editorvalue);  
+       deviceradioProcess(editorvalue);
       $('.exe_button_3').hide();
      $('.exe_button_default').show();
           
       }else{
           
       $('.exe_button_3').hide();
-      $('.exe_button_default').show();  
+      $('.exe_button_default').show();
       }
       
  
@@ -286,9 +286,6 @@ function reloadButton() {
       });
      // $('.reload_exe').hide();
      // $('.reload_default').show();
-   
-     
-
 }
 
 
@@ -315,7 +312,7 @@ function reloadButton() {
   var function_starttime=null;
 
 function deviceradioProcess(text) {
-  function_starttime = new Date(); 
+  function_starttime = new Date();
  
     
     
@@ -579,7 +576,11 @@ live.connect();
 $('.exe_button_disabled').on('click', function(){
     // alert("poing!");
     $('.logDiv').append('<div class="disabledMessage"><p>Button disabled until it\'s your turn</p></div>');
-    $('.disabledMessage').fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).delay(2000).fadeOut(2000);
+    $('.disabledMessage').fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).delay(2000).fadeOut(2000, function(){
+        var disabledMessage = $(".disabledMessage").contents();
+        $(".disabledMessage").replaceWith(disabledMessage);
+        $('.disabledMessage').eq().remove();
+    });
 });
 
 // wipe device-button pushed
