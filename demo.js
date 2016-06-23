@@ -411,12 +411,13 @@ function syntaxHighlight(json) {
                 
                 
 		program_b64 = fromByteArray(program_u8);
+                  compiled=true;
 	}
 	catch (ex) {
             $('#console').html('');
                 compiled=false;
 		compilation_message = ex.message;
-                alert(compilation_message);
+              //  alert(compilation_message);
 		//$('#btn-push').addClass('error');
 //                
 //              
@@ -549,7 +550,11 @@ live.connect();
 
 // program device-button pushed
     $('#btn-push').on('click', function () {
-        if (!$(this).hasClass('disabled')) {
+        
+        
+        if(compiled===true){
+            
+          if (!$(this).hasClass('disabled')) {
              // alert(live.queueing);
             if (!live.queueing) {
                 $('.btn').addClass('disabled');
@@ -558,13 +563,13 @@ live.connect();
                 //   alert(live.queueing);
                 //alert('Your are now in the queue for getting control of the device');
 
-
+                 $("#myModalExecute").modal('toggle');
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('Your are now in the queue .');
                 setTimeout(function () {
                     $("#myModalNotification").modal('toggle');
                 }, 2000);
-                $('.exec_button').prop("disabled", true);
+                $('.btn').prop("disabled", true);
 
                 // $('.disabledButtonMessage').show();
                 $('.logDiv').prepend('<button class="disabledButtonMessage"></button>');
@@ -576,7 +581,12 @@ live.connect();
                 // write firmware to device
                 live.upload('38F8-932-5E41A', program_b64);
             }
+        }  
+            
+            
+            
         }
+        
     });
 
     
