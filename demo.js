@@ -587,7 +587,7 @@ live.connect();
                 // write firmware to device
                 live.upload('38F8-932-5E41A', program_b64);
             }
-        }  
+        }
             
             
             
