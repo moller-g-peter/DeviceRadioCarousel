@@ -102,6 +102,7 @@
                     <img class="exe_button_2" src="compiler/images/Exe_button_2.png" height="50"/>
                     <img class="exe_button_3" src="compiler/images/Exe_button_3.png" height="50"/>
                     <img class="exe_button_disabled" src="compiler/images/Exe_button_disabled.png" height="50"/>
+                    <img class="reload_button_disabled" src="compiler/images/Reload_button_disabled.png" height="50"/>
                   </button>
 
                   <button class="reload_button" type="button"  data-toggle="modal" data-target="#myModalReload">
@@ -150,10 +151,10 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h3 class="modal-title" id="myModalLabel">並んでお待ちください!!!</h3>
+                  <h3 class="modal-title" id="myModalLabel">Welcome to the queue system!</h3>
                 </div>
                 <div class="modal-body">
-                  <p>キュー番号をご利用ください</p>
+                  <p>Do you want to stand in queue or wait until you're done?</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-success" data-dismiss="modal" onclick="excButtonQueue()" id="btn-push">Queue</button>
@@ -177,7 +178,7 @@
                   <p>あなたはリロードしたいですか？</p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"  id="btn-wipe">Reload</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="reloadButton()" id="btn-wipe">Reload</button>
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                 </div> <!-- modal-footer -->
               </div> <!-- modal-content -->
