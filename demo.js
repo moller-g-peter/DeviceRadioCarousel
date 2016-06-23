@@ -519,7 +519,7 @@ $(function () {
         } else {
             
             $('#console').prepend('<p><code>In queue: ' + total + ', people before you: ' + ((before_you > 0) ? before_you : (max + '+')) + '</code></p>');
-        }    
+        }
            
        }
     
@@ -531,15 +531,15 @@ $(function () {
             $('#console').prepend('<p>It is your turn</p>');
          //   $('.btn').removeClass('disabled');
            //  alert('ur turn hurrah');
-                $('#myModalNotification').modal('show'); 
-                $('#modalMessages').html('It is now your time to have control of the device..........'); 
+                $('#myModalNotification').modal('show');
+                $('#modalMessages').html('It is now your time to have control of the device..........');
                     setTimeout(function(){
                    $("#myModalNotification").modal('toggle');
                   }, 2000);
         } else {
             $('#console').prepend('<p>Your turn is up</p>');
                 $('#myModalNotification').modal('show');
-                $('#modalMessages').html('Your time is now up'); 
+                $('#modalMessages').html('Your time is now up');
                     setTimeout(function(){
                    $("#myModalNotification").modal('toggle');
                   }, 2000);

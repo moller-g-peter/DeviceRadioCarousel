@@ -373,20 +373,20 @@ code {
   overflow: hidden;
   margin-top: 10px;
 }
-.newsLetterLogo{
+.newsletterButton{
   position: absolute;
-  /*margin-bottom: 10px;*/
-  bottom: 23px;
-  right: 23px;
+  bottom: 1px;
+  right: 1px;
 }
-.emailFormGroup{
-  margin-bottom: 35px;
+.newsletterButton button{
+  background-color: #1c313e;
+  color: #E9E9E9;
 }
-#myModalNewsletter{
-  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+.mailIcon{
+  display: inline-block;
 }
-#myModalNewsletter label{
-  font-weight: 400 !important;
+.mailIcon span{
+  color: #f95c3d;
 }
 
 
@@ -408,6 +408,21 @@ code {
 }
 .modal-header{
   border-bottom: 1px solid #35434F !important;
+}
+.newsLetterLogo{
+  position: absolute;
+  /*margin-bottom: 10px;*/
+  bottom: 23px;
+  right: 23px;
+}
+.emailFormGroup{
+  margin-bottom: 35px;
+}
+#myModalNewsletter{
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+#myModalNewsletter label{
+  font-weight: 400 !important;
 }
 
 
