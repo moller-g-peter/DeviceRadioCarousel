@@ -206,35 +206,23 @@ var buttonBoolean = true;
 
 
 
-
-
 function excButtonQueue() {
-    
-    
-    
-    
-     
-  
+
           
     clearMarkers();
 
     $('.containerDeviceradio').html('');
 
- 
-   
-      $('.exe_button_default').hide();
-      $('.exe_button_1').fadeIn(300, function(){
-      $('.exe_button_1').fadeOut(300);
-        cogAnimation2();
+    
           
-      });
+  
       
       if(editorvalue.length>0){
           
           
        deviceradioProcess(editorvalue);
       $('.exe_button_3').hide();
-     $('.exe_button_default').show();
+      $('.exe_button_default').show();
           
       }else{
           
@@ -291,18 +279,7 @@ function reloadButton() {
 }
 
 
-    function cogAnimation2(){
-      $('.exe_button_2').fadeIn(200, function(){
-      $('.exe_button_2').fadeOut(200);
-        cogAnimation3();
-      });
-    }
-    function cogAnimation3(){
-      $('.exe_button_3').fadeIn(200, function(){
-      $('.exe_button_3').fadeOut(200);
-       // excButton();
-      });
-    }
+ 
 
 
 
@@ -529,6 +506,7 @@ $(function () {
     live.on('yourturn', function (status) {
         if (status) {
             $('#console').prepend('<p>It is your turn</p>');
+            cogAnimation1();
          //   $('.btn').removeClass('disabled');
            //  alert('ur turn hurrah');
                 $('#myModalNotification').modal('show');
@@ -546,6 +524,30 @@ $(function () {
           //  alert('Your time is now up');
         }
     });
+
+
+ 
+    function cogAnimation1(){
+        $('.exe_button_default').hide();
+        $('.exe_button_1').fadeIn(300, function(){
+            $('.exe_button_1').fadeOut(300);
+            cogAnimation2();
+        });
+    }
+    function cogAnimation2(){
+        $('.exe_button_2').fadeIn(200, function(){
+            $('.exe_button_2').fadeOut(200);
+            cogAnimation3();
+        });
+    }
+    function cogAnimation3(){
+      $('.exe_button_3').fadeIn(200, function(){
+          $('.exe_button_3').fadeOut(200);
+          // excButton();
+      });
+    }
+
+
 
 
 
