@@ -324,12 +324,10 @@ code {
   /*margin: 4px 2px;*/
   cursor: pointer;
 }
-.disabledButtonMessage{
+.disabledButtonMessage,
+.disabledButtonReload{
   position: absolute;
   background-color: transparent !important;
-  /*color: transparent !important;*/
-  /*color: white;*/
-  /*padding: 25px 25px;*/
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
@@ -338,6 +336,10 @@ code {
   z-index: 1040;
   margin-top: 5px;
   padding: 0 !important;
+}
+.disabledButtonReload{
+  margin-left: 56px;
+  background-color: white;
 }
 .disabledMessage{
   display: inline-block;

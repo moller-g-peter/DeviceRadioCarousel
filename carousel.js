@@ -5,8 +5,10 @@ $('.exe_button_1').hide();
 $('.exe_button_2').hide();
 $('.exe_button_3').hide();
 $('.exe_button_disabled').hide();
+$('.reload_button_disabled').hide();
 $('.reload_exe').hide();
 $('.disabledButtonMessage').hide();
+$('.disabledButtonReload').hide();
 
 // adds swipe function together with "carousel-swipe.js"
 // $("#myCarousel").carousel(function(){});

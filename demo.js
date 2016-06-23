@@ -578,9 +578,12 @@ live.connect();
                 $('.btn').prop("disabled", true);
 
                 // $('.disabledButtonMessage').show();
-               $('.logDiv').prepend('<button class="disabledButtonMessage"></button>');
+                $('.logDiv').prepend('<button class="disabledButtonMessage"></button>');
+                $('.logDiv').prepend('<button class="disabledButtonReload"></button>');
                 $('.exe_button_disabled').show();
+                $('.reload_button_disabled').show();
                 $('.exe_button_disabled').appendTo('.disabledButtonMessage');
+                $('.reload_button_disabled').appendTo('.disabledButtonReload');
 
             } else if (live.connected && program_b64 !== null) {
                 $('#console').append('<p>Uploading firmware to device</p>');
@@ -596,7 +599,7 @@ live.connect();
     });
 
     
-$('.exe_button_disabled').click(function(){
+$('.exe_button_disabled, .reload_button_disabled').click(function(){
     // alert("poing!");
     $('.disabledWrapper').prepend('<div class="disabledMessage"><p>Button disabled until it\'s your turn</p></div>');
     // $('.disabledMessage').prepend('<p class="disabledPara">Button disabled until it\'s your turn</p>');
