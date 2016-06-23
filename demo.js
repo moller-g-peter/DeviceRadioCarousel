@@ -606,16 +606,21 @@ $('.exe_button_disabled').click(function(){
 // wipe device-button pushed
     $('#btn-wipe').on('click', function () {
         if (!$(this).hasClass('disabled')) {
-            if (!live.queueing) {
-                $('.btn').addClass('disabled');
-                // put us in queue
-                live.queue();
-                alert('Your are now in the queue for getting control of the device');
-            } else if (live.connected) {
-                $('#console').append('<p>Clearing all code in the device</p>');
-                // format the device
-                live.upload('38F8-932-5E41A');
-            }
+//            if (!live.queueing) {
+//                $('.btn').addClass('disabled');
+//                // put us in queue
+//                live.queue();
+//                alert('Your are now in the queue for getting control of the device');
+//            } else if (live.connected) {
+//                reloadButton();
+//                $('#console').append('<p>Clearing all code in the device</p>');
+//                // format the device
+//                live.upload('38F8-932-5E41A');
+//            }
+
+          reloadButton();
+
+
         }
     });
 
