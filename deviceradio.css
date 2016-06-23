@@ -353,7 +353,7 @@ code {
 .disabledWrapper{
   display: block;
   width: 350px;
-  height: 23px;
+  height: 22px;
   overflow: hidden;
 }
 .exec_button > img{
