@@ -400,7 +400,8 @@ function syntaxHighlight(json) {
 	), null, "Core");
 	
 	// compile program
-	var compilation_message = "Program compiled successfully.\n";
+	//var compilation_message = "Program compiled successfully.\n";
+        var compilation_message = "";
 	try {
 	   var tokens = lex.parse(data);
 		com.add(tokens, null, "deviceradio.txt");
@@ -409,6 +410,8 @@ function syntaxHighlight(json) {
 		
 		var program_u8 = [];
 		for (var i = 0; i < stats[1].length; i++) program_u8.push(stats[1].charCodeAt(i));
+                
+                
 		program_b64 = fromByteArray(program_u8);
 	}
 	catch (ex) {
@@ -508,9 +511,11 @@ $(function () {
 // event handler for changes in the queue
     live.on('queuechange', function (total, before_you, max) {
         // if you are first or not in queue
+        alert("b4 u"+before_you);
         if (!before_you) {
             $('#console').append('<p><code>In queue: ' + total + '</code></p>');
         } else {
+            
             $('#console').append('<p><code>In queue: ' + total + ', people before you: ' + ((before_you > 0) ? before_you : (max + '+')) + '</code></p>');
         }
     });
