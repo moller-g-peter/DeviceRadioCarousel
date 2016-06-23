@@ -256,6 +256,7 @@ $.ajax({
 		var program_u8 = [];
 		for (var i = 0; i < stats[1].length; i++) program_u8.push(stats[1].charCodeAt(i));
 		program_b64 = fromByteArray(program_u8);
+               // alert(program_b64);
 	}
 	catch (ex) {
 		compilation_message = ex.message;

@@ -9,7 +9,7 @@ $('.logDiv').append('<div class="disabledWrapper"></div>');
 
 var editorvalue = "";
 var editor="";
-var isOnQue=true;
+var isOnQue=false;
 
 
      var markers_present = [];
@@ -231,6 +231,7 @@ function excButton() {
       
       if(editorvalue.length>0){
           
+          
        deviceradioProcess(editorvalue);
       $('.exe_button_3').hide();
      $('.exe_button_default').show();
@@ -324,36 +325,7 @@ $('#console').html('');
 
 var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
 
-function addNewlines(str) {
-  var result = '';
-  while (str.length > 0) {
-    result += str.substring(0, 80) + '\n';
-    str = str.substring(80);
-  }
-  return result;
-}
 
-function syntaxHighlight(json) {
-    if (typeof json != 'string') {
-         json = JSON.stringify(json, undefined, 2);
-    }
-    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-        var cls = 'number';
-        if (/^"/.test(match)) {
-            if (/:$/.test(match)) {
-                cls = 'key';
-            } else {
-                cls = 'string';
-            }
-        } else if (/true|false/.test(match)) {
-            cls = 'boolean';
-        } else if (/null/.test(match)) {
-            cls = 'null';
-        }
-        return '<span class="' + cls + '">' + match + '</span>';
-    });
-}
 
 
  
@@ -377,9 +349,7 @@ function syntaxHighlight(json) {
     html += '<pre class="right"><code data-language="drdl">' + data + '</code></pre>';
     html += '</div>';
 
-    //  console.log("i am text"+html);
-    $('.containerDeviceradio').append(html);
-    Rainbow.color();
+
 
 
 
@@ -399,7 +369,7 @@ function syntaxHighlight(json) {
 	
 	// compile program
 	//var compilation_message = "Program compiled successfully.\n";
-        var compilation_message = "";
+        var compilation_message = "Compiled message successfully";
 	try {
 	   var tokens = lex.parse(data);
 		com.add(tokens, null, "deviceradio.txt");
@@ -411,6 +381,7 @@ function syntaxHighlight(json) {
                 
                 
 		program_b64 = fromByteArray(program_u8);
+              //  alert(""+program_b64);
                   compiled=true;
 	}
 	catch (ex) {
@@ -476,7 +447,36 @@ function syntaxHighlight(json) {
 
 
 
+function addNewlines(str) {
+  var result = '';
+  while (str.length > 0) {
+    result += str.substring(0, 80) + '\n';
+    str = str.substring(80);
+  }
+  return result;
+}
 
+function syntaxHighlight(json) {
+    if (typeof json != 'string') {
+         json = JSON.stringify(json, undefined, 2);
+    }
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}
 
 
 
@@ -499,45 +499,51 @@ $(function () {
 
 // event handler for successfull firmware upload
     live.on('upload', function () {
-        $('#console').append('<p><code>Firmware written successfully</code></p>');
+        $('#console').append('<p>Firmware written successfully</p>');
     });
 
 // event handler for upload errors
     live.on('uploaderror', function (reason) {
-        $('#console').append('<p><code>Upload failed (' + reason + ')</code></p>');
+        $('#console').append('<p>Upload failed (' + reason + ')</p>');
     });
 
 // event handler for changes in the queue
     live.on('queuechange', function (total, before_you, max) {
         // if you are first or not in queue
-        alert("b4 u"+before_you);
-        if (!before_you) {
+       // alert("b4 u"+before_you);
+       
+       if(isOnQue===true){
+           
+           if (!before_you) {
             $('#console').append('<p><code>In queue: ' + total + '</code></p>');
         } else {
             
             $('#console').append('<p><code>In queue: ' + total + ', people before you: ' + ((before_you > 0) ? before_you : (max + '+')) + '</code></p>');
-        }
+        }    
+           
+       }
+    
     });
 
 // event handler when its your turn
     live.on('yourturn', function (status) {
         if (status) {
-            $('#console').append('<p><code>It is your turn</code></p>');
-            $('.btn').removeClass('disabled');
-            // alert('ur turn hurrah');
-//                $('#myModalNotification').modal('show'); 
-//                $('#modalMessages').html('It is now your time to have control of the device'); 
-//                    setTimeout(function(){
-//                   $("#myModalNotification").modal('toggle');
-//                  }, 2000);
+            $('#console').append('<p>It is your turn</p>');
+         //   $('.btn').removeClass('disabled');
+           //  alert('ur turn hurrah');
+                $('#myModalNotification').modal('show'); 
+                $('#modalMessages').html('It is now your time to have control of the device..........'); 
+                    setTimeout(function(){
+                   $("#myModalNotification").modal('toggle');
+                  }, 2000);
         } else {
-            $('#console').append('<p><code>Your turn is up</code></p>');
-//                $('#myModalNotification').modal('show');
-//                $('#modalMessages').html('Your time is now up'); 
-//                    setTimeout(function(){
-//                   $("#myModalNotification").modal('toggle');
-//                  }, 2000);
-            alert('Your time is now up');
+            $('#console').append('<p>Your turn is up</p>');
+                $('#myModalNotification').modal('show');
+                $('#modalMessages').html('Your time is now up'); 
+                    setTimeout(function(){
+                   $("#myModalNotification").modal('toggle');
+                  }, 2000);
+          //  alert('Your time is now up');
         }
     });
 
@@ -553,7 +559,7 @@ live.connect();
         
         
         if(compiled===true){
-            
+            isOnQue=true;
           if (!$(this).hasClass('disabled')) {
              // alert(live.queueing);
             if (!live.queueing) {
@@ -572,12 +578,12 @@ live.connect();
                 $('.btn').prop("disabled", true);
 
                 // $('.disabledButtonMessage').show();
-                $('.logDiv').prepend('<button class="disabledButtonMessage"></button>');
+               $('.logDiv').prepend('<button class="disabledButtonMessage"></button>');
                 $('.exe_button_disabled').show();
                 $('.exe_button_disabled').appendTo('.disabledButtonMessage');
 
             } else if (live.connected && program_b64 !== null) {
-                $('#console').append('<p><code>Uploading firmware to device</code></p>');
+                $('#console').append('<p>Uploading firmware to device</p>');
                 // write firmware to device
                 live.upload('38F8-932-5E41A', program_b64);
             }
@@ -606,7 +612,7 @@ $('.exe_button_disabled').click(function(){
                 live.queue();
                 alert('Your are now in the queue for getting control of the device');
             } else if (live.connected) {
-                $('#console').append('<p><code>Clearing all code in the device</code></p>');
+                $('#console').append('<p>Clearing all code in the device</p>');
                 // format the device
                 live.upload('38F8-932-5E41A');
             }
