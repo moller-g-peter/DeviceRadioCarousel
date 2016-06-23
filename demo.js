@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 
+$('.logDiv').append('<div class="disabledWrapper"></div>');
 
 
 var editorvalue = "";
-var editor=""; 
+var editor="";
 var isOnQue=true;
 
 
@@ -23,7 +24,7 @@ function ace_grammar_demo(_editor, code, langs)
    var Editor = ace.require("ace/editor").Editor,
          
            
-   editor = ace.edit("editor"), 
+   editor = ace.edit("editor"),
    
      session = editor.getSession();
       
@@ -230,14 +231,14 @@ function excButton() {
       
       if(editorvalue.length>0){
           
-       deviceradioProcess(editorvalue);  
+       deviceradioProcess(editorvalue);
       $('.exe_button_3').hide();
      $('.exe_button_default').show();
           
       }else{
           
       $('.exe_button_3').hide();
-      $('.exe_button_default').show();  
+      $('.exe_button_default').show();
       }
       
  
@@ -286,9 +287,6 @@ function reloadButton() {
       });
      // $('.reload_exe').hide();
      // $('.reload_default').show();
-   
-     
-
 }
 
 
@@ -315,7 +313,7 @@ function reloadButton() {
   var function_starttime=null;
 
 function deviceradioProcess(text) {
-  function_starttime = new Date(); 
+  function_starttime = new Date();
  
     
     
@@ -457,7 +455,7 @@ function syntaxHighlight(json) {
        //   document.getElementById('errorReport').innerHTML = compilation_message;
         
         $('.exe_button_3').hide();
-        $('.exe_button_default').show(); 
+        $('.exe_button_default').show();
 	}
 
 	$('#console').append('<p><code>' + compilation_message + '</code></p>');
@@ -525,7 +523,7 @@ $(function () {
         if (status) {
             $('#console').append('<p><code>It is your turn</code></p>');
             $('.btn').removeClass('disabled');
-            alert('ur turn hurrah');
+            // alert('ur turn hurrah');
 //                $('#myModalNotification').modal('show'); 
 //                $('#modalMessages').html('It is now your time to have control of the device'); 
 //                    setTimeout(function(){
@@ -552,7 +550,7 @@ live.connect();
 // program device-button pushed
     $('#btn-push').on('click', function () {
         if (!$(this).hasClass('disabled')) {
-            //  alert(live.queueing);
+             // alert(live.queueing);
             if (!live.queueing) {
                 $('.btn').addClass('disabled');
                 // put us in queue
@@ -567,8 +565,11 @@ live.connect();
                     $("#myModalNotification").modal('toggle');
                 }, 2000);
                 $('.exec_button').prop("disabled", true);
-                $('.exe_button_4').show();
-                
+
+                // $('.disabledButtonMessage').show();
+                $('.logDiv').prepend('<button class="disabledButtonMessage"></button>');
+                $('.exe_button_disabled').show();
+                $('.exe_button_disabled').appendTo('.disabledButtonMessage');
 
             } else if (live.connected && program_b64 !== null) {
                 $('#console').append('<p><code>Uploading firmware to device</code></p>');
@@ -577,6 +578,14 @@ live.connect();
             }
         }
     });
+
+    
+$('.exe_button_disabled').click(function(){
+    // alert("poing!");
+    $('.disabledWrapper').prepend('<div class="disabledMessage"><p>Button disabled until it\'s your turn</p></div>');
+    // $('.disabledMessage').prepend('<p class="disabledPara">Button disabled until it\'s your turn</p>');
+    $('.disabledMessage').fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).delay(2000).fadeOut(2000);
+});
 
 // wipe device-button pushed
     $('#btn-wipe').on('click', function () {

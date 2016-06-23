@@ -1,4 +1,13 @@
 
+
+
+$('.exe_button_1').hide();
+$('.exe_button_2').hide();
+$('.exe_button_3').hide();
+$('.exe_button_disabled').hide();
+$('.reload_exe').hide();
+$('.disabledButtonMessage').hide();
+
 // adds swipe function together with "carousel-swipe.js"
 // $("#myCarousel").carousel(function(){});
 
@@ -47,11 +56,6 @@ $('.nav li').click(function(){
 });
 
 
-$('.exe_button_1').hide();
-$('.exe_button_2').hide();
-$('.exe_button_3').hide();
-$('.exe_button_4').hide();
-$('.reload_exe').hide();
 
 // $(window).resize(function(){
 //   if ($(window).width() > 1025) {
