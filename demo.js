@@ -515,10 +515,10 @@ $(function () {
        if(isOnQue===true){
            
            if (!before_you) {
-            $('#console').append('<p><code>In queue: ' + total + '</code></p>');
+            $('#console').prepend('<p><code>In queue: ' + total + '</code></p>');
         } else {
             
-            $('#console').append('<p><code>In queue: ' + total + ', people before you: ' + ((before_you > 0) ? before_you : (max + '+')) + '</code></p>');
+            $('#console').prepend('<p><code>In queue: ' + total + ', people before you: ' + ((before_you > 0) ? before_you : (max + '+')) + '</code></p>');
         }    
            
        }
@@ -528,7 +528,7 @@ $(function () {
 // event handler when its your turn
     live.on('yourturn', function (status) {
         if (status) {
-            $('#console').append('<p>It is your turn</p>');
+            $('#console').prepend('<p>It is your turn</p>');
          //   $('.btn').removeClass('disabled');
            //  alert('ur turn hurrah');
                 $('#myModalNotification').modal('show'); 
@@ -537,7 +537,7 @@ $(function () {
                    $("#myModalNotification").modal('toggle');
                   }, 2000);
         } else {
-            $('#console').append('<p>Your turn is up</p>');
+            $('#console').prepend('<p>Your turn is up</p>');
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('Your time is now up'); 
                     setTimeout(function(){
