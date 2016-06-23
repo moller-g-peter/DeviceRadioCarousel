@@ -108,6 +108,9 @@
                     <img class="reload_default" src="compiler/images/reload_default.png" height="45"/>
                     <img class="reload_exe" src="compiler/images/reload_exe.png" height="45"/>
                   </button>
+
+                  <button class="blueue" type="button"  data-toggle="modal" data-target="#myModalNewsletter">
+                  </button>
                     
 
                     
@@ -195,12 +198,41 @@
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <h3 class="modal-title" id="myModalLabel">Newsletter, kickstart campaign!</h3>
                 </div>
+
                 <div class="modal-body">
-                  <p>あなたはリロードしたいですか？</p>
+
+
+                  <form>
+                    <div class="form-group">
+                      <label for="inputName">Name</label>
+                      <input type="email" class="form-control" id="inputName" placeholder="Enter your first and last name">
+                    </div>
+
+                    <div class="form-group emailFormGroup">
+                      <label for="inputEmail">E-mail address</label>
+                      <input type="email" class="form-control" id="inputEmail" placeholder="Enter your E-mail" required>
+                    </div>
+
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> Please send me updates
+                      </label>
+                    </div>
+
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> I'm interested in a DeviceRadio DevKit
+                      </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Submit</button>
+                  </form>
+
+
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="reloadButton()" id="btn-wipe">Reload</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                  <img class="newsLetterLogo" src="compiler/images/DeviceRadio_logo.png" height="100">
+
                 </div> <!-- modal-footer -->
               </div> <!-- modal-content -->
             </div> <!-- modal-dialog -->

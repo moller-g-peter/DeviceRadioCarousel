@@ -99,10 +99,16 @@ $(window).resize(function(){
 
 
 
+$(window).resize(function(){
+  if ($(window).width() < 645 && $(window).width() > 365) {
+    $('.modal-footer').css('padding', '0');
+  }
+}).resize();
 
 
-
-
+// .modal-footer{
+//     padding: 0 !important;
+//   }
 
 
 

@@ -373,7 +373,21 @@ code {
   overflow: hidden;
   margin-top: 10px;
 }
-
+.newsLetterLogo{
+  position: absolute;
+  /*margin-bottom: 10px;*/
+  bottom: 23px;
+  right: 23px;
+}
+.emailFormGroup{
+  margin-bottom: 35px;
+}
+#myModalNewsletter{
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+#myModalNewsletter label{
+  font-weight: 400 !important;
+}
 
 
 /* ---------- MODAL SECTION ---------- */
@@ -497,6 +511,12 @@ and (max-device-width : 1024px)
   }
   #console{
     margin-top: 10px !important; 
+  }
+  .newsLetterLogo{
+    height: 67px;
+  }
+  #myModalNewsletter{
+    height: 100vh;
   }
 
 
