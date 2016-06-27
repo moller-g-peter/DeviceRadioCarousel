@@ -487,7 +487,7 @@ $(function () {
 // event handler for changes in the queue
     live.on('queuechange', function (total, before_you, max) {
         // if you are first or not in queue
-       // alert("b4 u"+before_you);
+     // alert("b4 u"+before_you);
        
        if(isOnQue===true){
            
@@ -505,13 +505,41 @@ $(function () {
 // event handler when its your turn
     live.on('yourturn', function (status) {
         if (status) {
+          //   $('.btn').removeAttr('disabled');
+           //  $( ".btn" ).removeClass( "disabled" );
+              if ( $( ".btn").hasClass( "disabled" ) ) {
+                  
+                // alert(" hey i am still disabled"); 
+                $( ".btn" ).removeClass( "disabled" );  
+                
+                
+                   if ( $( ".btn").hasClass( "disabled" ) ) {
+                  
+                 alert("here"); 
+                
+              }else{
+                  
+                //  alert("dis");
+                
+                $('.exe_button_disabled').hide();
+                $('.reload_button_disabled').hide();
+                   $('.exe_button_default').show();
+                $('.reload_default').show();
+                
+              
+                  
+                  
+                  
+              }
+                
+              }
             $('#console').prepend('<p>It is your turn</p>');
             cogAnimation1();
          //   $('.btn').removeClass('disabled');
            //  alert('ur turn hurrah');
                 $('#myModalNotification').modal('show');
-                $('#modalMessages').html('It is now your time to have control of the device..........');
-                    setTimeout(function(){
+                $('#modalMessages').html('It is now your time to have control of the device');
+                  setTimeout(function(){
                    $("#myModalNotification").modal('toggle');
                   }, 2000);
         } else {
@@ -527,25 +555,7 @@ $(function () {
 
 
  
-    function cogAnimation1(){
-        $('.exe_button_default').hide();
-        $('.exe_button_1').fadeIn(300, function(){
-            $('.exe_button_1').fadeOut(300);
-            cogAnimation2();
-        });
-    }
-    function cogAnimation2(){
-        $('.exe_button_2').fadeIn(200, function(){
-            $('.exe_button_2').fadeOut(200);
-            cogAnimation3();
-        });
-    }
-    function cogAnimation3(){
-      $('.exe_button_3').fadeIn(200, function(){
-          $('.exe_button_3').fadeOut(200);
-          // excButton();
-      });
-    }
+
 
 
 
@@ -563,13 +573,15 @@ live.connect();
         if(compiled===true){
             isOnQue=true;
           if (!$(this).hasClass('disabled')) {
-             // alert(live.queueing);
+            // alert(live.queueing);
             if (!live.queueing) {
                 $('.btn').addClass('disabled');
                 // put us in queue
                 live.queue();
                 //   alert(live.queueing);
                 //alert('Your are now in the queue for getting control of the device');
+                
+         
 
                  $("#myModalExecute").modal('toggle');
                 $('#myModalNotification').modal('show');
@@ -601,12 +613,7 @@ live.connect();
     });
 
     
-$('.exe_button_disabled, .reload_button_disabled').click(function(){
-    // alert("poing!");
-    $('.disabledWrapper').prepend('<div class="disabledMessage"><p>Button disabled until it\'s your turn</p></div>');
-    // $('.disabledMessage').prepend('<p class="disabledPara">Button disabled until it\'s your turn</p>');
-    $('.disabledMessage').fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).delay(2000).fadeOut(2000);
-});
+
 
 // wipe device-button pushed
     $('#btn-wipe').on('click', function () {
@@ -637,9 +644,32 @@ $('.exe_button_disabled, .reload_button_disabled').click(function(){
 
 
 
+$('.exe_button_disabled, .reload_button_disabled').click(function(){
+    // alert("poing!");
+    $('.disabledWrapper').prepend('<div class="disabledMessage"><p>Button disabled until it\'s your turn</p></div>');
+    // $('.disabledMessage').prepend('<p class="disabledPara">Button disabled until it\'s your turn</p>');
+    $('.disabledMessage').fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).fadeOut(70).fadeIn(70).delay(2000).fadeOut(2000);
+});
 
-
-
+    function cogAnimation1(){
+        $('.exe_button_default').hide();
+        $('.exe_button_1').fadeIn(300, function(){
+            $('.exe_button_1').fadeOut(300);
+            cogAnimation2();
+        });
+    }
+    function cogAnimation2(){
+        $('.exe_button_2').fadeIn(200, function(){
+            $('.exe_button_2').fadeOut(200);
+            cogAnimation3();
+        });
+    }
+    function cogAnimation3(){
+      $('.exe_button_3').fadeIn(200, function(){
+          $('.exe_button_3').fadeOut(200);
+          // excButton();
+      });
+    }
 
 function clearMarkers() {
 
