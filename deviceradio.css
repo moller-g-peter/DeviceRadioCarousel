@@ -426,7 +426,9 @@ code {
 #myModalNewsletter label{
   font-weight: 400 !important;
 }
-
+.coloredSpan{
+  color: red;
+}
 
 
 
