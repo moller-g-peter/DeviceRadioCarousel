@@ -221,13 +221,13 @@ function excButtonQueue() {
           
           
        deviceradioProcess(editorvalue);
-      $('.exe_button_3').hide();
-      $('.exe_button_default').show();
+      // $('.exe_button_3').hide();
+      // $('.exe_button_default').show();
           
       }else{
           
-      $('.exe_button_3').hide();
-      $('.exe_button_default').show();
+      // $('.exe_button_3').hide();
+      // $('.exe_button_default').show();
       }
       
  
@@ -403,8 +403,8 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
                 
        //   document.getElementById('errorReport').innerHTML = compilation_message;
         
-        $('.exe_button_3').hide();
-        $('.exe_button_default').show();
+        // $('.exe_button_3').hide();
+        // $('.exe_button_default').show();
 	}
 
 	$('#console').append('<p><code>' + compilation_message + '</code></p>');
@@ -523,9 +523,10 @@ $(function () {
                 
                 $('.exe_button_disabled').hide();
                 $('.reload_button_disabled').hide();
-                   $('.exe_button_default').show();
+                $('.exe_button_default').show();
                 $('.reload_default').show();
-                
+                // $('.exe_button_default').css('display','block');
+
               
                   
                   
@@ -667,6 +668,7 @@ $('.exe_button_disabled, .reload_button_disabled').click(function(){
     function cogAnimation3(){
       $('.exe_button_3').fadeIn(200, function(){
           $('.exe_button_3').fadeOut(200);
+          $('.exe_button_default').show();
           // excButton();
       });
     }
