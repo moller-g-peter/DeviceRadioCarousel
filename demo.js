@@ -480,14 +480,15 @@ $(function () {
            //  $( ".btn" ).removeClass( "disabled" );
               
                   
-                alert(" hey i am still disabled"); 
+               // alert(" hey i am still disabled"); 
+                $('#console').prepend('<p><code>You are in control of the device now</code></p>');
                 $( ".btn" ).removeClass( "disabled" );
                 $('.exe_button_disabled').hide();
                 $('.reload_button_disabled').hide();
                 $('.exe_button_default').show();
                 $('.reload_default').show();
                 $('.exec_button').removeAttr('data-target');
-                $('#console').prepend('<p>It is your turn</p>');
+                $('#console').prepend('<p><code>It is your turn</code></p>');
                 cogAnimation1();
          
                 $('#myModalNotification').modal('show');
