@@ -488,7 +488,7 @@ $(function () {
                   
                // alert(" hey i am still disabled"); 
                // $('.exec_button').attr('id', 'executeCode');
-               $('.exec_button').addClass('executeCode');
+                $('.exec_button').addClass('executeCode');
                 $('#console').prepend('<p><code>You are in control of the device now</code></p>');
                 $( ".btn" ).removeClass( "disabled" );
                 $('.exe_button_disabled').hide();
@@ -497,14 +497,17 @@ $(function () {
                 $('.reload_default').show();
                 $('.exec_button').removeAttr('data-target');
                 $('#console').prepend('<p><code>It is your turn</code></p>');
-                cogAnimation1();
+                $(".progress-bar").animate({
+                    width: "50%"
+                }, 1500).addClass('progress-bar-success').html('Your turn');
+                // cogAnimation1();
          
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('It is now your time to have control of the device');
 //                 setTimeout(function(){
 //                 $("#myModalNotification").modal('toggle');
 //                  }, 2000);
-                } 
+                }
                 
                 else {
                 $('#console').prepend('<p><code>Your turn is up</code></p>');
@@ -513,6 +516,9 @@ $(function () {
                 setTimeout(function(){
                 $("#myModalNotification").modal('toggle');
                 }, 2000);
+                $(".progress-bar").animate({
+                    width: "100%"
+                }, 1500).addClass('progress-bar-danger').html('Time is up');
                   
                 $('.exec_button').attr('data-target','#myModalExecute');
                 $('.btn').removeAttr('disabled');
@@ -557,6 +563,11 @@ live.connect();
                 setTimeout(function () {
                     $("#myModalNotification").modal('toggle');
                 }, 2000);
+
+                $(".progress-bar").animate({
+                    width: "25%"
+                }, 1500).addClass('progress-bar-success').html('In queue');
+
                 // $('.btn').prop("disabled", true);
 
                 // $('.disabledButtonMessage').show();
@@ -571,6 +582,9 @@ live.connect();
                 $('#console').append('<p>Uploading firmware to device</p>');
                 // write firmware to device
                 live.upload('38F8-932-5E41A', program_b64);
+                $(".progress-bar").animate({
+                    width: "100%"
+                }, 1500).addClass('progress-bar-success').html('Uploading firmware');
             }
         }
             

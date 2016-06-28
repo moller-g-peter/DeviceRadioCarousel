@@ -394,6 +394,10 @@ code {
   color: white;
   background-color: #2574a9;
 }
+.progress-container > .progress{
+  padding-left: 0 !important;
+  background-color: #3e4d57 !important;
+}
 
 
 
