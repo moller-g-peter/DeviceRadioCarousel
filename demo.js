@@ -480,8 +480,8 @@ $(function () {
            //  $( ".btn" ).removeClass( "disabled" );
               
                   
-                // alert(" hey i am still disabled"); 
-                $( ".btn" ).removeClass( "disabled" );  
+                alert(" hey i am still disabled"); 
+                $( ".btn" ).removeClass( "disabled" );
                 $('.exe_button_disabled').hide();
                 $('.reload_button_disabled').hide();
                 $('.exe_button_default').show();
@@ -499,7 +499,7 @@ $(function () {
 //                   $("#myModalNotification").modal('toggle');
 //                  }, 2000);
                 } else {
-                $('#console').prepend('<p>Your turn is up</p>');
+                $('#console').prepend('<p><code>Your turn is up</code></p>');
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('Your time is now up');
                 setTimeout(function(){
