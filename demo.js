@@ -453,7 +453,10 @@ $(function () {
 
 // event handler for successfull firmware upload
     live.on('upload', function () {
-        $('#console').append('<p>Firmware written successfully</p>');
+        $('#console').prepend('<p><code>Firmware written successfully</code></p>');
+         $(".progress-bar").animate({
+                width: "100%"
+            }, 1500).html('Upload successful');
     });
 
 // event handler for upload errors
@@ -635,12 +638,22 @@ live.connect();
       excButtonQueue();
      // alert(live.connected+""+program_b64);
       if (live.connected && program_b64 !== null && compiled===true) {
-        $(".progress-bar").animate({
-                width: "100%"
-            }, 1500).addClass('progress-bar-success').html('Uploading firmware');
+      
             $('#console').prepend('<p><code>Uploading firmware to device</code></p>');
             // write firmware to device
             live.upload('38F8-932-5E41A', program_b64);
+            
+            
+            
+              $(".progress-bar").animate({
+                width: "100%"
+            }, 2500).addClass('progress-bar-success').html('Uploading firmware');
+          
+      
+            
+            
+           
+            
             }
       
          
@@ -656,7 +669,7 @@ live.connect();
 });
 
 
-
+            
 
 $('.exe_button_disabled, .reload_button_disabled').click(function(){
     // alert("poing!");
