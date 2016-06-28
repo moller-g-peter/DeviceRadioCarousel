@@ -201,6 +201,7 @@ function ace_grammar_demo(_editor, code, langs)
 }
 
 function excButtonQueue() {
+    
 
           
     clearMarkers();
@@ -271,6 +272,40 @@ function reloadButton() {
 }
 
 function deviceradioProcess(text) {
+    
+    
+  function addNewlines(str) {
+  var result = '';
+  while (str.length > 0) {
+    result += str.substring(0, 80) + '\n';
+    str = str.substring(80);
+  }
+  return result;
+}
+
+function syntaxHighlight(json) {
+    if (typeof json != 'string') {
+         json = JSON.stringify(json, undefined, 2);
+    }
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}  
+    
+    
   function_starttime = new Date();
  
 $('#console').html('');
@@ -394,36 +429,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 
 
 
-function addNewlines(str) {
-  var result = '';
-  while (str.length > 0) {
-    result += str.substring(0, 80) + '\n';
-    str = str.substring(80);
-  }
-  return result;
-}
 
-function syntaxHighlight(json) {
-    if (typeof json != 'string') {
-         json = JSON.stringify(json, undefined, 2);
-    }
-    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-        var cls = 'number';
-        if (/^"/.test(match)) {
-            if (/:$/.test(match)) {
-                cls = 'key';
-            } else {
-                cls = 'string';
-            }
-        } else if (/true|false/.test(match)) {
-            cls = 'boolean';
-        } else if (/null/.test(match)) {
-            cls = 'null';
-        }
-        return '<span class="' + cls + '">' + match + '</span>';
-    });
-}
 
 
 
@@ -481,6 +487,7 @@ $(function () {
               
                   
                // alert(" hey i am still disabled"); 
+                $('.exec_button').addClass('executeCode');
                 $('#console').prepend('<p><code>You are in control of the device now</code></p>');
                 $( ".btn" ).removeClass( "disabled" );
                 $('.exe_button_disabled').hide();
@@ -493,10 +500,12 @@ $(function () {
          
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('It is now your time to have control of the device');
-                 setTimeout(function(){
-                   $("#myModalNotification").modal('toggle');
-                  }, 2000);
-                } else {
+//                 setTimeout(function(){
+//                 $("#myModalNotification").modal('toggle');
+//                  }, 2000);
+                } 
+                
+                else {
                 $('#console').prepend('<p><code>Your turn is up</code></p>');
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('Your time is now up');
@@ -599,6 +608,16 @@ live.connect();
 
 });
 
+
+ $('.executeCode').on('click', function () {
+     
+     alert("now i can execute");
+     excButtonQueue();
+     
+     
+     
+     
+ });
 
 $('.exe_button_disabled, .reload_button_disabled').click(function(){
     // alert("poing!");
