@@ -467,9 +467,12 @@ $(function () {
      // alert("b4 u"+before_you);
        
        if(isOnQue===true){
+             
            
            if (!before_you) {
             $('#console').prepend('<p><code>Total number of viewers In queue: ' + total + '</code></p>');
+         
+            
         } else {
             
             $('#console').prepend('<p><code>In queue: ' + total + ', people before you: ' + ((before_you > 0) ? before_you : (max + '+')) + '</code></p>');
@@ -497,12 +500,14 @@ $(function () {
                 $('.reload_default').show();
                 $('.exec_button').removeAttr('data-target');
                 $('#console').prepend('<p><code>It is your turn</code></p>');
+                $( ".progress-bar" ).removeClass( "progress-bar-info" );
+                $(".progress-bar").animate({
+                        width: "66%"
+                    }, 1500).addClass('progress-bar-success').html('you are in control');
 
                 // if ($('.progress-bar').hasClass('.progress-bar-info')) {
                     // $('.progress-bar').removeClass('.progress-bar-info');
-                    $(".progress-bar").animate({
-                        width: "66%"
-                    }, 1500).removeClass('.progress-bar-info').addClass('progress-bar-success').html('Your turn');
+                 
                 // }
                 // cogAnimation1();
          
@@ -520,9 +525,11 @@ $(function () {
                 setTimeout(function(){
                 $("#myModalNotification").modal('toggle');
                 }, 2000);
-                $(".progress-bar").animate({
-                    width: "100%"
-                }, 1500).addClass('progress-bar-danger').html('Time is up');
+                
+                   $(".progress-bar").animate({
+                        width: "100%"
+                    }, 1500).removeClass('.progress-bar-success').addClass('progress-bar-danger').html('Time is up');
+               
                   
                 $('.exec_button').attr('data-target','#myModalExecute');
                 $('.btn').removeAttr('disabled');
@@ -569,8 +576,8 @@ live.connect();
                 }, 2000);
 
                 $(".progress-bar").animate({
-                    width: "33%"
-                }, 1500).html('In queue');
+                        width: "33%"
+                    }, 1500).addClass('progress-bar-info').html('In Queue');
 
                 // $('.btn').prop("disabled", true);
 
