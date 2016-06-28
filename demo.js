@@ -442,6 +442,7 @@ $(function () {
 // event handler for disconnection
     live.on('disconnect', function () {
         $('.btn').addClass('disabled');
+        alert('hello!!');
     });
 
 // event handler for successfull firmware upload
@@ -534,7 +535,7 @@ live.connect();
           if (!$(this).hasClass('disabled')) {
             // alert(live.queueing);
             if (!live.queueing) {
-                $('.btn').addClass('disabled');
+                // $('.btn').addClass('disabled');
                 // put us in queue
                 live.queue();
                 //   alert(live.queueing);
@@ -548,7 +549,7 @@ live.connect();
                 setTimeout(function () {
                     $("#myModalNotification").modal('toggle');
                 }, 2000);
-                $('.btn').prop("disabled", true);
+                // $('.btn').prop("disabled", true);
 
                 // $('.disabledButtonMessage').show();
                 $('.logDiv').prepend('<button class="disabledButtonMessage"></button>');

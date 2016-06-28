@@ -390,6 +390,22 @@ code {
 .mailIcon span{
   color: #f95c3d;
 }
+.idleModeInfo code{
+  color: white;
+  background-color: #2574a9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ---------- MODAL SECTION ---------- */
