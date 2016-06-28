@@ -525,10 +525,11 @@ $(function () {
                 setTimeout(function(){
                 $("#myModalNotification").modal('toggle');
                 }, 2000);
+                $( ".progress-bar" ).removeClass( "progress-bar-success" );
                 
                    $(".progress-bar").animate({
                         width: "100%"
-                    }, 1500).removeClass('.progress-bar-success').addClass('progress-bar-danger').html('Time is up');
+                    }, 1500).addClass('progress-bar-danger').html('Time is up');
                
                   
                 $('.exec_button').attr('data-target','#myModalExecute');
