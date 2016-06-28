@@ -67,11 +67,17 @@
 
                     <div class="col-sm-12 item ideDiv" id="ideDiv">
                       <textarea class="col-sm-12 col-md-12 col-lg-12 textArea" id="code" style="display:none">
-  conf io as button
-          pin = 0
-  conf io as led
-       pin = 1
-  task read_button on button
+conf io as lamp 
+	pin =0 
+
+
+
+task blink on 2s 
+	var $status
+
+	
+	$status = lamp
+	lamp=!$status
                         </textarea>
                       <div id="editor"></div>
                     
