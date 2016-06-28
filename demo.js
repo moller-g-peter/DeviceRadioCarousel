@@ -497,9 +497,13 @@ $(function () {
                 $('.reload_default').show();
                 $('.exec_button').removeAttr('data-target');
                 $('#console').prepend('<p><code>It is your turn</code></p>');
-                $(".progress-bar").animate({
-                    width: "50%"
-                }, 1500).addClass('progress-bar-success').html('Your turn');
+
+                // if ($('.progress-bar').hasClass('.progress-bar-info')) {
+                    // $('.progress-bar').removeClass('.progress-bar-info');
+                    $(".progress-bar").animate({
+                        width: "66%"
+                    }, 1500).removeClass('.progress-bar-info').addClass('progress-bar-success').html('Your turn');
+                // }
                 // cogAnimation1();
          
                 $('#myModalNotification').modal('show');
@@ -565,8 +569,8 @@ live.connect();
                 }, 2000);
 
                 $(".progress-bar").animate({
-                    width: "25%"
-                }, 1500).addClass('progress-bar-success').html('In queue');
+                    width: "33%"
+                }, 1500).html('In queue');
 
                 // $('.btn').prop("disabled", true);
 
@@ -582,9 +586,6 @@ live.connect();
                 $('#console').append('<p>Uploading firmware to device</p>');
                 // write firmware to device
                 live.upload('38F8-932-5E41A', program_b64);
-                $(".progress-bar").animate({
-                    width: "100%"
-                }, 1500).addClass('progress-bar-success').html('Uploading firmware');
             }
         }
             
@@ -626,9 +627,12 @@ live.connect();
       excButtonQueue();
      // alert(live.connected+""+program_b64);
       if (live.connected && program_b64 !== null && compiled===true) {
-                $('#console').prepend('<p><code>Uploading firmware to device</code></p>');
-                // write firmware to device
-                live.upload('38F8-932-5E41A', program_b64);
+        $(".progress-bar").animate({
+                width: "100%"
+            }, 1500).addClass('progress-bar-success').html('Uploading firmware');
+            $('#console').prepend('<p><code>Uploading firmware to device</code></p>');
+            // write firmware to device
+            live.upload('38F8-932-5E41A', program_b64);
             }
       
          
