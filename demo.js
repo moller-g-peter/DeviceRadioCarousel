@@ -487,7 +487,8 @@ $(function () {
               
                   
                // alert(" hey i am still disabled"); 
-                $('.exec_button').addClass('executeCode');
+               // $('.exec_button').attr('id', 'executeCode');
+               $('.exec_button').addClass('executeCode');
                 $('#console').prepend('<p><code>You are in control of the device now</code></p>');
                 $( ".btn" ).removeClass( "disabled" );
                 $('.exe_button_disabled').hide();
@@ -609,10 +610,15 @@ live.connect();
 });
 
 
- $('.executeCode').on('click', function () {
+ $('.exec_button').on('click', function () {
      
-     alert("now i can execute");
-     excButtonQueue();
+     
+      if ($(this).hasClass('executeCode')) {
+      // alert("now i can execute");  
+      excButtonQueue();
+         
+     }
+   
      
      
      
