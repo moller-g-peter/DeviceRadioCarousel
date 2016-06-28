@@ -478,7 +478,7 @@ $(function () {
         if (status) {
           //   $('.btn').removeAttr('disabled');
            //  $( ".btn" ).removeClass( "disabled" );
-              if ( $( ".btn").hasClass( "disabled" ) ) {
+              
                   
                 // alert(" hey i am still disabled"); 
                 $( ".btn" ).removeClass( "disabled" );  
@@ -493,7 +493,7 @@ $(function () {
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('It is now your time to have control of the device');
 
-              }
+             
              
 //                  setTimeout(function(){
 //                   $("#myModalNotification").modal('toggle');
