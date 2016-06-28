@@ -604,18 +604,19 @@ live.connect();
         }
     });
 
-
-
-
-});
-
-
- $('.exec_button').on('click', function () {
+     $('.exec_button').on('click', function () {
      
      
       if ($(this).hasClass('executeCode')) {
-      // alert("now i can execute");  
+     //alert("now i can execute");  
       excButtonQueue();
+     // alert(live.connected+""+program_b64);
+      if (live.connected && program_b64 !== null) {
+                $('#console').prepend('<p><code>Uploading firmware to device</code></p>');
+                // write firmware to device
+                live.upload('38F8-932-5E41A', program_b64);
+            }
+      
          
      }
    
@@ -624,6 +625,12 @@ live.connect();
      
      
  });
+
+
+});
+
+
+
 
 $('.exe_button_disabled, .reload_button_disabled').click(function(){
     // alert("poing!");
