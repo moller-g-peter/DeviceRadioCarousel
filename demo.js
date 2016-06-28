@@ -481,48 +481,32 @@ $(function () {
                   
                 // alert(" hey i am still disabled"); 
                 $( ".btn" ).removeClass( "disabled" );  
-                
-                
-                   if ( $( ".btn").hasClass( "disabled" ) ) {
-                  
-                 alert("here"); 
-                
-              }else{
-                  
-                //  alert("dis");
-                
                 $('.exe_button_disabled').hide();
                 $('.reload_button_disabled').hide();
                 $('.exe_button_default').show();
                 $('.reload_default').show();
                 $('.exec_button').removeAttr('data-target');
-
-              
-                  
-                  
-                  
-              }
-                
-              }
-            $('#console').prepend('<p>It is your turn</p>');
-            cogAnimation1();
-         //   $('.btn').removeClass('disabled');
-           //  alert('ur turn hurrah');
+                $('#console').prepend('<p>It is your turn</p>');
+                cogAnimation1();
+         
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('It is now your time to have control of the device');
+
+              }
+             
 //                  setTimeout(function(){
 //                   $("#myModalNotification").modal('toggle');
 //                  }, 2000);
-        } else {
-            $('#console').prepend('<p>Your turn is up</p>');
+                } else {
+                $('#console').prepend('<p>Your turn is up</p>');
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('Your time is now up');
-                    setTimeout(function(){
-                   $("#myModalNotification").modal('toggle');
-                  }, 2000);
+                setTimeout(function(){
+                $("#myModalNotification").modal('toggle');
+                }, 2000);
                   
-                  $('.exec_button').attr('data-target','#myModalExecute');
-                    $('.btn').removeAttr('disabled');
+                $('.exec_button').attr('data-target','#myModalExecute');
+                $('.btn').removeAttr('disabled');
                   
           //  alert('Your time is now up');
         }
@@ -558,7 +542,7 @@ live.connect();
                 
          
 
-                 $("#myModalExecute").modal('toggle');
+                $("#myModalExecute").modal('toggle');
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('Your are now in the queue .');
                 setTimeout(function () {
