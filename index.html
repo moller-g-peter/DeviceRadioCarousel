@@ -124,7 +124,7 @@ task blink on 2s
                       <p class="idleModeInfo"><code>Welcome! You are now in idle mode.</code></p>
                     </div>
 
-                    <div class="col-xs-10 col-sm-12 progress-container">
+                    <div class="col-xs-10 col-sm-11 progress-container">
                         <div class="progress progress-striped active">
                             <div class="progress-bar" style="width:0%"></div>
                         </div>
@@ -234,7 +234,7 @@ task blink on 2s
                 </div>
 
                 <div class="modal-body">
-                  <form>
+                  <form name="newsletterForm" onsubmit="return validateEmail()">
                     <div class="form-group">
                       <label for="inputName">Name</label>
                       <input type="email" class="form-control" id="inputName" placeholder="Enter your first and last name">
@@ -242,7 +242,7 @@ task blink on 2s
 
                     <div class="form-group emailFormGroup">
                       <label for="inputEmail">E-mail address</label>
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Enter your E-mail" required>
+                      <input type="email" class="form-control" id="inputEmail" name="eMail" placeholder="Enter your E-mail" required>
                     </div>
 
                     <div class="checkbox">
