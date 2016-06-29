@@ -119,18 +119,20 @@ task blink on 2s
                   
                     
 
-                    
-                  <div id="console">
-                    <p class="idleModeInfo"><code>Welcome! You are now in idle mode.</code></p>
+                  <div class="col-sm-6 progressInfoDivs">
+                    <div id="console">
+                      <p class="idleModeInfo"><code>Welcome! You are now in idle mode.</code></p>
+                    </div>
+
+                    <div class="col-xs-10 col-sm-12 progress-container">
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar" style="width:0%"></div>
+                        </div>
+                    </div>
                   </div>
+
+
                   <div id="errorReport"></div>
-
-
-                  <div class="col-xs-6 col-sm-6 progress-container">
-                      <div class="progress progress-striped active">
-                          <div class="progress-bar" style="width:0%"></div>
-                      </div>
-                  </div>
                   
                   
                   <!-- device radio container where it will display the outputs 
