@@ -495,11 +495,7 @@ $(function () {
 // event handler when its your turn
     live.on('yourturn', function (status) {
         if (status) {
-          //   $('.btn').removeAttr('disabled');
-           //  $( ".btn" ).removeClass( "disabled" );
-              
-                  
-               // alert(" hey i am still disabled"); 
+      
                // $('.exec_button').attr('id', 'executeCode');
                 $('.exec_button').addClass('executeCode');
                 $('#console').prepend('<p><code>You are in control of the device now</code></p>');
@@ -515,17 +511,13 @@ $(function () {
                         width: "66%"
                     }, 1500).addClass('progress-bar-success').html('you are in control');
 
-                // if ($('.progress-bar').hasClass('.progress-bar-info')) {
-                    // $('.progress-bar').removeClass('.progress-bar-info');
-                 
-                // }
-                // cogAnimation1();
-         
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('It is now your time to have control of the device');
 //                 setTimeout(function(){
 //                 $("#myModalNotification").modal('toggle');
 //                  }, 2000);
+                
+        
                 }
                 
                 else {
@@ -544,7 +536,7 @@ $(function () {
                   
                 $('.exec_button').attr('data-target','#myModalExecute');
                 $('.btn').removeAttr('disabled');
-                 $('.exec_button').removeClass('executeCode');
+                $('.exec_button').removeClass('executeCode');
                   
           //  alert('Your time is now up');
         }
@@ -584,29 +576,28 @@ live.connect();
                 $('#myModalNotification').modal('show');
                 $('#modalMessages').html('Your are now in the queue .');
                 setTimeout(function () {
-                    $("#myModalNotification").modal('toggle');
+                $("#myModalNotification").modal('toggle');
+                
                 }, 2000);
-               
-                    if($(".progress-bar").hasClass("progress-bar-info")){
-                    
-                  $( ".progress-bar" ).removeClass( "progress-bar-info" );   
-                    
-                }else  if($(".progress-bar").hasClass("progress-bar-danger")){
-                    
-                   $( ".progress-bar" ).removeClass( "progress-bar-danger" );  
-                    
-                }else  if($(".progress-bar").hasClass("progress-bar-success")){
-                    
-                 $( ".progress-bar" ).removeClass( "progress-bar-success" );
-                    
+
+                if ($(".progress-bar").hasClass("progress-bar-info")) {
+
+                $(".progress-bar").removeClass("progress-bar-info");
+
+                } else if ($(".progress-bar").hasClass("progress-bar-danger")) {
+
+                $(".progress-bar").removeClass("progress-bar-danger");
+
+                } else if ($(".progress-bar").hasClass("progress-bar-success")) {
+
+                $(".progress-bar").removeClass("progress-bar-success");
+
                 }
                
               
-              
-
                 $(".progress-bar").animate({
                         width: "33%"
-                    }, 1500).addClass('progress-bar-info').html('In Queue');
+               }, 1500).addClass('progress-bar-info').html('In Queue');
 
                 // $('.btn').prop("disabled", true);
 
@@ -618,7 +609,8 @@ live.connect();
                 $('.exe_button_disabled').appendTo('.disabledButtonMessage');
                 $('.reload_button_disabled').appendTo('.disabledButtonReload');
 
-            } else if (live.connected && program_b64 !== null) {
+            
+                } else if (live.connected && program_b64 !== null) {
                 $('#console').append('<p>Uploading firmware to device</p>');
                 // write firmware to device
                 live.upload('38F8-932-5E41A', program_b64);
@@ -668,33 +660,33 @@ live.connect();
             // write firmware to device
             live.upload('38F8-932-5E41A', program_b64);
             
-                  if($(".progress-bar").hasClass("progress-bar-info")){
-                    
-                  $( ".progress-bar" ).removeClass( "progress-bar-info" ); 
-                  
-                  
-                    
-                }else  if($(".progress-bar").hasClass("progress-bar-danger")){
-                    
-                   $( ".progress-bar" ).removeClass( "progress-bar-danger" ); 
+                if ($(".progress-bar").hasClass("progress-bar-info")) {
+
+                    $(".progress-bar").removeClass("progress-bar-info");
+
+
+
+                } else if ($(".progress-bar").hasClass("progress-bar-danger")) {
+
+                    $(".progress-bar").removeClass("progress-bar-danger");
                     $(".progress-bar").animate({
-                width: "66%"
-            }, 1500).addClass('progress-bar-success').html('Uploading firmware');
-                $(".progress-bar").animate({
-                width: "100%"
-            }, 1500);
-                   
-                   
-                    
-                }else  if($(".progress-bar").hasClass("progress-bar-success")){
-                    
-                 $( ".progress-bar" ).removeClass( "progress-bar-success" );
-                  $(".progress-bar").animate({
-                width: "100%"
-            }, 2500).addClass('progress-bar-success').html('Uploading firmware');
-                 
-                 
-                    
+                        width: "66%"
+                    }, 1500).addClass('progress-bar-success').html('Uploading firmware');
+                    $(".progress-bar").animate({
+                        width: "100%"
+                    }, 1500);
+
+
+
+                } else if ($(".progress-bar").hasClass("progress-bar-success")) {
+
+                    $(".progress-bar").removeClass("progress-bar-success");
+                    $(".progress-bar").animate({
+                        width: "100%"
+                    }, 2500).addClass('progress-bar-success').html('Uploading firmware');
+
+
+
                 }
             
              
