@@ -567,6 +567,10 @@ and (max-device-width : 1024px)
   #myModalNewsletter{
     height: 100vh;
   }
+  .disabledButtonMessage,
+  .disabledButtonReload{
+    margin-top: 5px;
+  }
 
 
   /* ---------- MOBILE MENU TABS ---------- */
