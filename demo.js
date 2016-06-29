@@ -461,7 +461,7 @@ $(function () {
 
 // event handler for upload errors
     live.on('uploaderror', function (reason) {
-        $('#console').append('<p>Upload failed (' + reason + ')</p>');
+        $('#console').prepend('<p>Upload failed (' + reason + ')</p>');
         $( ".progress-bar" ).removeClass( "progress-bar-success" );
                 
                    $(".progress-bar").animate({
@@ -544,6 +544,7 @@ $(function () {
                   
                 $('.exec_button').attr('data-target','#myModalExecute');
                 $('.btn').removeAttr('disabled');
+                 $('.exec_button').removeClass('executeCode');
                   
           //  alert('Your time is now up');
         }
@@ -577,7 +578,7 @@ live.connect();
                 //   alert(live.queueing);
                 //alert('Your are now in the queue for getting control of the device');
                 
-         
+               
 
                 $("#myModalExecute").modal('toggle');
                 $('#myModalNotification').modal('show');
@@ -585,6 +586,22 @@ live.connect();
                 setTimeout(function () {
                     $("#myModalNotification").modal('toggle');
                 }, 2000);
+                if($(".progress-bar").hasClass("progress-bar-info")){
+                    
+                  $( ".progress-bar" ).removeClass( "progress-bar-info" );   
+                    
+                }else  if($(".progress-bar").hasClass("progress-bar-danger")){
+                    
+                   $( ".progress-bar" ).removeClass( "progress-bar-danger" );  
+                    
+                }else  if($(".progress-bar").hasClass("progress-bar-success")){
+                    
+                 $( ".progress-bar" ).removeClass( "progress-bar-success" );
+                    
+                }
+               
+              
+              
 
                 $(".progress-bar").animate({
                         width: "33%"
