@@ -586,7 +586,8 @@ live.connect();
                 setTimeout(function () {
                     $("#myModalNotification").modal('toggle');
                 }, 2000);
-                if($(".progress-bar").hasClass("progress-bar-info")){
+               
+                    if($(".progress-bar").hasClass("progress-bar-info")){
                     
                   $( ".progress-bar" ).removeClass( "progress-bar-info" );   
                     
@@ -667,11 +668,36 @@ live.connect();
             // write firmware to device
             live.upload('38F8-932-5E41A', program_b64);
             
-            
-            
-              $(".progress-bar").animate({
+                  if($(".progress-bar").hasClass("progress-bar-info")){
+                    
+                  $( ".progress-bar" ).removeClass( "progress-bar-info" ); 
+                  
+                  
+                    
+                }else  if($(".progress-bar").hasClass("progress-bar-danger")){
+                    
+                   $( ".progress-bar" ).removeClass( "progress-bar-danger" ); 
+                    $(".progress-bar").animate({
+                width: "66%"
+            }, 1500).addClass('progress-bar-success').html('Uploading firmware');
+                $(".progress-bar").animate({
+                width: "100%"
+            }, 1500);
+                   
+                   
+                    
+                }else  if($(".progress-bar").hasClass("progress-bar-success")){
+                    
+                 $( ".progress-bar" ).removeClass( "progress-bar-success" );
+                  $(".progress-bar").animate({
                 width: "100%"
             }, 2500).addClass('progress-bar-success').html('Uploading firmware');
+                 
+                 
+                    
+                }
+            
+             
           
       
             
