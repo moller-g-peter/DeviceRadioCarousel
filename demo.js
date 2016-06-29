@@ -462,6 +462,13 @@ $(function () {
 // event handler for upload errors
     live.on('uploaderror', function (reason) {
         $('#console').append('<p>Upload failed (' + reason + ')</p>');
+        $( ".progress-bar" ).removeClass( "progress-bar-success" );
+                
+                   $(".progress-bar").animate({
+                        width: "100%"
+                    }, 1500).addClass('progress-bar-danger').html('Upload Error');
+        
+        
     });
 
 // event handler for changes in the queue
