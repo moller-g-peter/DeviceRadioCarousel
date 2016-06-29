@@ -476,10 +476,10 @@ $(function () {
         // if you are first or not in queue
      // alert("b4 u"+before_you);
        
-       if(isOnQue===true){
+        if(isOnQue===true){
              
            
-           if (!before_you) {
+        if (!before_you) {
             $('#console').prepend('<p><code>Total number of viewers In queue: ' + total + '</code></p>');
          
             
@@ -650,15 +650,15 @@ live.connect();
      $('.exec_button').on('click', function () {
      
      
-      if ($(this).hasClass('executeCode')) {
-     //alert("now i can execute");  
-      excButtonQueue();
-     // alert(live.connected+""+program_b64);
-      if (live.connected && program_b64 !== null && compiled===true) {
+               if ($(this).hasClass('executeCode')) {
       
-            $('#console').prepend('<p><code>Uploading firmware to device</code></p>');
+               excButtonQueue();
+     
+                if (live.connected && program_b64 !== null && compiled===true) {
+      
+                    $('#console').prepend('<p><code>Uploading firmware to device</code></p>');
             // write firmware to device
-            live.upload('38F8-932-5E41A', program_b64);
+                    live.upload('38F8-932-5E41A', program_b64);
             
                 if ($(".progress-bar").hasClass("progress-bar-info")) {
 
