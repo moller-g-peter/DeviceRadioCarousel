@@ -569,7 +569,10 @@ and (max-device-width : 1024px)
   }
   .disabledButtonMessage,
   .disabledButtonReload{
-    margin-top: 5px;
+    margin-top: 0px;
+  }
+  .progress{
+    margin-bottom: 0 !important;
   }
 
 
