@@ -34,7 +34,7 @@
   font-style: italic;
 }
 
-.keyword {
+               .keyword {
 			color: #b58900;
 		}
 		.constant.numeric {
@@ -57,5 +57,5 @@
 			color: #93a1a1;
 		}
 		.not {
-			color: #6c71c4;
+			color: #FFF;
 		}
