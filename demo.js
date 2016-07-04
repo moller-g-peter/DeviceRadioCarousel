@@ -461,7 +461,7 @@ $(function () {
 
 // event handler for upload errors
     live.on('uploaderror', function (reason) {
-        $('#console').prepend('<p>Upload failed (' + reason + ')</p>');
+        $('#console').prepend('<p><code>Upload failed (' + reason + ')</code></p>');
         $( ".progress-bar" ).removeClass( "progress-bar-success" );
                 
                    $(".progress-bar").animate({
