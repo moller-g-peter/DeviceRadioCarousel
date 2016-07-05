@@ -251,7 +251,7 @@ code {
 }
 .constant.string {
   /*color: #859900;*/
-  color: blue; !important
+  color: blue; 
 }
 .trigger {
   /*color: #268bd2;*/
@@ -270,10 +270,7 @@ code {
   /*color: #93a1a1;*/
   color: green !important;
 }
-.not {
-  /*color: #6c71c4;*/
-  color: gray !important;
-}
+
 .ace-tm{
   /*background-color: #1c313e !important;*/
   /*color: white !important;*/
@@ -293,16 +290,33 @@ code {
 
 
 
-
-
-.ace_keyword{
-  color: #b58900 !important;
+.ace_constant{
+  color: white !important;
 }
-.constant.numeric{
+.ace_number{
+  color: white !important;
+}
+.ace_operator{
+  color: white !important;
+}
+.ace_variable{
+  color: #fff !important;
+}
+.ace_keyword{
+  color: red !important;
+}
+.ace_constant.numeric{
   color: #dc322f !important;
 }
 .variable{
   color: #2aa198 !important;
+}
+
+.ace_not{
+  color: #6c71c4 !important;
+}
+.number{
+  color: #fff !important;
 }
 /*.ace-solarized-dark.ace_entity.ace_other.ace_attribute-name,
 .ace-solarized-dark .ace_storage,
