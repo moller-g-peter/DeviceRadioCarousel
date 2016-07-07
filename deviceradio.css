@@ -158,10 +158,8 @@ body,
   /*width: 50%;*/
 }
 
+
 /*- following style below is needed for the text editor -*/
-.ace_editor{
-  font-family: Input !important;
-}
 #editor { 
   margin: 0;
   position: relative;
@@ -242,35 +240,30 @@ code {
   font-style: italic;
 }
 .keyword {
-  /*color: #b58900;*/
-  color: yellow !important;
+  color: #b58900;
 }
 .constant.numeric {
-  /*color: #dc322f;*/
-  color: red !important;
+  color: #dc322f;
 }
 .constant.string {
-  /*color: #859900;*/
-  color: blue; 
+  color: #859900;
 }
 .trigger {
-  /*color: #268bd2;*/
-  color: brown !important;
+  color: #268bd2;
 }
 .variable {
-  /*color: #2aa198;*/
-  color: pink !important;
+  color: #2aa198;
 }
 .symbol {
-  /*color: #93a1a1;*/
-  color: purple !important;
+  color: #93a1a1;
   font-weight: bold;
 }
 .syntax {
-  /*color: #93a1a1;*/
-  color: green !important;
+  color: #93a1a1;
 }
-
+.not {
+  color: #6c71c4;
+}
 .ace-tm{
   /*background-color: #1c313e !important;*/
   /*color: white !important;*/
@@ -287,42 +280,6 @@ code {
 .ace_active-line{
   /*background: rgba(0, 0, 0, 0.2) !important;*/
 }
-
-
-
-.ace_constant{
-  color: white !important;
-}
-.ace_number{
-  color: white !important;
-}
-.ace_operator{
-  color: white !important;
-}
-.ace_variable{
-  color: #fff !important;
-}
-.ace_keyword{
-  color: red !important;
-}
-.ace_constant.numeric{
-  color: #dc322f !important;
-}
-.variable{
-  color: #2aa198 !important;
-}
-
-.ace_not{
-  color: #6c71c4 !important;
-}
-.number{
-  color: #fff !important;
-}
-/*.ace-solarized-dark.ace_entity.ace_other.ace_attribute-name,
-.ace-solarized-dark .ace_storage,
-.ace-solarized-dark .ace_text-layer{
-  color: #fff !important;
-}*/
 /*----------------------------------*/
 
 

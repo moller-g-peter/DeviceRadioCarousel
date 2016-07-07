@@ -68,74 +68,29 @@
 
                     <div class="col-sm-12 item ideDiv" id="ideDiv">
                       <textarea class="col-sm-12 col-md-12 col-lg-12 textArea" id="code" style="display:none">
-conf io as ioMotor1
-  pin = 3
+conf io as ioRelay0
+	pin = 0
 
-conf timer as tmr0
-  start = true
-  duration = 1s
+conf io as ioRelay1
+	pin = 1
 
-conf timer as tmr1
-  duration = 4s
+conf io as ioRelay4
+	pin = 4
 
-task blinkRelay0 on tmr0
-  var $status
+task blinkRelay0 on 2300ms
+	var $status
+	$status = ioRelay0
+	ioRelay0 = !$status
 
-  ioMotor0 = $status
-  ioMotor1 = !$status
-  $status = !$status
+task blinkRelay1 on 3s
+	var $status
+	$status = ioRelay1
+	ioRelay1 = !$status
 
-  tmr1.start
-
-task blinkRelay1 on tmr1
-  ioMotor0 = true
-  ioMotor1 = true
-
-  tmr0.start
-
-conf io as ioMotor2
-  pin = 4
-
-conf io as ioMotor3
-  pin = 5
-
-conf timer as tmr2
-  start = true
-  duration = 1100ms
-
-conf timer as tmr3
-  duration = 3s
-
-task blinkRelay2 on tmr2
-  var $status
-
-  ioMotor2 = $status
-  ioMotor3 = !$status
-  $status = !$status
-
-  tmr3.start
-
-task blinkRelay3 on tmr3
-  ioMotor2 = true
-  ioMotor3 = true
-
-  tmr2.start
-
-conf io as ioLamp0
-  pin = 0
-
-conf io as ioLamp1
-  pin = 1
-
-task blinkLamp0 on 2300ms
-  var $status
-  $status = ioLamp0
-  ioLamp0 = !$status
-
-task blinkLamp1 on 2s
-  var $status
-  $status = ioLamp1
-  ioLamp1 = !$status
+task blinkRelay4 on 4s
+	var $status
+	$status = ioRelay4
+	ioRelay4 = !$status
                         </textarea>
                       <div id="editor"></div>
                     
@@ -174,7 +129,12 @@ task blinkLamp1 on 2s
                     <img class="reload_exe" src="compiler/images/reload_exe.png" height="45"/>
                   </button>
 
-                  
+                  <div style="display:inline-block">
+	<form>
+		<select id="btn-device" class="btn">
+		</select>
+	</form>
+	</div>
                     
 
                   <div class="col-sm-6 progressInfoDivs">

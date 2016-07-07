@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-$('.logDiv').append('<div class="disabledWrapper"></div>');
+$('.logDiv').prepend('<div class="disabledWrapper"></div>');
 
 
 var editorvalue = "";
@@ -15,6 +15,8 @@ var markers_present = [];
 var program_b64 = null;
 var compiled=false;
 var function_starttime=null;
+var program_str="";
+var queue_tmr = null;
 
     
 
@@ -273,8 +275,9 @@ function reloadButton() {
 
 function deviceradioProcess(text) {
     
+     
     
-  function addNewlines(str) {
+ function addNewlines(str) {
   var result = '';
   while (str.length > 0) {
     result += str.substring(0, 80) + '\n';
@@ -303,17 +306,19 @@ function syntaxHighlight(json) {
         }
         return '<span class="' + cls + '">' + match + '</span>';
     });
-}  
+}   
+
     
     
   function_starttime = new Date();
  
 $('#console').html('');
 
-var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
 
 
     var data = text;
+    
+     program_str=data;
 
 
     // console.log("i am text"+text);
@@ -335,6 +340,15 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 
 
 
+
+
+}
+
+var compile_program = function() {
+     
+      
+    
+	// setup build environment
 	var lex = new DeviceRadio.Lexer;
 	var com = new DeviceRadio.Compiler;
 	com.add(lex.parse(
@@ -350,362 +364,214 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 	), null, "Core");
 	
 	// compile program
-	//var compilation_message = "Program compiled successfully.\n";
-        var compilation_message = "Compiled message successfully";
+	var compilation_message = "Program compiled successfully.\n";
+	program_b64 = null;
 	try {
-	   var tokens = lex.parse(data);
+            
+		var tokens = lex.parse(program_str);
 		com.add(tokens, null, "deviceradio.txt");
 		com.optimize();
 		var stats = com.generate();
 		
 		var program_u8 = [];
 		for (var i = 0; i < stats[1].length; i++) program_u8.push(stats[1].charCodeAt(i));
-                
-                
 		program_b64 = fromByteArray(program_u8);
-              //  alert(""+program_b64);
-                  compiled=true;
+              
 	}
 	catch (ex) {
-            $('#console').html('');
-                compiled=false;
 		compilation_message = ex.message;
-              //  alert(compilation_message);
-		//$('#btn-push').addClass('error');
-//                
-//              
-//
-                var listex=Object.getOwnPropertyNames(ex);
-    //           alert(listex);
-                var lineNumber="";
-                   if ('lineNumber' in ex) {
-                      // alert("has");
-                    lineNumber =ex.lineNumber;
-                }
-               
-                   var columnNumber="";
-                   if ('columnNumber' in ex) {
-                   columnNumber =ex.columnNumber;
-                }
-//                
-            var row = lineNumber-1;
-            var column = columnNumber;
-
-             
-           // document.getElementById('errorReport').innerHTML = "row"+row+" col "+column;
-
-            var Range = ace.require('ace/range').Range;
-            var marker = editor.session.addMarker(new Range(row, 0, row, 1), "myMarker", "fullLine");  /// first is number of lines to be highlighted,0,number of row, number of column  
-
-
-            markers_present[markers_present.length] = marker;
-
-            editor.session.selection.moveCursorToPosition({row: row, column: column});
-            editor.session.selection.selectLineEnd();
-
-           
                 
+                var listex = Object.getOwnPropertyNames(ex);
+        //           alert(listex);
+        var lineNumber = "";
+        if ('lineNumber' in ex) {
+            // alert("has");
+            lineNumber = ex.lineNumber;
+        }
+
+        var columnNumber = "";
+        if ('columnNumber' in ex) {
+            columnNumber = ex.columnNumber;
+        }
+//                
+        var row = lineNumber - 1;
+        var column = columnNumber;
+
+
+        // document.getElementById('errorReport').innerHTML = "row"+row+" col "+column;
+
+        var Range = ace.require('ace/range').Range;
+        var marker = editor.session.addMarker(new Range(row, 0, row, 1), "myMarker", "fullLine");  /// first is number of lines to be highlighted,0,number of row, number of column  
+
+
+        markers_present[markers_present.length] = marker;
+
+        editor.session.selection.moveCursorToPosition({row: row, column: column});
+        editor.session.selection.selectLineEnd();
+
                 
-       //   document.getElementById('errorReport').innerHTML = compilation_message;
-        
-        // $('.exe_button_3').hide();
-        // $('.exe_button_default').show();
+		$('#btn-push').addClass('error');
+		console.log(ex);
 	}
 
-	$('#console').append('<p><code>' + compilation_message + '</code></p>');
+	$('#console').prepend('<p><code>' + compilation_message + '</code></p>');
 
+	// for debug
+	if (false) {
+		$('.container').prepend('<pre class="wrap"><code>' + syntaxHighlight(com._ns) + '</code></pre>');
+		$('.container').prepend('<pre class="wrap"><code>' + syntaxHighlight(com._s) + '</code></pre>');
+		$('.container').prepend('<pre class="wrap"><code>' + syntaxHighlight(com._t) + '</code></pre>');
+		$('.container').prepend('<pre class="wrap"><code>' + syntaxHighlight(com._v) + '</code></pre>');
+		$('.container').prepend('<pre class="wrap"><code>' + syntaxHighlight(com._c) + '</code></pre>');
+		$('.container').prepend('<pre class="wrap"><code>' + syntaxHighlight(com._m) + '</code></pre>');
+		$('.container').prepend('<pre class="wrap"><code>' + syntaxHighlight(com._compiler) + '</code></pre>');
+	}
 
-
-
-    if (false) {
-        $('.containerDeviceradio').append('<pre class="wrap"><code>' + syntaxHighlight(com._ns) + '</code></pre>');
-        $('.containerDeviceradio').append('<pre class="wrap"><code>' + syntaxHighlight(com._s) + '</code></pre>');
-        $('.containerDeviceradio').append('<pre class="wrap"><code>' + syntaxHighlight(com._t) + '</code></pre>');
-        $('.containerDeviceradio').append('<pre class="wrap"><code>' + syntaxHighlight(com._v) + '</code></pre>');
-        $('.containerDeviceradio').append('<pre class="wrap"><code>' + syntaxHighlight(com._c) + '</code></pre>');
-        $('.containerDeviceradio').append('<pre class="wrap"><code>' + syntaxHighlight(com._m) + '</code></pre>');
-        $('.containerDeviceradio').append('<pre class="wrap"><code>' + syntaxHighlight(com._compiler) + '</code></pre>');
-    }
-
-
-
-
-
-
-
-
-}
+	return program_b64 !== null;
+};
 
 $(function () {
 
-    var live = new DeviceRadioLive('http://stomp.deviceradio.net:15674/stomp', 'gateway', 'deviceradio', 'dreD8G@fRu');
+// handle multiple device ids
+var device_ids = [
+	'38F8-932-5E41A', // 222200000010
+	'91E5-F1C-331F9'  // 222200000011
+];
+for (i in device_ids) {
+	$('#btn-device').prepend('<option value="' + device_ids[i] + '"' + ((i == 0) ? 'selected="selected"' : '') + '>Device: ' + device_ids[i] + '</option>');
+}
+var dev_id = device_ids[0];
+
+// create a new instance of the live programming handler
+var live = new DeviceRadioLive('http://stomp.deviceradio.net:15674/stomp', 'gateway', 'deviceradio', 'dreD8G@fRu');
 
 // event handler for successfull connection
-    live.on('connect', function () {
-        $('.btn').removeClass('disabled');
-    });
+live.on('connect', function () {
+	$('.btn').removeClass('disabled');
+});
 
 // event handler for disconnection
-    live.on('disconnect', function () {
-        $('.btn').addClass('disabled');
-        alert('hello!!');
-    });
+live.on('disconnect', function () {
+	$('.btn').addClass('disabled');
+});
 
 // event handler for successfull firmware upload
-    live.on('upload', function () {
-        $('#console').prepend('<p><code>Firmware written successfully</code></p>');
-         $(".progress-bar").animate({
-                width: "100%"
-            }, 1500).html('Upload successful');
-    });
+live.on('upload', function () {
+	$('#console').prepend('<p><code>Firmware written successfully</code></p>');
+});
 
 // event handler for upload errors
-    live.on('uploaderror', function (reason) {
-        $('#console').prepend('<p><code>Upload failed (' + reason + ')</code></p>');
-        $( ".progress-bar" ).removeClass( "progress-bar-success" );
-                
-                   $(".progress-bar").animate({
-                        width: "100%"
-                    }, 1500).addClass('progress-bar-danger').html('Upload Error');
-        
-        
-    });
+live.on('uploaderror', function (reason) {
+	$('#console').prepend('<p><code>Upload failed (' + reason + ')</code></p>');
+});
 
 // event handler for changes in the queue
-    live.on('queuechange', function (total, before_you, max) {
-        // if you are first or not in queue
-     // alert("b4 u"+before_you);
-       
-        if(isOnQue===true){
-             
-           
-        if (!before_you) {
-            $('#console').prepend('<p><code>Total number of viewers In queue: ' + total + '</code></p>');
-         
-            
-        } else {
-            
-            $('#console').prepend('<p><code>In queue: ' + total + ', people before you: ' + ((before_you > 0) ? before_you : (max + '+')) + '</code></p>');
-        }
-           
-       }
-    
-    });
+live.on('queuechange', function (total, before_you, max) {
+	// if you are first or not in queue
+	if (!before_you) {
+		$('#console').prepend('<p><code>In queue: ' + total + '</code></p>');
+	}
+	else {
+		$('#console').prepend('<p><code>In queue: ' + total + ', people before you: ' + ((before_you > 0) ? before_you : (max + '+')) + '</code></p>');
+	}
+});
 
 // event handler when its your turn
-    live.on('yourturn', function (status) {
-        if (status) {
-      
-               // $('.exec_button').attr('id', 'executeCode');
-                $('.exec_button').addClass('executeCode');
-                $('#console').prepend('<p><code>You are in control of the device now</code></p>');
-                $( ".btn" ).removeClass( "disabled" );
-                $('.exe_button_disabled').hide();
-                $('.reload_button_disabled').hide();
-                $('.exe_button_default').show();
-                $('.reload_default').show();
-                $('.exec_button').removeAttr('data-target');
-                $('#console').prepend('<p><code>It is your turn</code></p>');
-                $( ".progress-bar" ).removeClass( "progress-bar-info" );
-                $(".progress-bar").animate({
-                        width: "66%"
-                    }, 1500).addClass('progress-bar-success').html('you are in control');
+live.on('yourturn', function (status) {
+	// we are now in control of device
+	if (status) {
+		// timer is running
+		if (queue_tmr !== null) {
+			clearTimeout(queue_tmr);
+			queue_tmr = null;
+			// compile
+			if (compile_program()) {
+				// upload
+				$('#console').prepend('<p><code>Uploading firmware to device</code></p>');
+				// write firmware to device
+				live.upload(dev_id, program_b64);
+			}
+		}
+		// show popups as normal
+		else {
+			$('#console').prepend('<p><code>It is your turn</code></p>');
+			
+			// enable buttons
+			$('.btn').removeClass('disabled');
+			
+			alert('It is now your time to have control of the device');
+		}
+	}
+	// we have lost control of device
+	else {
+		$('#console').prepend('<p><code>Your turn is up</code></p>');
+		alert('Your time is now up');
+	}
+});
 
-                $('#myModalNotification').modal('show');
-                $('#modalMessages').html('It is now your time to have control of the device');
-//                 setTimeout(function(){
-//                 $("#myModalNotification").modal('toggle');
-//                  }, 2000);
-                
-        
-                }
-                
-                else {
-                $('#console').prepend('<p><code>Your turn is up</code></p>');
-                $('#myModalNotification').modal('show');
-                $('#modalMessages').html('Your time is now up');
-                setTimeout(function(){
-                $("#myModalNotification").modal('toggle');
-                }, 2000);
-                $( ".progress-bar" ).removeClass( "progress-bar-success" );
-                
-                   $(".progress-bar").animate({
-                        width: "100%"
-                    }, 1500).addClass('progress-bar-danger').html('Time is up');
-               
-                  
-                $('.exec_button').attr('data-target','#myModalExecute');
-                $('.btn').removeAttr('disabled');
-                $('.exec_button').removeClass('executeCode');
-                  
-          //  alert('Your time is now up');
-        }
-    });
+// start queueing
+var do_queueing = function() {
+	if (queue_tmr === null) {
+		queue_tmr = setTimeout(function(){
+			queue_tmr = null;
 
+			// disable buttons until we are in control
+			$('.btn').addClass('disabled');
 
- 
+			alert('Your are now in the queue for getting control of the device');
+		}, 1000);
 
+		// put us in queue
+		live.queue(dev_id);
+	}
+};
 
+// "program device"-button pushed
+$('#btn-push').on('click', function() {
+	// only work if buttons are enabled
+	if (!$(this).hasClass('disabled')) {
+		// if not in queue, start queueing
+		if (!live.queueing) do_queueing();
+		// else compile and upload
+		else if (live.connected) {
+			// compile
+			if (compile_program()) {
+				// upload
+				$('#console').prepend('<p><code>Uploading firmware to device</code></p>');
+				// write firmware to device
+				live.upload(dev_id, program_b64);
+			}
+		}
+	}
+});
 
-
-
+// "wipe device"-button pushed
+$('#btn-wipe').on('click', function() {
+	// only work if buttons are enabled
+	if (!$(this).hasClass('disabled')) {
+		// if not in queue, start queueing
+		if (!live.queueing) do_queueing();
+		// else format the device
+		else if (live.connected) {
+			$('#console').prepend('<p><code>Clearing all code in the device</code></p>');
+			// format the device
+			live.upload(dev_id);
+		}
+	}
+});
 
 // connect to server
 live.connect();
 
-
-
-// program device-button pushed
-    $('#btn-push').on('click', function () {
-        
-        
-        if(compiled===true){
-            isOnQue=true;
-          if (!$(this).hasClass('disabled')) {
-            // alert(live.queueing);
-            if (!live.queueing) {
-                // $('.btn').addClass('disabled');
-                // put us in queue
-                live.queue();
-                //   alert(live.queueing);
-                //alert('Your are now in the queue for getting control of the device');
-                
-               
-
-                $("#myModalExecute").modal('toggle');
-                $('#myModalNotification').modal('show');
-                $('#modalMessages').html('Your are now in the queue .');
-                setTimeout(function () {
-                $("#myModalNotification").modal('toggle');
-                
-                }, 2000);
-
-                if ($(".progress-bar").hasClass("progress-bar-info")) {
-
-                $(".progress-bar").removeClass("progress-bar-info");
-
-                } else if ($(".progress-bar").hasClass("progress-bar-danger")) {
-
-                $(".progress-bar").removeClass("progress-bar-danger");
-
-                } else if ($(".progress-bar").hasClass("progress-bar-success")) {
-
-                $(".progress-bar").removeClass("progress-bar-success");
-
-                }
-               
-              
-                $(".progress-bar").animate({
-                        width: "33%"
-               }, 1500).addClass('progress-bar-info').html('In Queue');
-
-                // $('.btn').prop("disabled", true);
-
-                // $('.disabledButtonMessage').show();
-                $('.logDiv').prepend('<button class="disabledButtonMessage"></button>');
-                $('.logDiv').prepend('<button class="disabledButtonReload"></button>');
-                $('.exe_button_disabled').show();
-                $('.reload_button_disabled').show();
-                $('.exe_button_disabled').appendTo('.disabledButtonMessage');
-                $('.reload_button_disabled').appendTo('.disabledButtonReload');
-
-            
-                } else if (live.connected && program_b64 !== null) {
-                $('#console').append('<p>Uploading firmware to device</p>');
-                // write firmware to device
-                live.upload('38F8-932-5E41A', program_b64);
-            }
-        }
-            
-            
-            
-        }
-        
-    });
-
-    
-
-
-// wipe device-button pushed
-    $('#btn-wipe').on('click', function () {
-        if (!$(this).hasClass('disabled')) {
-//            if (!live.queueing) {
-//                $('.btn').addClass('disabled');
-//                // put us in queue
-//                live.queue();
-//                alert('Your are now in the queue for getting control of the device');
-//            } else if (live.connected) {
-//                reloadButton();
-//                $('#console').append('<p>Clearing all code in the device</p>');
-//                // format the device
-//                live.upload('38F8-932-5E41A');
-//            }
-
-          reloadButton();
-
-
-        }
-    });
-
-     $('.exec_button').on('click', function () {
-     
-     
-               if ($(this).hasClass('executeCode')) {
-      
-               excButtonQueue();
-     
-                if (live.connected && program_b64 !== null && compiled===true) {
-      
-                    $('#console').prepend('<p><code>Uploading firmware to device</code></p>');
-            // write firmware to device
-                    live.upload('38F8-932-5E41A', program_b64);
-            
-                if ($(".progress-bar").hasClass("progress-bar-info")) {
-
-                    $(".progress-bar").removeClass("progress-bar-info");
-
-
-
-                } else if ($(".progress-bar").hasClass("progress-bar-danger")) {
-
-                    $(".progress-bar").removeClass("progress-bar-danger");
-                    $(".progress-bar").animate({
-                        width: "66%"
-                    }, 1500).addClass('progress-bar-success').html('Uploading firmware');
-                    $(".progress-bar").animate({
-                        width: "100%"
-                    }, 1500);
-
-
-
-                } else if ($(".progress-bar").hasClass("progress-bar-success")) {
-
-                    $(".progress-bar").removeClass("progress-bar-success");
-                    $(".progress-bar").animate({
-                        width: "100%"
-                    }, 2500).addClass('progress-bar-success').html('Uploading firmware');
-
-
-
-                }
-            
-             
-          
-      
-            
-            
-           
-            
-            }
-      
-         
-     }
-   
-     
-     
-     
-     
- });
+// handle device change combo box
+$('#btn-device').on('change', function(){
+	if (live.queueing) {
+		live.queue(dev_id, true);
+		dev_id = this.value;
+		live.queue(dev_id);
+	}
+	else dev_id = this.value;
+});
 
 
 });

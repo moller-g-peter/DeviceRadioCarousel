@@ -132,7 +132,16 @@
 </head>
 <body>
 
-<div class="header" style="padding-top:10px;"><span id="btn-push" class="btn disabled">Program Device</span><span id="btn-wipe" class="btn disabled">Wipe Device</span></span>
+<div class="header" style="padding-top:10px;">
+	<span id="btn-push" class="btn disabled">Program Device</span>
+	<span id="btn-wipe" class="btn disabled">Wipe Device</span>
+	<div style="display:inline-block">
+	<form>
+		<select id="btn-device" class="btn">
+		</select>
+	</form>
+	</div>
+</div>
 <div class="container"></div>
 <div id="console" style="margin-top:50px;"></div>
 
@@ -207,13 +216,19 @@ function syntaxHighlight(json) {
 
 $(function() {
 
-var program_b64 = null;
+// global holder of the program
+var program_b64 = null; // compiled program in base64 or null
+var program_str = ""; // source code of program
+var queue_tmr = null; // timer to stop alerts from poping up if no one in the queue
 
+// load external text file into program_str and highlight
 $.ajax({
 	url: "http://a.eze.se/deviceradio.txt",
 	dataType: "text",
 	cache: false
 }).done(function (data) {
+
+	program_str = data;
 	
 	var html = '<div class="wrap">';
 
@@ -229,7 +244,10 @@ $.ajax({
 	html += '</div>';
 	$('.container').append(html);
 	Rainbow.color();
-	
+});
+
+// compile program contained in program_str into program_b64 and return true on success
+var compile_program = function() {
 	// setup build environment
 	var lex = new DeviceRadio.Lexer;
 	var com = new DeviceRadio.Compiler;
@@ -247,8 +265,9 @@ $.ajax({
 	
 	// compile program
 	var compilation_message = "Program compiled successfully.\n";
+	program_b64 = null;
 	try {
-		var tokens = lex.parse(data);
+		var tokens = lex.parse(program_str);
 		com.add(tokens, null, "deviceradio.txt");
 		com.optimize();
 		var stats = com.generate();
@@ -256,7 +275,6 @@ $.ajax({
 		var program_u8 = [];
 		for (var i = 0; i < stats[1].length; i++) program_u8.push(stats[1].charCodeAt(i));
 		program_b64 = fromByteArray(program_u8);
-               // alert(program_b64);
 	}
 	catch (ex) {
 		compilation_message = ex.message;
@@ -266,147 +284,29 @@ $.ajax({
 
 	$('#console').append('<p><code>' + compilation_message + '</code></p>');
 
-	/*
-	var program = "";
-	var col = -1;
-	for (var i = 0; i < stats[1].length; i++) {
-		//var x = stats[1].charCodeAt(i).toString(16).toUpperCase();
-		//x = (x.length == 1) ? '0x0' + x : '0x' + x;
-
-		var x = stats[1].charCodeAt(i);
-		h = x >> 4;
-		l = x & 15;
-		var m = 15;
-		if (h > m) h = m;
-		if (l > m) l = m;
-		//x = '0x' + h.toString(16).toLowerCase() + l.toString(16).toLowerCase();
-		x = '0x' + h.toString(16).toUpperCase() + l.toString(16).toUpperCase();
-
-		if (++col == 24) {
-			program += ",\n" + x;
-			col = 0;
-		}
-		else if (program == "") program += x;
-		else program += ", " + x;
+	// for debug
+	if (false) {
+		$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._ns) + '</code></pre>');
+		$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._s) + '</code></pre>');
+		$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._t) + '</code></pre>');
+		$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._v) + '</code></pre>');
+		$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._c) + '</code></pre>');
+		$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._m) + '</code></pre>');
+		$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._compiler) + '</code></pre>');
 	}
-	*/
 
-	//$('.container').append('<pre class="wrap"><code>' + addNewlines(Base64.encode(stats[1])) + '</code></pre>');
-	//$('.container').append('<pre class="wrap"><code>' + program_b64 + '</code></pre>');
-	//$('.container').append('<pre class="wrap"><code>\n' + program + '</code></pre>');
-	//$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(stats[0]) + '</code></pre>');
+	return program_b64 !== null;
+};
 
-/*
-$('.container').append('<pre class="wrap"><code>'
-+ "00000000 000000000 0x0000000 0x000000000000\n"
-+ "11111111 111111111 0x1111111 0x111111111111\n"
-+ "22222222 222222222 0x2222222 0x222222222222\n"
-+ "33333333 333333333 0x3333333 0x333333333333\n"
-+ "44444444 444444444 0x4444444 0x444444444444\n"
-+ "55555555 555555555 0x5555555 0x555555555555\n"
-+ "66666666 666666666 0x6666666 0x666666666666\n"
-+ "77777777 777777777 0x7777777 0x777777777777\n"
-+ "88888888 888888888 0x8888888 0x888888888888\n"
-+ "99999999 999999999 0x9999999 0x999999999999\n"
-+ "AAAAAAAA AAAAAAAAA 0xAAAAAAA 0xAAAAAAAAAAAA\n"
-+ "BBBBBBBB BBBBBBBBB 0xBBBBBBB 0xBBBBBBBBBBBB\n"
-+ "CCCCCCCC CCCCCCCCC 0xCCCCCCC 0xCCCCCCCCCCCC\n"
-+ "DDDDDDDD DDDDDDDDD 0xDDDDDDD 0xDDDDDDDDDDDD\n"
-+ "EEEEEEEE EEEEEEEEE 0xEEEEEEE 0xEEEEEEEEEEEE\n"
-+ "FFFFFFFF FFFFFFFFF 0xFFFFFFF 0xFFFFFFFFFFFF\n"
-+ "aaaaaaaa aaaaaaaaa 0xaaaaaaa 0xaaaaaaaaaaaa\n"
-+ "bbbbbbbb bbbbbbbbb 0xbbbbbbb 0xbbbbbbbbbbbb\n"
-+ "cccccccc ccccccccc 0xccccccc 0xcccccccccccc\n"
-+ "dddddddd ddddddddd 0xddddddd 0xdddddddddddd\n"
-+ "eeeeeeee eeeeeeeee 0xeeeeeee 0xeeeeeeeeeeee\n"
-+ "ffffffff fffffffff 0xfffffff 0xffffffffffff\n"
-+ "xxxxxxxx xxxxxxxxx 0xxxxxxxx 0xxxxxxxxxxxxx\n"
-+ ",,,,,,,, ,,,,,,,,, 0x,,,,,,, 0x,,,,,,,,,,,,\n"
-+ '</code></pre>');
-*/
-
-if (false) {
-	$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._ns) + '</code></pre>');
-	$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._s) + '</code></pre>');
-	$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._t) + '</code></pre>');
-	$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._v) + '</code></pre>');
-	$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._c) + '</code></pre>');
-	$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._m) + '</code></pre>');
-	$('.container').append('<pre class="wrap"><code>' + syntaxHighlight(com._compiler) + '</code></pre>');
+// handle multiple device ids
+var device_ids = [
+	'38F8-932-5E41A', // 222200000010
+	'91E5-F1C-331F9'  // 222200000011
+];
+for (i in device_ids) {
+	$('#btn-device').append('<option value="' + device_ids[i] + '"' + ((i == 0) ? 'selected="selected"' : '') + '>Device: ' + device_ids[i] + '</option>');
 }
-});
-
-/*
-
-// generate a UUID version 4
-var getUuid = function() { return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);}); };
-
-var device_id = '38F8-932-5E41A';
-var public_token = getUuid();
-var private_token = '48e435c5-74e4-4e26-8ba4-9115be03d87f'; // hard-coded for now
-
-// responses received on the RPC queue
-var on_rpc = function(frame) {
-	// response from wipe or push command
-	if (('correlation-id' in frame.headers) && ((frame.headers['correlation-id'] === 'wipe') || (frame.headers['correlation-id'] === 'push'))) {
-		$('#console').append('<p><code>Result from firmware push: ' + frame.body + '</code></p>');
-	}
-	else $('#console').append('<p><code>' + frame.body + '</code></p>');
-};
-
-var ws = new SockJS('http://stomp.deviceradio.net:15674/stomp');
-var client = Stomp.over(ws);
-var connected = false;
-var on_connect = function() {
-	$('.btn').removeClass('disabled');
-	connected = true;
-
-	// subscribe to queue updates
-	client.subscribe("/exchange/liveoffice/live_queue_update", on_rpc);
-
-	// let the server know your token keys
-	client.send('/exchange/liveoffice/live_queue', {
-		'reply-to': '/temp-queue/live',
-		'correlation-id': 'ticket'
-	}, JSON.stringify({
-		"private_token": private_token,
-		"public_token": public_token
-	}));
-};
-var on_error =  function() {
-	client.disconnect();
-	$('.btn').addClass('disabled');
-	connected = false;
-};
-client['onreceive'] = on_rpc;
-client.connect('deviceradio', 'dreD8G@fRu', on_connect, on_error, 'gateway');
-
-$('#btn-push').on('click', function() {
-	if (connected && program_b64 !== null) {
-		$('#console').append('<p><code>Sending program to device</code></p>');
-		client.send('/exchange/worker/write.' + device_id, {
-			'reply-to': '/temp-queue/live',
-			'correlation-id': 'push'
-		}, JSON.stringify({
-			"token": private_token,
-			"firmware": program_b64
-		}));
-	}
-});
-
-$('#btn-wipe').on('click', function() {
-	if (connected) {
-		$('#console').append('<p><code>Clearing all code in the device</code></p>');
-		client.send('/exchange/worker/write.' + device_id, {
-			'reply-to': '/temp-queue/live',
-			'correlation-id': 'wipe'
-		}, JSON.stringify({
-			"token": private_token,
-			"firmware": null
-		}));
-	}
-});
-*/
+var dev_id = device_ids[0];
 
 // create a new instance of the live programming handler
 var live = new DeviceRadioLive('http://stomp.deviceradio.net:15674/stomp', 'gateway', 'deviceradio', 'dreD8G@fRu');
@@ -444,53 +344,100 @@ live.on('queuechange', function (total, before_you, max) {
 
 // event handler when its your turn
 live.on('yourturn', function (status) {
+	// we are now in control of device
 	if (status) {
-		$('#console').append('<p><code>It is your turn</code></p>');
-		$('.btn').removeClass('disabled');
-		alert('It is now your time to have control of the device');
+		// timer is running
+		if (queue_tmr !== null) {
+			clearTimeout(queue_tmr);
+			queue_tmr = null;
+			// compile
+			if (compile_program()) {
+				// upload
+				$('#console').append('<p><code>Uploading firmware to device</code></p>');
+				// write firmware to device
+				live.upload(dev_id, program_b64);
+			}
+		}
+		// show popups as normal
+		else {
+			$('#console').append('<p><code>It is your turn</code></p>');
+			
+			// enable buttons
+			$('.btn').removeClass('disabled');
+			
+			alert('It is now your time to have control of the device');
+		}
 	}
+	// we have lost control of device
 	else {
 		$('#console').append('<p><code>Your turn is up</code></p>');
 		alert('Your time is now up');
 	}
 });
 
-// program device-button pushed
-$('#btn-push').on('click', function() {
-	if (!$(this).hasClass('disabled')) {
-		if (!live.queueing) {
+// start queueing
+var do_queueing = function() {
+	if (queue_tmr === null) {
+		queue_tmr = setTimeout(function(){
+			queue_tmr = null;
+
+			// disable buttons until we are in control
 			$('.btn').addClass('disabled');
-			// put us in queue
-			live.queue();
+
 			alert('Your are now in the queue for getting control of the device');
-		}
-		else if (live.connected && program_b64 !== null) {
-			$('#console').append('<p><code>Uploading firmware to device</code></p>');
-			// write firmware to device
-			live.upload('38F8-932-5E41A', program_b64);
+		}, 1000);
+
+		// put us in queue
+		live.queue(dev_id);
+	}
+};
+
+// "program device"-button pushed
+$('#btn-push').on('click', function() {
+	// only work if buttons are enabled
+	if (!$(this).hasClass('disabled')) {
+		// if not in queue, start queueing
+		if (!live.queueing) do_queueing();
+		// else compile and upload
+		else if (live.connected) {
+			// compile
+			if (compile_program()) {
+				// upload
+				$('#console').append('<p><code>Uploading firmware to device</code></p>');
+				// write firmware to device
+				live.upload(dev_id, program_b64);
+			}
 		}
 	}
 });
 
-// wipe device-button pushed
+// "wipe device"-button pushed
 $('#btn-wipe').on('click', function() {
+	// only work if buttons are enabled
 	if (!$(this).hasClass('disabled')) {
-		if (!live.queueing) {
-			$('.btn').addClass('disabled');
-			// put us in queue
-			live.queue();
-			alert('Your are now in the queue for getting control of the device');
-		}
+		// if not in queue, start queueing
+		if (!live.queueing) do_queueing();
+		// else format the device
 		else if (live.connected) {
 			$('#console').append('<p><code>Clearing all code in the device</code></p>');
 			// format the device
-			live.upload('38F8-932-5E41A');
+			live.upload(dev_id);
 		}
 	}
 });
 
 // connect to server
 live.connect();
+
+// handle device change combo box
+$('#btn-device').on('change', function(){
+	if (live.queueing) {
+		live.queue(dev_id, true);
+		dev_id = this.value;
+		live.queue(dev_id);
+	}
+	else dev_id = this.value;
+});
 
 });
 
