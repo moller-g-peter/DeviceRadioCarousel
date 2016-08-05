@@ -173,7 +173,7 @@ function ace_grammar_demo(_editor, code, langs)
                 editorvalue = x;
 
             }
-            editor.selection.selectLineEnd();
+          //  editor.selection.selectLineEnd();
 
             editor.find(';');
             editor.replaceAll('');
